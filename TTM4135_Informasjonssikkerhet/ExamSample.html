@@ -1,0 +1,1047 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="author" content="Danilo Gligoroski">
+<meta name="keywords" content>
+<meta name="GENERATOR" content="Notepad">
+<title>Exam sample of the course TTM4135 - Information Security</title>
+
+<script name="JavaScript">
+
+<!--
+// author: Danilo Gligoroski      e-mail: danilo.gligoroski@q2s.ntnu.no
+
+function KoeKopche(group)
+ {
+  var pom = 0;
+
+  for (var i = 0;i<group.length;i++)
+      {
+       if (group[i].checked)
+          {
+           if (group[i].value == "-2.5") pom -= 0.4
+              else if (group[i].value == "10.0") pom += 1.6
+           break
+          }
+      }
+  return pom;
+ }
+
+function ocenuvanje(form)
+ {
+  var zbir = 0 ;
+
+  zbir += KoeKopche(form.R1);
+  zbir += KoeKopche(form.R2);
+  zbir += KoeKopche(form.R3);
+  zbir += KoeKopche(form.R4);
+  zbir += KoeKopche(form.R5);
+  zbir += KoeKopche(form.R6);
+  zbir += KoeKopche(form.R7);
+  zbir += KoeKopche(form.R8);
+  zbir += KoeKopche(form.R9);
+  zbir += KoeKopche(form.R10);
+  zbir += KoeKopche(form.R11);
+  zbir += KoeKopche(form.R12);
+  zbir += KoeKopche(form.R13);
+  zbir += KoeKopche(form.R14);
+  zbir += KoeKopche(form.R15);
+  zbir += KoeKopche(form.R16);
+  zbir += KoeKopche(form.R17);
+  zbir += KoeKopche(form.R18);
+  zbir += KoeKopche(form.R19);
+  zbir += KoeKopche(form.R20);
+
+  alert("You have earned " + Math.round(100*zbir)/100.0 + " points out of possible 32");
+ }
+// -->
+</script>
+
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="center" style="margin-top: 0; margin-bottom: 0"><font size="4" face="Times New Roman"><strong>
+This is a sample of the third part of the exam for the course </strong></font></p>
+<p align="center" style="margin-top: 0; margin-bottom: 0">
+<font size="4" face="Times New Roman"><strong>TTM4135 - Information Security</strong></font></p>
+
+<form name="zadachi">
+    <p><em><font face="Times New Roman">The exam consists of 20 questions. For
+    every question 5 alternative answers are given, of which ONLY ONE is correct.
+    If you chose the correct answer you will earn 1.6 points, otherwise you will
+    loose 0.4 points (i.e. the penalty is -0.4 points). There is one additional
+    choice that is placed by default: I do not know. If you leave the answer on
+    that state - then you will not get any points (i.e. the earned points are 0). Maximal number of points in this part of the exam is 32.
+    Time for work on this test: 60 minutes.</font></em></p><hr>
+    <p><strong><font face="Times New Roman">1. </font> </strong>
+    <font face="Times New Roman">Which of the following attacks is a passive
+    attack?</font></p>
+    <table border="0" id="table12">
+        <tr>
+            <td><input type="radio" name="R1"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font
+            face="Times New Roman">Masquerade</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R1"
+            value="10.0"><font face="Times New Roman">b)</font></td>
+            <td><font
+            face="Times New Roman">Release of message contents</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R1"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font
+            face="Times New Roman">Reply</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R1"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>
+            <font
+            face="Times New Roman">Modification of messages</font></td></tr><tr>
+            <td><input type="radio" name="R1"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font
+            face="Times New Roman">Denial of service</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R1"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">2. </font> </strong>
+    <font face="Times New Roman">Which service IS NOT a part of X.800 list of security services?</font></p>
+    <table border="0" id="table16">
+        <tr>
+            <td><input type="radio" name="R2"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font
+            face="Times New Roman">Authentication</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R2"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font
+            face="Times New Roman">Access control</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R2"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font
+            face="Times New Roman">Data confidentiality</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R2"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td><table border="0" width="100%" id="table17">
+        <tr>
+            <td valign="top" width="16%"><font
+            face="Times New Roman">Data integrity</font></td>
+        </tr>
+    </table>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R2"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td><font
+            face="Times New Roman">IP security</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" checked name="R2"
+            value="0.0"></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">3. </font> </strong>
+    <font face="Times New Roman">What is the X.800 service of nonrepudiation?</font></p>
+    <table border="0" id="table20">
+        <tr>
+            <td><input type="radio" name="R3"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font
+            face="Times New Roman">A service that prevents only the sender from denying transmission of a message.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R3"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font
+            face="Times New Roman">A service that prevents only the receiver from denying receiving a message.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R3"
+            value="10.0"><font face="Times New Roman">c)</font></td>
+            <td><font
+            face="Times New Roman">A service that prevents both the sender and receiver from denying a transmitted message.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R3"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td><table border="0" width="100%" id="table21">
+        <tr>
+            <td valign="top" width="16%"><font
+            face="Times New Roman">A service that authorize the sender to claim that he/she has send a message.</font></td>
+        </tr>
+    </table>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R3"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font
+            face="Times New Roman">A service that authorize the receiver to claim that he/she has received a message.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" checked name="R3"
+            value="0.0"></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">4. </font></strong>
+    <font face="Times New Roman">Which one IS NOT an X.800 security mechanism?</font></p>
+    <table border="0" id="table24">
+        <tr>
+            <td><input type="radio" name="R4"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td><font
+            face="Times New Roman">Key exchange</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R4"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font
+            face="Times New Roman">Notarization</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R4"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font
+            face="Times New Roman">Routing control</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R4"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td><table border="0" width="100%" id="table25">
+        <tr>
+            <td valign="top" width="16%"><font
+            face="Times New Roman">Authentication exchange</font></td>
+        </tr>
+    </table>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R4"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font
+            face="Times New Roman">Data integrity</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R4"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">5. </font> </strong>
+    <font face="Times New Roman">A symmetric encryption scheme has five ingredients:</font></p>
+    <table border="0" id="table28">
+        <tr>
+            <td><input type="radio" name="R5"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Database of secret session keys, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R5"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Session key, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R5"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Same encryption and decryption algorithm,
+                </font></li>
+                <li><font
+            face="Times New Roman">Session key, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Validity time period</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R5"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td><table border="0" width="100%" id="table29">
+        <tr>
+            <td valign="top" width="16%">
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Same encryption and decryption algorithm,
+                </font></li>
+                <li><font
+            face="Times New Roman">Database of secret session keys, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Validity period for the session keys</font></li>
+            </ul>
+            </td>
+        </tr>
+    </table>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R5"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Secret key, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R5"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">6. </font></strong>
+    <font face="Times New Roman">What is<span lang="mk"> </span>known to the
+    attacker in the<span lang="mk"> </span>&quot;chosen ciphertext&quot; attack?</font></p>
+    <table border="0" id="table32">
+        <tr>
+            <td><input type="radio" name="R6"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td>
+            <ul>
+                <li><font face="Times New Roman">Encryption algorithm, </font>
+                </li>
+                <li><font face="Times New Roman">Ciphertext, </font></li>
+                <li><font face="Times New Roman">Purported ciphertext chosen by
+                cryptanalyst, together with its corresponding decrypted
+                plaintext generated with the secret key.</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R6"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td>
+            <ul>
+                <li><font face="Times New Roman">Encryption algorithm, </font>
+                </li>
+                <li><font face="Times New Roman">Ciphertext, </font></li>
+                <li><font face="Times New Roman">Plaintext message chosen by
+                cryptanalyst, together with its corresponding ciphertext
+                generated with the secret key</font></li>
+                <li><font face="Times New Roman">Purported ciphertext chosen by
+                cryptanalyst, together with its corresponding decrypted
+                plaintext generated with the secret key.</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R6"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>
+            <ul>
+                <li><font face="Times New Roman">Encryption algorithm</font></li>
+                <li><font face="Times New Roman">Ciphertext</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R6"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>
+            <ul>
+                <li><font face="Times New Roman">Encryption algorithm</font></li>
+                <li><font face="Times New Roman">Ciphertext</font></li>
+                <li><font face="Times New Roman">One or more
+                plaintext-ciphertext pairs formed with secret key</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R6"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>
+            <ul>
+                <li><font face="Times New Roman">Encryption algorithm, </font>
+                </li>
+                <li><font face="Times New Roman">Ciphertext, </font></li>
+                <li><font face="Times New Roman">Plaintext message chosen by
+                cryptanalyst, together with its corresponding ciphertext
+                generated with the secret key</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R6"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">7. </font></strong>
+    <font face="Times New Roman">Which cipher has theoretically proven security?</font></p>
+    <table border="0" id="table36">
+        <tr>
+            <td><input type="radio" name="R7"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Caesar cipher</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R7"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Monoalphabetic cipher</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R7"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">Playfair cipher</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R7"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>Polyalphabetic cipher</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R7"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">One-Time Pad cipher</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R7"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">8. </font></strong>
+    <font face="Times New Roman">A Feistel cipher structure generally performs
+    repeatedly the following two operations:</font></p>
+    <table border="0" id="table40">
+        <tr>
+            <td><input type="radio" name="R8"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Confusion and substitution</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R8"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Diffusion and substitution</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R8"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">Permutation and rotation</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R8"
+            value="10.0"><font face="Times New Roman">d)</font></td>
+            <td>Substitution and permutation</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R8"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">Permutation and Diffusion</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R8"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">9. </font></strong>
+    <font face="Times New Roman">How many S-boxes has Triple-DES?</font></p>
+    <table border="0" id="table44">
+        <tr>
+            <td><input type="radio" name="R9"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">1</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R9"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">3</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R9"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">6</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R9"
+            value="10.0"><font face="Times New Roman">d)</font></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R9"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">12</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R9"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">10. </font></strong>
+    <font face="Times New Roman">How many S-boxes has AES?</font></p>
+    <table border="0" id="table90">
+        <tr>
+            <td><input type="radio" name="R10"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">1</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R10"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">3</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R10"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">6</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R10"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R10"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">16</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R10"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">11. </font></strong>
+    <font face="Times New Roman">How many rounds has AES (working with 128 bit
+    key)?</font></p>
+    <table border="0" id="table91">
+        <tr>
+            <td><input type="radio" name="R11"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">10</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R11"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">12</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R11"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">16</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R11"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R11"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">32</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R11"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">12. </font></strong>
+    <font face="Times New Roman">Which one IS NOT a block cipher mode of
+    operation?</font></p>
+    <table border="0" id="table56">
+        <tr>
+            <td><input type="radio" name="R12"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">ECB</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R12"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">CBC</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R12"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">CFB</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R12"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>OFB</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R12"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">CCB</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R12"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><font face="Times New Roman"><strong>13. </strong>What is the role of the
+    <b>master</b> key?</font></p>
+    <table border="0" id="table60">
+        <tr>
+            <td><input type="radio" name="R13"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">To produce next master key.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R13"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">To produce one session key and then
+            to be replaced by a new master key.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R13"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">To produce one session key and new
+            master key but then to be replaced by the new master key.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R13"
+            value="10.0"><font face="Times New Roman">d)</font></td>
+            <td>To produce session keys.</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R13"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td><font face="Times New Roman">To produce new master keys.</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R13"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">14. </font></strong>
+    <font face="Times New Roman">Which two criteria are used to check the
+    randomness quality of sequences of numbers:</font></p>
+    <table border="0" id="table64">
+        <tr>
+            <td><input type="radio" name="R14"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Uniform distribution and
+            independence</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R14"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Normal distribution and strong
+            dependence</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R14"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">Uniform distribution and dependence</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R14"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>Binomial distribution and hypotheses testing</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R14"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>Two dimensional uniform distribution</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R14"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">15. </font></strong>
+    <font face="Times New Roman">The attack &quot;Meet-in-the-Middle&quot; has been
+    successfully applied to the following block cipher:</font></p>
+    <table border="0" id="table92">
+        <tr>
+            <td><input type="radio" name="R15"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">DES</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R15"
+            value="10.0"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Double DES</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R15"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td><font face="Times New Roman">Triple DES</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R15"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>RC4</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R15"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>AES</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R15"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">16. </font></strong>
+    <font face="Times New Roman">Miller-Rabin algorithm applied on a number <i>n</i>
+    can:</font></p>
+    <table border="0" id="table93">
+        <tr>
+            <td><input type="radio" name="R16"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Construct a finite field of size 2<i><sup>n</sup></i></font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R16"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Factorize a number</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R16"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>Prove that a number is prime </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R16"
+            value="10.0"><font face="Times New Roman">d)</font></td>
+            <td>Prove that the number is composite</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R16"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>Construct a finite field of size <i>n</i></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R16"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">17. </font></strong>
+    <font face="Times New Roman">A public-key encryption scheme has six
+    ingredients:</font></p>
+    <table border="0" id="table97">
+        <tr>
+            <td><input type="radio" name="R17"
+            value="10.0"><font face="Times New Roman">a)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Public key,</font></li>
+                <li><font
+            face="Times New Roman">Private key,</font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R17"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Open public key,</font></li>
+                <li><font
+            face="Times New Roman">Securely exchanged secret key,</font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R17"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext,</font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font
+            face="Times New Roman">Private key, </font></li>
+                <li><font
+            face="Times New Roman">Public key ring, </font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Decryption algorithm</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R17"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>
+            <ul>
+                <li>
+                <font
+            face="Times New Roman">Plaintext,</font></li>
+                <li><font
+            face="Times New Roman">Encryption and decryption algorithm,
+                </font></li>
+                <li><font
+            face="Times New Roman">Database of public and private keys,</font></li>
+                <li><font
+            face="Times New Roman">Key distribution center,</font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Validity period for the public keys</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R17"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>
+            <ul>
+                <li><font
+            face="Times New Roman">Plaintext, </font></li>
+                <li><font
+            face="Times New Roman">Encryption algorithm, </font></li>
+                <li><font face="Times New Roman">Private key,</font></li>
+                <li><font
+            face="Times New Roman">Key distribution center,</font></li>
+                <li><font
+            face="Times New Roman">Ciphertext, </font></li>
+                <li><font
+            face="Times New Roman">Validity period for the public keys</font></li>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R17"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">18. </font></strong>
+    <font face="Times New Roman">Diffie-Helman key exchange bases its security
+    on the following mathematical problem:</font></p>
+    <table border="0" id="table98">
+        <tr>
+            <td><input type="radio" name="R18"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Factorization of numbers</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R18"
+            value="10.0"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Computing Discrete Logarithm </font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R18"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>Computing Greatest Common Divisor</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R18"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>Computing the elliptic curve</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R18"
+            value="-2.5"><font face="Times New Roman">e) </font></td>
+            <td>Computing the residue</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R18"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">19. </font></strong>
+    <font face="Times New Roman">A crypto system that is using Elliptic Curve
+    Cryptography has a public key of length 224 bits. How much bits has to have
+    an RSA crypto system that will offer the same level of security:</font></p>
+    <table border="0" id="table99">
+        <tr>
+            <td><input type="radio" name="R19"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">448 bits</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R19"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">512 bits</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R19"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>1024 bits</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R19"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>1536 bits</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R19"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td>2048 bits</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R19"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p><strong><font face="Times New Roman">20. </font></strong>
+    <font face="Times New Roman">The cryptographic primitive Whirlpool is:</font></p>
+    <table border="0" id="table100">
+        <tr>
+            <td><input type="radio" name="R20"
+            value="-2.5"><font face="Times New Roman">a)</font></td>
+            <td><font face="Times New Roman">Block cipher similar as AES</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R20"
+            value="-2.5"><font face="Times New Roman">b)</font></td>
+            <td><font face="Times New Roman">Stream cipher</font></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R20"
+            value="-2.5"><font face="Times New Roman">c)</font></td>
+            <td>MAC</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R20"
+            value="-2.5"><font face="Times New Roman">d)</font></td>
+            <td>HMAC</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R20"
+            value="10.0"><font face="Times New Roman">e) </font></td>
+            <td>Hash function</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="R20"
+            value="0.0" checked></td>
+            <td><font face="Times New Roman" size="2">I do not know</font></td>
+        </tr>
+    </table>
+    <hr>
+    <p>
+    <input type="submit" name="B1"
+    value="Submit the answers" onclick="ocenuvanje(this.form)"> <font
+    face="Times New Roman">- </font> <font
+    face="Times New Roman">you will get information how much points you have
+    earned (out of 32).</font></p>
+</form>
+
+<hr>
+
+<p align="left"><font face="Comic Sans MS, Arial">Author:
+Dr. Danilo Gligoroski, <a href="http://www.q2s.ntnu.no/~danilog/">
+http://www.q2s.ntnu.no/~danilog/</a>&nbsp; e-mail: </font>
+<a href="mailto:Danilo.Gligoroski@q2s.ntnu.no">Danilo.Gligoroski@q2s.ntnu.no</a> </p>
+
+<hr>
+
+<!--
+HTML design and JavaScript coding by Danilo Gligoroski
+web: http://www.q2s.ntnu.no/~danilog/
+e-mail: Danilo.Gligoroski@q2s.ntnu.no
+
+Stefan Koch http://www.dpunkt.de/javascript/
+Robert Young http://www.webteacher.com
+-->
+</body>
+</html>
