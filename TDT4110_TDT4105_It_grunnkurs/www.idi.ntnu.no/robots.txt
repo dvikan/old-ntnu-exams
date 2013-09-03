@@ -1,0 +1,12 @@
+# /robots.txt for http://www.idi.ntnu.no/
+User-agent: *
+Disallow: /etasje/
+Disallow: /OLD/
+Disallow: /intra/
+Disallow: /intranett/
+Disallow: /info/
+Disallow: /kull/siving2002/_cgi
+Disallow: /kull/siving2004/newsportal
+Disallow: /kull/siving2005/rykter.php
+Disallow: /emner/tdt4210/Wiki-filer/
+Disallow: /~conradi/it/alle-mott98.xls
