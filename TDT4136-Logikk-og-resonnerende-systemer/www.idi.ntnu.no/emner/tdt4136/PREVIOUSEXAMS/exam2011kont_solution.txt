@@ -1,0 +1,642 @@
+%%  COURSE TDT4136 Logic and Reasoning systems  
+
+%% Solution proposals to CONTINUATION EXAM   10.aug. 2011
+
+%% by T.Amble
+
+TASK 1 (20%)
+
+The formulas are written in plain text format according to some
+specificaton, but the students should preferrably use mathematical notation.
+
+Task 1a)
+
+
+A function f is contiuous at x iff
+
+(C)   A:epsilon E:delta A:s  (P(x,s,delta) => Q(x,s,epsilon))
+
+where
+
+    P(x,s,delta) = |x-s| < delta
+
+    Q(x,s,epsilon) = |f(s)-f(x)| < epsilon
+
+
+Task 1b)
+
+
+A function f is discontiuous at x iff
+
+(D)  E:epsilon A:delta E:s  (P(x,s,delta) & -  Q(x,s,epsilon))
+
+Task 1c)
+
+We postulate that f is both continuous and discontinuous (C & D)
+
+   
+
+   (C)    A:epsilon E:delta A:s  (P(x,s,delta) => Q(x,s,epsilon))
+         &
+   (D)    E:epsilon A:delta E:s  (P(x,s,delta) & -  Q(x,s,epsilon))
+
+We convert this to clausal form
+
+
+Convert  C:   
+----------
+
+  - Eliminate =>
+
+        A:epsilon E:delta A:s  (- P(x,s,delta) | Q(x,s,epsilon))
+
+  - Skolemize
+
+         A:epsilon A:s  (- P(x,s,sk1(epsilon)) | Q(x,s,epsilon))
+
+  - Eliminate A:
+
+(C1)        (- P(x,s,sk1(epsilon)) | Q(x,s,epsilon))
+
+       
+Convert D: 
+---------
+
+  - Skolemize
+
+        A:delta  (P(x,sk2(delta),delta) & -  Q(x,sk2(delta),sk0))
+
+  - Eliminate A:
+
+         (P(x,sk2(delta),delta) & -  Q(x,sk2(delta),sk0))
+
+  - Bring to conjunctive normal form
+
+
+  (D1)     P(x,sk2(delta),delta) 
+
+  (D2)     - Q(x,sk2(delta),sk0)
+
+
+
+Resolution proof:
+
+
+  (1)  (C1,D1)    Q(x,sk2(sk2(epsilon)),sk0)) %% s=sk2(delta),delta=sk1(epsilon)
+
+  (2)  (1,D2)     []                  %% delta=sk2(epsilon)
+
+                  QED
+
+TASK 2
+
+Task 2 a)
+
+   A semantic net is a structue that shows the relation between
+   concepts,  instances and values. The concepts can be categories and sets of
+   entities ("bunches"). The relations can be memberships, subclasses
+   and attributes or others.
+
+Task 2 b)
+
+
+
+
+                     Agent
+                      |
+                     ako
+                      |
+                     Robot
+                      |
+                      |-MoveBy Legs
+                      |
+           ----------------------------------
+           |               |                 | 
+          ako             ako               ako
+           |               |                 |            
+        DoorRobot        DeliveryRobot     CleaningRobots
+         |                |                 |
+         |- WorkAt Day    |-WorkAt Day      |-WorkAt Night
+         |- Workat Night  |                 |-MoveBy Wheels
+         |- MoveBy []     |                 |
+        isa                -------------    |
+         |                |             |   |
+       Jimmy             isa           isa isa
+                          |             |   |
+                         Marvin         Billy
+                                  
+                
+Task 2c)
+
+       Inheritance of properties are done following the principles:
+
+
+             If a category has an attribute, then all subcategories
+             have that attribute.
+
+             If a category has a poperty (e.g. attribute and value),
+             then all subcategories and instances have that property.
+
+             The exception is when  a semantic entity 
+             inherits a property or attribute from several
+             superclasses. Then the following apply:
+
+                  In a hierarchy (one parent for each semantic
+                  entity), it is the closest property that is valid.
+
+                  In a heterarchy ( different parents along different
+                  paths), categories blocked by interfering
+                  inheritance are excluded from inheritance.
+
+
+ 
+Task 2d)
+
+
+          A logical knowledge base is can be formulated in FOL.
+        
+                         Ako(Robot,Agent).
+                         Ako(DeliveryRobot,Robot).
+                         Ako(CleaningRobot,Robot).
+                         Ako(DoorRobot,Robot).
+    
+                         Rel(Robot,MoveBy,Legs).
+                         Rel(DoorRobot,MoveBy,[]).
+                         Rel(CleaningRobot,MoveBy,Wheels).    
+                       
+                         Rel(DoorRobot,WorkAt,Day).
+                         Rel(DoorRobot,WorkAt,Night).
+                         Rel(CleaningRobot,WorkAt,Night).
+                        
+                         Isa(Marvin,DeliveryRobot).
+                         Isa(Jimmy,DoorRobot).
+
+                         Isa(Billy,CleaningRobot).           
+                         Isa(Billy,DeliveryRobot).   
+                       
+
+Task 2 e)
+
+
+           Sketch of inheritance in a logical knowledge base 
+
+i) Delivery Robots move by Legs
+
+             Rel(DR, MB, L)  <=
+                   Ako(DR,DR,R),
+                   Rel(DR, MB, L) .
+
+ii) Billy works at night
+
+             Rel(B,WA,N) <=
+                    Isa(B,CR),
+                    Rel(CR,WA,N).
+
+iii) Billy moves by wheels
+
+             Rel(B,MB,W) <=
+                  Isa(B,CR),
+                  Rel(CR,MB,W).
+
+
+
+In the last example above, Billy moves by wheels because he is
+a Cleaning robot, even if Billy also is a Delivery Robot,
+and Delivery robots have no specific value for MoveBy, so
+by default inherit MoveBy Legs from its parent Robot.
+
+To avoid that the axioms in ii) and iii)  also should give 
+
+            Billy Moves by legs
+
+we would need som modifications of ii) and iii).
+
+Details are not required.
+
+
+TASK 3 (20 %)
+
+Task 3a)
+
+A heuristic search problem consists of
+
+  - a set of nodes containing states
+
+  - a start node
+
+  - a goal node (or goal condition)
+
+  - a successor function
+
+  - a cost function for one step
+
+  - a heuristic function as an estimate for cost from a node to a
+    goal node
+
+
+In the present problem, the states are configurations of the boxes
+the start node and goal nodes are  configurations as described,
+the successor function is the legal moves, the cost fuction is 1 per
+move and the heuristic function is to be found. 
+
+The quest  is to find the cheapest way from start to goal .
+
+
+Task 3b)
+
+
+  Admissible heuristics means technically that H is less or equal to
+  the real minimal cost.
+
+  The benefit is that we are guaranteed a minimal cost plan if it exists.
+
+Task 3 c)
+
+  Monotone heuristics means  technically that the cost of a step
+  is higher than the reductiion in heuristics, which means that the
+  total heuristic is (monotonically) non-decreasing.
+
+Benefits of monotone heuristics is that we can regard the first found
+path to  nodes as the minimal route to them, and can thus discard
+further search for any nodes that is detected earlier.
+
+  Admissible heuristic, technically underestimate, functionally
+
+   guarantees optimal path to goal.
+
+Task 3d)
+
+
+   A good heuristic may be to count the number of boxes that are not
+   in place, i.e. number of boxes on P1 and P2, and the number of red
+   boxes on P3 except the number of blue boxes on P3 that are
+   correctly stacked from the bottom.
+
+
+   This heuristic is admissible because each box counted above need
+    at least  1 move to get in place.
+
+   This heuristic is monotone because the heuristic  
+
+   as the increased cost of of a step is no
+     less than the decrease in the heuristic estimate.
+
+     heuristic estimate decreasing less
+     than the  cost of of a step.
+
+
+TASK 4
+
+Task 4a)
+
+
+A Production system is a forward chaining inference system.
+
+Typically, it use facts and rules in a knowledge base to derive new
+facts that are stored in the knowledge (data) base called the working memory.
+
+The rules are sometimes formulated as
+
+  IF  conditions then actions.
+
+where the conditions are conditions of the facts  and
+the actions perform some modification on the facts in the
+knowledge database.
+
+The strategy is to select one of the rules that have its conditions    
+satisfied. One strategy particular to the production system is used
+to decide when several rules may apply.
+
+Task 4 b)
+
+PROXY is a Prolog-based implementation of a Production system.
+
+It is characterised by
+
+  1) The actions are formulated as positive conclusions that are
+     updated, and negative conclusions that are removed from the
+     working memory.
+ 
+  2) The selection strategy is simply to take the first rule that may
+     fire, when all the condtions but not all conclusions are true.
+
+In its pure form, PROXY is equivalent to forward chaining resolution
+proof.
+
+
+4c)
+
+
+Make a rule base in PROXY that solves the problem above.
+There are no claims at all that the task shall be solved with a
+minimum number of moves.   
+                        _______                  
+                       | red   | 
+      _______          |_______|
+     |  blue |         | red   | 
+     |_______|         |_______|
+     |  red  |         | blue  | 
+     |_______|         |_______|  
+  
+   
+ ================    ================  ================
+     P1                     P2               P3
+
+
+Figure 1   Example of a start situation
+
+
+
+We represent the situation as a predicate 
+
+stack(<platform>,<stack of boxes>),
+
+initially
+
+   stack(p1,[blue,red]). stack(p2,[red,red,blue]). stack(p3,[]).
+
+The strategy is done in 3 phases:
+
+   phase 0:   distribute boxes on P2 to P1 (red) or P3 (blue)
+
+   phase 1:   distribute boxes  on P1 to P2 (red) or P3 (blue)
+
+   phase 2:   distribute (move) boxes on P2 (red) to P3.  
+
+
+
+
+facts 
+
+     stack(p1,[blue,red]) and 
+     stack(p2,[red,red,blue]) and 
+     stack(p3,[]) and
+
+     phase(0).
+ 
+rule redsfromp2top1
+if phase(0) and
+   stack(p2,[red|Rest]) and
+   stack(p1,Stack1) 
+then
+   not stack(p2,[red|Rest]) and
+   stack(p2,Rest) and
+   not stack(p1,Stack1) and
+   stack(p1,[red|Stack1]).
+
+
+rule bluesfromp2top3
+if phase(0) and
+   stack(p2,[blue|Rest]) and
+   stack(p3,Stack1) 
+then
+   not stack(p2,[blue|Rest]) and
+   stack(p2,Rest) and
+   not stack(p3,Stack1) and
+   stack(p3,[blue|Stack1]).
+
+rule p2isempty
+if  phase(0) and
+    stack(p2,[])
+then
+    not phase(0) and
+    phase(1).
+
+
+rule bluesfromp1top3
+if phase(1) and
+   stack(p1,[blue|Rest]) and
+   stack(p3,Stack3) 
+then
+   not stack(p1,[blue|Rest]) and
+   stack(p1,Rest) and
+   not stack(p3,Stack3) and
+   stack(p3,[blue,Stack3]).
+
+rule redsfromp1top2
+if phase(1) and
+   stack(p1,[red|Rest]) and
+   stack(p2,Stack1) 
+then
+   not stack(p1,[red|Rest]) and
+   stack(p1,Rest) and
+   not stack(p2,Stack1) and
+   stack(p2,[red|Stack1]).
+
+rule p1isempty
+if   phase(1) and
+     stack(p1,[])
+then 
+    not phase(1) and
+    phase(2).
+
+rule redsfromp1top3
+if phase(2) and
+   stack(p1,[red|Rest]) and
+   stack(p3,Stack3) 
+then
+   not stack(p1,[red|Rest]) and
+   stack(p1,Rest) and
+   not stack(p3,Stack3) and
+   stack(p3,[red,Stack3]).
+
+rule finish
+if  phase(2)
+    and stack(p1,[])
+then stop.
+
+-----------------------------------------------------
+
+Sample run: (not part of required solution)
+
+?-trace :=3.
+| ?- run.
+
+
+$$$$$$  PROXY Production System $$$$$$
+
+*** FACTS ***
+
+ stack(p1,[blue,red])
+ stack(p2,[red,red,blue])
+ stack(p3,[])
+ phase(0)
+
+
+*** redsfromp2top1 ==> not stack(p2,[red,red,blue])and stack(p2,[red,blue])and not stack(p1,[blue,red])and stack(p1,[red,blue,red]) ***
+
+ stack(p3,[])
+ phase(0)
+ stack(p2,[red,blue])
+ stack(p1,[red,blue,red])
+
+*** redsfromp2top1 ==> not stack(p2,[red,blue])and stack(p2,[blue])and not stack(p1,[red,blue,red])and stack(p1,[red,red,blue,red]) ***
+
+ stack(p3,[])
+ phase(0)
+ stack(p2,[blue])
+ stack(p1,[red,red,blue,red])
+
+*** bluesfromp2top3 ==> not stack(p2,[blue])and stack(p2,[])and not stack(p3,[])and stack(p3,[blue]) ***
+
+ phase(0)
+ stack(p1,[red,red,blue,red])
+ stack(p2,[])
+ stack(p3,[blue])
+
+*** p2isempty ==> not phase(0)and phase(1) ***
+
+ stack(p1,[red,red,blue,red])
+ stack(p2,[])
+ stack(p3,[blue])
+ phase(1)
+
+*** redsfromp1top2 ==> not stack(p1,[red,red,blue,red])and stack(p1,[red,blue,red])and not stack(p2,[])and stack(p2,[red]) ***
+
+ stack(p3,[blue])
+ phase(1)
+ stack(p1,[red,blue,red])
+ stack(p2,[red])
+
+*** redsfromp1top2 ==> not stack(p1,[red,blue,red])and stack(p1,[blue,red])and not stack(p2,[red])and stack(p2,[red,red]) ***
+
+ stack(p3,[blue])
+ phase(1)
+ stack(p1,[blue,red])
+ stack(p2,[red,red])
+
+*** bluesfromp1top3 ==> not stack(p1,[blue,red])and stack(p1,[red])and not stack(p3,[blue])and stack(p3,[blue,[blue]]) ***
+
+ phase(1)
+ stack(p2,[red,red])
+ stack(p1,[red])
+ stack(p3,[blue,[blue]])
+
+*** redsfromp1top2 ==> not stack(p1,[red])and stack(p1,[])and not stack(p2,[red,red])and stack(p2,[red,red,red]) ***
+
+ phase(1)
+ stack(p3,[blue,[blue]])
+ stack(p1,[])
+ stack(p2,[red,red,red])
+
+*** p1isempty ==> not phase(1)and phase(2) ***
+
+ stack(p3,[blue,[blue]])
+ stack(p1,[])
+ stack(p2,[red,red,red])
+ phase(2)
+
+*** finish ==> stop ***
+
+ stack(p3,[blue,[blue]])
+ stack(p1,[])
+ stack(p2,[red,red,red])
+ phase(2)
+ stop
+
+
+*** Time  10 ms
+
+$$$$$$  END  $$$$$$
+---------------------------------------------------
+
+TASK 5
+
+
+TASK 5
+
+
+Task 5a)
+
+  
+
+A  CSP problem is defined by  
+
+
+   - a set of variables
+
+   - a set of domains for these variables
+
+   - a set of constraint relations between the variables
+
+In this case, the variables are
+
+    {WA,NT,SA,Q,NSW,V}
+
+ and the common domains are  {Red,Blue,Green}.
+
+
+Task 5b)
+
+
+A Constraint graph is a structure , where the vertices are the
+variables, the edges are relations. In this case, the relations are
+the difference-relation.
+
+
+
+
+   WA -- NT -- Q
+     \   |   /  \
+      \  |  /    \
+       \ | /      \
+         SA ------NSW     
+           \     /
+            \   /
+              V
+
+
+Task 5c)
+
+  Backtracking search for CSP
+
+     The most basic method is simply to assign domain varibles to
+     possible domain values at a time, test the constraints and
+     backtrack when constraints are violated.
+
+     A major and necessary improvement is to carefully select the order
+     of the variables to instantiate, and also to carefully select the
+     order of the values to try out.
+
+     The method of constraint propagation means that each variable is
+     a assigned an apriori set of values, and that each assignment
+     leads to a subsequent elimination of all other assignment that
+     becomes impossible. If it turns out that a variable can have no
+     legal value, then the original assignement must be changed.
+
+Task 5 d)
+
+
+The most prominent strategies for solving CSP with backtracking search
+is
+
+    MRV  Heuristics - selacet the variable with the fewest remaining
+    legal values
+
+    Degree heuristics - select the variable which is involved in the
+    largest number of constraints
+
+    Least constraining value - prefer the value that rules out the
+    fewest choices of for the remaining in the constraint graph.
+
+
+Task 5e)
+
+Example of MRV
+
+  If WA=red and NT=green, there is only one possible way to assign
+  SA=blue.
+
+Example of degree heuristics
+
+   SA is constrained by 6 related vatiables (WA,NT,Q,NSW,V) nd is a
+   good candidate.
+
+Example of Least constraining vlue
+
+    If WA=red, NT=green, and Q is selected for assignment, blue would
+    be a bad choice since it eliminates the last legal value for Q's
+    neighbour SA.
+
+------------------------------------------------
+ 

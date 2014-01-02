@@ -1,0 +1,579 @@
+
+   COURSE  TDT4136  Logic and Reasoning Systems.
+   EXAM  Thursday  December 10 2009
+
+   SOLUTION PROPOSAL
+   by/ Tore Amble
+
+Revised  TA-100104
+
+いいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
+
+
+TASK 1 
+
+The solution is given in plain text , but the students should
+preferably use mathematical notation.
+
+
+TASK 1a)
+
+
+1.   - Exists x  M(x) & F(x) 
+
+2.   - Exists x  S(x) & F(x)
+
+3.     M(MorLille)
+
+4.   - Exists x  S(x) & G(x)
+
+5.     G(MorLille)
+
+6.     S(MorLille)
+
+
+Comment:  1.  - Exists x   M(x) & F(x) is the most direct translation,
+           but  Forall x   M(x) => - F(x)  is also acceptable, though
+           it is a derivation of the original.
+
+
+Task 1b)
+
+
+Detailed steps for sentence 1:
+
+Eliminate =>
+
+Reduce Scope of negation
+
+    All x  -M(x) | -F(x)
+
+Eliminate Existential Quantifiers Skolemize
+
+Eliminate  Universal  Quantifiers
+
+  1'     -M(x) | -F(x) 
+
+Sentence 2, 4 are  is similar
+
+  2'    -  S(x) | - F(x)
+
+  4'    -  S(x) | - G(x)
+
+Sentences 3,5,6 are in CF
+
+ 3'    M(MorLille)
+
+ 5'    G(MorLille)
+
+ 6'    S(MorLille)
+
+
+Task 1c)
+
+ 7'    -S(MorLille)           (4',5')
+
+ 8'    []                     (6',7')
+
+QED
+
+We have derived a contradiction using a sound inference procedure,
+which means that  the clause set is inconsistent.
+
+Task 1d)
+
+We remove the last sentence (6 and hence 6'). Call the remaining set A15
+
+From these, we have already proved that A15 implies  -S(MorLille).
+(since S(MorLille) led to a contradiction). 
+If  A15 is consistent, then we cannot also have that 
+A15 implies S(MorLille). We thus ned to establish that A15 is
+consistent.
+
+We  create all possible resolvents
+
+9'     -F(MorLille) (3',1')
+
+10'    -S(MorLille) (5',4')    
+
+but we cannot produce the empty clause. 
+Because Resolution is refutation complete, it means that A15 is conistent.
+
+It follows that is is not possible to prove  S(Morlille) i.e. Morlille is a stone.
+
+
+
+TASK 2
+
+A careful reading of the assigment is important.
+The robot shall not visit all territories , especially not SA.
+
+Informally the solution is to carry 2 cans from WA to NT and leave one as in a
+depot, then go back to WA and fulfill the journey.
+
+
+Task 2a)
+
+A plan that fulfills the goal can be solved by the following sequence
+
+It is necessary with an extra tour back to fetch cans.
+
+The sequence is augmented with preconditions that are satisfied,
+and effects that are needed later.
+
+The plan will show that all preconditions are fulfilled by previous
+effects, or conditions  initially given.
+
+
+
+
+
+Given initally
+
+ Atrobot(WA)
+ At(p1,WA)  At(p2,WA)  At(p3,WA) At(p4,WA)     At(p5,WA)  At(p6,WA)  
+-Fueled    
+
+% Phase 1  Make depot
+
+% Action              Precondition           Effect
+
+  pickup(p1,WA)       At(p1,WA)               Carrying(p1)
+  pickup(p2,WA)       At(p2,WA)               Carrying(p2)
+  pickup(p3,WA)       At(p3,WA)               Carrying(p3)
+  refuel(p1,WA)       -Fueled                 Fueled
+  goto(WA,NT)         AtRobot(WA)Fueled       AtRobot(NT) - Fueled
+  putdown(p2,NT)      AtRobot(N)              At(p2,NT) - Carrying(p2)
+  refuel(p3,NT)       -Fueled                 Fueled
+  goto(NT,WA)         Atrobot(NT)Fueled       Atrobot(WA)
+
+% Phase 1  Go via depot
+
+  pickup(p4,WA).      At(p4,WA)               Carrying(p4)
+  pickup(p5,WA)       At(p5,WA)               Carrying(p5)
+  pickup(p6,WA)       At(p6,WA)               Carrying(p5)
+  refuel(p4,WA)       - Fueled                Fueled
+  goto(WA,NT)         Atrobot(WA) Fueled      AtRobot(NT) -Fueled
+  pickup(p2,NT)       At(p2,NT)               Carrying(p2)  
+  refuel(p2,NT)       -Fueled                 Fueled
+  goto(NT,Q)          Atrobot(NT) Fueled      Atrobot(Q) -Fueled
+  refuel(p5,Q)        -Fueled                 Fueled     
+  goto(Q,NSW).        Atrobot(Q) Fueled       Atrobot(NSW) -Fueled
+  refuel(p6,NSW)      At(p6,NSW)              Fueled
+  goto(NSW,V).        Atrobot(NSW) Fueled     Atrobot(V) -Fueled  
+
+
+Task 2b)
+
+Real scheduling is complicated by the presence of constraints on resources.
+
+Job Shop Scheduling is described in the chapter AIMA Planning & Acting
+in the real world,  section Scheduling with reource constraints.
+Especially, figure 12.3 is an illustration of a  Job Shop Sceheduling
+with resources.  
+
+In the present task, the resource in question are  the fuel cans and
+roof space.
+
+Since all fuel cans are interchangeable, the fuel is to be reagarded
+as a resource, measured in number og fuel cans. There is a total of 6
+fuel cans.
+
+Such resources which are not reusable  are called aggregations. 
+
+The roof space is an example ofa  reusable resources. There is a total of
+2 roof spaces.
+
+The central idea is to group individual objects into quantities when the objects are all
+indistinguishable with respect to the purpose at hand. In our problem,
+it does not matter which fuel can is used, so there is no need to make
+the distinction. The parameters that have  to do with fuel cans are all
+reformulated to treat with unitis of fuel.
+The same apply to roof space.
+
+
+Task 2c)
+
+
+With this in mind, we can reformulate the problem in an ADL -like
+formalism, except adapting it to using agggregations instead.
+(A STRIPS- like formulation is also possible).
+
+We can sketch a similar formulation of the problem above.
+We use the notation  Resource = Quantity (Resource >= Quantity) to
+emphasize condtions on resources
+
+
+Init
+
+   Atrobot(WA)
+   At(6,WA)  
+  -Fueled    
+
+Goal
+
+   AtRobot(V)
+
+
+Actions:
+
+
+Action     pickup(u,x)   Pickup u units of fuel at x
+PRECOND:   AtRobot(x),   At(Q,x), Q >=1
+EFFECT:    Carying(u)    At(R,x), R = Q-1
+
+
+Action     putdown(u,x))    Putdown u units of fuel at x
+PRECOND:   AtRobot(x),  At(Q,x)
+EFFECT:    - Carying(u) At(R,x), R = Q+1
+
+
+Action     goto(x,y)   Go from x to y            
+PRECOND:   AtRobot(x), Fueled
+EFFECT:    -AtRobot(x),AtRobot(y), - Fueled
+
+
+Action     refuel(u,x)  Refuel u units of fuel at x
+PRECOND    AtRobot(x), Carrying(Q), Q >=1, -Fueled
+EFFECT     Carrying(R), R=Q-u,  Fueled
+
+
+TASK 3
+
+Task 3a)
+
+
+A Production system is a forward chaining inference system.
+
+Typically, it use facts and rules in a knowledge base to derive new
+facts that are stored in the knowledge (data) base called the working memory.
+
+The rules are sometimes formulated as
+
+  IF  conditions then actions.
+
+where the conditions are conditions of the facts  and
+the actions perform some modification on the facts in the
+knowledge database.
+
+The strategy is to select one of the rules that have its conditions    
+satisfied. One strategy particular to the production system is used
+to decide when several rules may apply.
+
+Task 3b)
+
+PROXY is a Prolog-based implementation of a Production system.
+
+It is characterised by
+
+  1) The actions are formulated as positive conclusions that are
+     updated, and negative conclusions that are removed from the
+     working memory.
+ 
+  2) The selection strategy is simply to take the first rule that may
+     fire.
+
+In its pure form, PROXY is equivalent to forward chaining resolution
+proof.
+
+
+3c)
+
+
+% Simple minded storage robot.
+% Picks only one box at a time
+% We model stacks of boxes as lists of colours
+
+facts
+
+        placeof(red,   (1,1)) and 
+        placeof(blue,  (1,8)) and 
+        placeof(yellow,(8,1)) and 
+        placeof(green, (8,8)) and 
+
+        stack([],(1,1)) and 
+        stack([],(1,8)) and 
+        stack([],(8,1)) and 
+        stack([],(8,8)) and 
+
+        stack([yellow,yellow,blue], (4,4)) and 
+        stack([red,green],(3,3)) and 
+
+        at(truck,(2,1)) and
+        holds(truck,[]).
+
+
+rule pick_up
+if  holds(truck,[]) and
+    at(truck,(X,Y)) and
+    not placeof(_,(X,Y)) and
+    stack([Box|Boxes],(X,Y))
+then
+    not holds(truck,[]) and
+    holds(truck,[Box]) and
+    not stack([Box|Boxes],(X,Y)) and
+    stack(Boxes,(X,Y)).
+
+rule gohome((U,V))
+if   holds(truck,[Box]) and
+     at(truck,(X,Y)) and
+     placeof(Box,(U,V)) and
+     not (X,Y) = (U,V) 
+then
+     not at(truck,(X,Y)) and
+     at(truck,(U,V)).
+    
+rule drop
+if   holds(truck,[Box]) and
+     at(truck,(X,Y)) and
+     placeof(Box,(X,Y)) and
+     stack(Pile,(X,Y))
+then
+     not  holds(truck,[Box]) and 
+     holds(truck,[]) and
+     not stack((X,Y),Pile) and
+     stack((X,Y),[Box|Pile]).
+     
+
+rule find((U,V))
+if  holds(truck,[]) and
+    at(truck,(X,Y)) and
+    stack([_|_],(U,V)) and
+    not placeof(_,(U,V)) and
+    not (U,V)=(X,Y)
+then
+    not at(truck,(X,Y)) and
+    at(truck,(U,V)).    
+
+
+
+$$$$$$  PROXY Production System $$$$$$
+
+*** find((4,4)) ***
+*** pick_up ***
+*** gohome((8,1)) ***
+*** drop ***
+*** find((3,3)) ***
+*** pick_up ***
+*** gohome((1,1)) ***
+*** drop ***
+*** find((4,4)) ***
+*** pick_up ***
+*** gohome((8,1)) ***
+*** drop ***
+*** find((3,3)) ***
+*** pick_up ***
+*** gohome((8,8)) ***
+*** drop ***
+*** find((4,4)) ***
+*** pick_up ***
+*** gohome((1,8)) ***
+*** drop ***
+
+*** Time  10 ms
+
+$$$$$$  END  $$$$$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+TASK 4
+
+
+Task 4a)
+
+A heuristic search problem consists of
+
+  - a set of nodes containing states
+
+  - a start node
+
+  - a goal node (or goal condition)
+
+  - a successor function
+
+  - a cost function for one step
+
+  - a heuristic function as an estimate for cost from a node to a
+    goal node
+
+
+In the present problem, the states are configurations of the discs,
+the start node and goal nodes are  configurations as described,
+the successor function is the leagel moves, the cost fuction is 1 per
+move and the heuristic function is to be found. 
+
+The quest  is to find the cheapest way from start to goal .
+
+
+
+Task 4b)
+
+The complexity of the search work is measured in the number of nodes
+that are expanded.
+
+By  simple reasoning, because one does not need to move a disc to
+where it was, there will be only 2 possible choices for each move.
+
+That gives 2**(2**N-1) nodes for blind search with no (non-trivial) heuristics.
+
+
+Task 4 c)
+
+We consider the problem of estimating the number of moves from any given
+configuration to the goal configuration. 
+
+It is probably possible to make an effective and exact heuristics
+based on  the distribution of discs on the platforms.
+Here is one attempt to find a non-trivial heuristic.
+We make this heuristic solely based on the number of pegs N1, N2 and
+N3 on the platforms, and on the number M which is the number of
+correctly placed discs on P3 from bottom (with possibly some
+non-correct discs above).
+
+Furthermore, the heuristic is based on relaxed problems of moving K
+discs from a platform assuming the other platforms are free.
+
+
+A heuristic can then be
+
+    2**(N3-M)-1    moving the top N3-M non-ordered discs of away from P3
+
++   2**N1 -1       moving N1 discs to P3
+
++   2**N2 -1       moving N2 discs to P3
+
++   2**(N3-M)-1    moving back N3-M discs to P3.
+
+
+
+.. at least, this formula is trivially exact for for the initial
+condition showed in the figure (N1=3, N2=0, N3=0, M=0).
+
+
+
+TASK 5
+
+
+Task 5a)
+
+  
+
+A  CSP problem is defined by  
+
+
+   - a set of variables
+
+   - a set of domains for these variables
+
+   - a set of constraint relations between the variables
+
+In this case, the variables are
+
+    {WA,NT,SA,Q,NSW,V}
+
+ and the common domains are  {Red,Blue,Green}.
+
+
+Task 5b)
+
+
+A Constraint graph is a structure , where the vertices are the
+variables, the edges are relations. In this case, the relations are
+the difference-relation.
+
+
+
+
+   WA -- NT -- Q
+     \   |   /  \
+      \  |  /    \
+       \ | /      \
+         SA ------NSW     
+           \     /
+            \   /
+              V
+
+
+
+Task 5c)
+
+
+The method using Local search is based on the principle of starting
+at some set of initial values, and reassign the variables that
+causes the most conflicts to values that minimizes the number of
+conflicts NOC)
+
+In general , we may not always achieve the absolute minimum (NOC=0) by
+hill climbing (depth first, maximum, descent, no backtracking), but
+there are methods around this. (Adding backtracking, Simulated
+Annealing)
+ 
+
+Task 5d)
+
+
+Illustration of the method
+
+Initial configuration
+
+  ____________________________________________
+  |      |                |                   |
+  |      |    NT          |   Q               |
+  |      |    G           |   B               |
+  |      |---------|--------------            |
+  | WA   |                       |            |
+  |      |                       |------------|
+  | R    |                       -    NSW  G  |
+  |      |                       |            | 
+  |      |                       |------------|
+  |      |   SA  G               |    V  R    |
+  |______|_______________________|____________|
+             
+
+Number of conflicts  ( marked by - | ) is NOC=2
+
+The maximum reduction we can achieve is NOC=1 by 
+
+  SA=B
+
+  ____________________________________________
+  |      |                |                   |
+  |      |    NT          |   Q               |
+  |      |    G           |   B               |
+  |      |-------------------|----            |
+  | WA   |                       |            |
+  |      |                       |------------|
+  | R    |                       |    NSW  G  |
+  |      |                       |            | 
+  |      |                       |------------|
+  |      |   SA  B               |    V  R    |
+  |______|_______________________|____________|
+             
+
+Number of conflicts (NOC)= 1 ( marked by - | )
+
+The maximum reduction we can achieve is NOC=0 by 
+
+   Q=R
+
+---
+
+We have thus found a solution as an assignment without conflicts.
+
+いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
+
+
+
+
+
+

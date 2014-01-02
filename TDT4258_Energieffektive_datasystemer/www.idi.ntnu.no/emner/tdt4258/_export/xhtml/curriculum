@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no"
+ lang="no" dir="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>curriculum</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="date" content="2013-05-02T09:40:15+0200"/>
+<meta name="keywords" content="curriculum"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/emner/tdt4258/lib/exe/opensearch.php" title="Wiki for TDT4258"/>
+<link rel="start" href="/emner/tdt4258/"/>
+<link rel="contents" href="/emner/tdt4258/curriculum?do=index" title="Indeks"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="/emner/tdt4258/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="/emner/tdt4258/feed.php?mode=list&amp;ns="/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="/emner/tdt4258/_export/xhtml/curriculum"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="/emner/tdt4258/_export/raw/curriculum"/>
+<link rel="canonical" href="http://www.idi.ntnu.no/emner/tdt4258/curriculum"/>
+<link rel="stylesheet" media="screen" type="text/css" href="/emner/tdt4258/lib/exe/css.php?t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="all" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=all&amp;t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="print" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=print&amp;t=ntnu&amp;tseed=1365686644"/>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var NS='';var JSINFO = {"id":"curriculum","namespace":""};
+//--><!]]></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258/lib/exe/js.php?tseed=1365686644"></script>
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1"><a name="curriculum_2013" id="curriculum_2013">Curriculum 2013</a></h1>
+<div class="level1">
+
+</div>
+<!-- EDIT1 SECTION "Curriculum 2013" [1-31] -->
+<h2 class="sectionedit2"><a name="book" id="book">Book</a></h2>
+<div class="level2">
+
+<p>
+<em>Computers as Components: Principles of Embedded Computer System Design by Marilyn Wolf</em>. The whole book is part of the curriculum. Both second and third editions can be used. 
+</p>
+
+</div>
+<!-- EDIT2 SECTION "Book" [32-230] -->
+<h2 class="sectionedit3"><a name="exercises" id="exercises">Exercises</a></h2>
+<div class="level2">
+
+<p>
+The exercise documentation and knowledge required to do the exercises is on the curriculum. This includes understanding C and assembly code.
+</p>
+
+</div>
+<!-- EDIT3 SECTION "Exercises" [231-395] -->
+<h2 class="sectionedit4"><a name="lectures" id="lectures">Lectures</a></h2>
+<div class="level2">
+
+<p>
+The provided lecture slides are part of the curriculum. This includes slides from guest lectures. 
+</p>
+
+</div>
+<!-- EDIT4 SECTION "Lectures" [396-517] -->
+<h2 class="sectionedit5"><a name="recommended_reading" id="recommended_reading">Recommended Reading</a></h2>
+<div class="level2">
+
+<p>
+We recommend buying a book on the C programming language. Our recommendation is <em>Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language. Prentice Hall Software Series, 2nd edition, 1988</em>.
+</p>
+
+</div>
+<!-- EDIT5 SECTION "Recommended Reading" [518-] --></div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xml:lang="no"
+ lang="no" dir="ltr">
+	<head profile="http://example.org/xmdp/robots-profile#">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TDT4258 Energy Efficient Computer Design - Wiki for TDT4258</title>
+		<!-- custom meta start -->
+				<!-- custom meta end -->
+		<meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/emner/tdt4258/lib/exe/opensearch.php" title="Wiki for TDT4258"/>
+<link rel="start" href="/emner/tdt4258/"/>
+<link rel="contents" href="/emner/tdt4258/start?do=index" title="Indeks"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="/emner/tdt4258/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="/emner/tdt4258/feed.php?mode=list&amp;ns="/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="/emner/tdt4258/_export/xhtml/start"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="/emner/tdt4258/_export/raw/start"/>
+<link rel="stylesheet" media="screen" type="text/css" href="/emner/tdt4258/lib/exe/css.php?t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="all" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=all&amp;t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="print" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=print&amp;t=ntnu&amp;tseed=1365686644"/>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var NS='';var JSINFO = {"id":"start","namespace":""};
+//--><!]]></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258/lib/exe/js.php?tseed=1365686644"></script>
+		<!-- style and icons-->
+		<link rel="stylesheet" type="text/css" href="/emner/tdt4258/lib/tpl/ntnu/printmobile.css" />
+		<link rel="icon" href="/emner/tdt4258/lib/tpl/ntnu/images/favicon.ico" type="image/ico" />
+		<link rel="shortcut icon" href="/emner/tdt4258/lib/tpl/ntnu/images/favicon.ico" />
+		<link rel="apple-touch-icon" href="/emner/tdt4258/lib/tpl/ntnu/images/apple-touch-icon.png" />
+		<link rel="img_src" href="/emner/tdt4258/lib/tpl/ntnu/images/logo.square.no.png" />
+		<!-- Open Graph Protocol -->
+		<meta property="og:title" content="TDT4258 Energy Efficient Computer Design" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.idi.ntnu.no/emner/tdt4258/" />
+		<meta property="og:image" content="/emner/tdt4258/lib/tpl/ntnu/images/logo.square.no.png" />
+		<meta property="og:site_name" content="Wiki for TDT4258" />
+	</head>
+	<body class="dwbody no" id="pageid_start">
+		<!-- dokuwiki start -->
+		<div class="dokuwiki">
+			<div class="offscreen">
+				<ul id="quicknav">
+	<li id="quicknav_content"><a href="#content" accesskey="2">Hopp til innhold</a></li>
+	<li id="quicknav_localnav"><a href="#localnav" accesskey="3">Hopp til lokal navigasjon</a></li>
+	<li id="quicknav_globalnav"><a href="#ntnumenu" accesskey="5">Hopp til global navigasjon</a></li>
+</ul>			</div>
+
+			<!-- header start -->
+			<div id="header">
+				<div id="bluebar">
+	<div class="marginwrapper">
+		<div id="mainpagelink"><a href="http://ntnu.no" title="Gå til NTNUs startside" accesskey="1">Norges teknisk-naturvitenskapelige universitet</a></div>
+		<ul id="ntnulenker" title="Felleslenker">
+			<li><a href="http://ntnu.no" title="Norsk versjon av nettstedet">NTNU Norsk</a></li>			<li><a href="http://www.ntnu.edu" title="English version of the website">NTNU English</a></li>			<li><a href="http://ntnu.no/ub" title="Bibliotek">Bibliotek</a></li>
+			<li><a href="http://alumni.ntnu.no" title="Alumni NTNU">Alumni</a></li>
+			<li class="last"><a href="https://innsida.ntnu.no" title="Logg på intranettet">Intranett</a></li>
+		</ul>
+		<div class="clearer"></div>
+	</div>
+</div>
+
+<div id="searchform" class="focus">
+	<form action="http://ntnu.no/sok/search.fast" method="get" title="Søk i NTNUs nettsider">
+		<fieldset>
+			<legend class="offscreen">Søk i NTNUs nettsider</legend>
+			<label for="query" accesskey="4"><span class="offscreen">Søk etter:</span></label>
+			<input id="query" type="text" name="s.sm.query" value="Søk etter innhold/ansatte" title="Søk" class="query" />
+			<input type="submit" id="sok" value="Søk" class="submit" />
+		</fieldset>
+	</form>
+</div>
+
+
+<div class="marginwrapper">
+	<div id="ntnumenuwrap">
+		<ul id="ntnumenu" title="NTNU-navigasjon" class="selectedtab_studier">
+			<li id="tab_start" class="first"><a href="http://ntnu.no" title="Startside for NTNU">Startside</a></li>
+			<li id="tab_studier"><a href="http://ntnu.no/studier" title="Studier ved NTNU">Studier</a></li>
+			<li id="tab_student"><a href="http://ntnu.no/student" title="Student i Trondheim">Student i Trondheim</a></li>
+			<li id="tab_forskning"><a href="http://ntnu.no/forskning" title="Forskning ved NTNU">Forskning</a></li>
+			<li id="tab_evu"><a href="http://videre.ntnu.no/pages" title="Etter- og videreutdanning">Etter- og videreutdanning</a></li>
+			<li id="tab_non"><a href="http://ntnu.no/naringsliv" title="Næringsliv og nyskaping">N&aelig;ringsliv og nyskaping</a></li>
+			<li id="tab_om"><a href="http://ntnu.no/om" title="Om NTNU">Om NTNU</a></li>
+			<li id="tab_aktuelt" class="last"><a href="http://ntnu.no/aktuelt" title="Aktuelt">Aktuelt</a></li>
+		</ul>
+		<div class="clearer"></div>
+	</div>
+</div>				<div class="clearer"></div>
+			</div>
+			<!-- header end -->
+
+		<hr class="offscreen" />
+
+		<div class="marginwrapper">
+			<!-- pagewrapper start -->
+			<div id="pagewrapperwide">
+								<!-- breadcrumbs start -->
+				<div id="breadcrumbs">
+					<div>
+                  <a href="http://www.ntnu.no" class="urlextern" title="http://www.ntnu.no"  rel="nofollow">NTNU</a> &raquo; <a href="http://www.idi.ntnu.no" class="urlextern" title="http://www.idi.ntnu.no"  rel="nofollow">IDI</a>  &raquo; <span class="curid"><a href="/emner/tdt4258/start" class="wikilink1" title="start">TDT4258 Energy Efficient Computer Design</a></span></span> 											</div>
+				</div>
+				<!-- breadcrumbs end -->
+
+				<!-- dynamic 2/3 columns start -->
+				<div class="columns-float">
+					<!-- wikipage start -->
+					<div class="page column-one">
+						<div id="content">
+							<a name="content"></a>
+							
+<h1 class="sectionedit1"><a name="indeks" id="indeks">Indeks</a></h1>
+<div class="level1">
+<ul class="idx"><li>
+<a href="/emner/tdt4258/curriculum" class="wikilink1" title="curriculum">Curriculum 2013</a>
+</li>
+<li>
+<a href="/emner/tdt4258/exercises" class="wikilink1" title="exercises">Exercises</a>
+</li>
+<li>
+<a href="/emner/tdt4258/lectures" class="wikilink1" title="lectures">Lecture Plan 2013</a>
+</li>
+<li>
+<a href="/emner/tdt4258/menu" class="wikilink1" title="menu">menu</a>
+</li>
+<li>
+<a href="/emner/tdt4258/slides" class="wikilink1" title="slides">Lecture Slides 2013</a>
+</li>
+<li>
+<a href="/emner/tdt4258/support" class="wikilink1" title="support">support</a>
+</li></ul>
+</div>
+
+							<div class="clearer"></div>
+						</div>
+					</div>
+					<!-- wikipage stop -->
+					<hr class="offscreen" />
+					<!-- menu start -->
+					<div id="menu" class="column-two">
+						<a name="localnav"></a>
+						<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/start" class="wikilink1" title="start"><em class="current">Main Page</em></a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/lectures" class="wikilink1" title="lectures">Lecture Plan</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/slides" class="wikilink1" title="slides">Lecture Slides</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/curriculum" class="wikilink1" title="curriculum">Curriculum</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/exercises" class="wikilink1" title="exercises">Exercises</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/support" class="wikilink1" title="support">Support material</a></div>
+</li>
+</ul>
+						<div class="clearer"></div>
+					</div>
+					<!-- menu end -->
+				</div>
+				<!-- dynamic 2/3 columns end -->
+
+				<hr class="offscreen" />
+
+				
+				<hr class="offscreen" />
+
+				<!-- meta start -->
+				<div id="meta">
+					<div class="user">
+											</div>
+					<div class="doc">
+						2013/05/03 09:39, Asbjørn Djupdal					</div>
+					<div class="clearer"></div>
+				</div>
+				<!-- meta end -->
+
+				<!-- footer start -->
+				<div id="footer">
+					<div id="address">
+						Bes&oslash;ksadresse: IT-bygget, Sem Sælands vei 9, 7034 Trondheim<br />
+Telefon: 73593680 &sdot; Telefax: 73594466 &sdot; E-post: <a class="mail" href="mailto:jahre@idi.ntnu.no">jahre@idi.ntnu.no</a>
+					</div>
+					<div class="clearer"></div>
+				</div>
+				<!-- footer end -->
+			</div>
+			<!-- pagewrapper end -->
+
+			<hr class="offscreen" />
+
+			<!-- below footer start -->
+			<div id="ntnufooter">
+				<ul>
+	<li class="kontakt"><a href="http://ntnu.no/kontakt">Kontakt oss</a></li>
+	<li class="personsok"><a href="http://ntnu.no/ansatte">Søk etter ansatte</a></li>
+	<li class="personsok"><a href="http://ntnu.no/studentsok">Søk etter studenter</a></li>
+	<li class="sentralbord"><span>Sentralbord: 73 59 50 00</span></li>
+	<li class="orgnr"><span>Org. nr.: 974767880</span></li>
+</ul>
+
+<ul>
+	<li class="kart"><a href="http://ntnu.no/kart">Kart over NTNU</a></li>
+	<li class="fakulteter"><a href="http://ntnu.no/fakulteter">Fakulteter og institutter</a></li>
+	<li class="adm"><a href="http://ntnu.no/adm">Administrative enheter</a></li>
+	<li class="ledelsen"><a href="http://ntnu.no/rektor">Ledelsen</a></li>
+	<li class="redaktor"><a href="http://ntnu.no/web-info/om">Ansvarlig redaktør</a></li>
+</ul>
+
+<ul>
+	<li class="nettstedkart"><a href="http://ntnu.no/nettstedkart">Nettstedkart</a></li>
+	<li class="studier"><a href="http://ntnu.no/studier/alle">Studier A til Å</a></li>
+	<li class="emner"><a href="http://ntnu.no/studier/emner">Emner A til Å</a></li>
+	<li class="forskning"><a href="http://ntnu.no/forskning/a_aa">Forskning A til Å</a></li>
+	<li class="enheter"><a href="http://ntnu.no/enheter">Enheter A til Å</a></li>
+</ul>
+
+<ul>
+	<li class="blog"><a href="http://ntnu.no/aktuelt/blogger">Blogger</a></li>
+	<li class="twitter"><a href="http://twitter.com/NTNU">Twitter</a></li>
+	<li class="rss"><a href="http://ntnu.no/aktuelt/blogger">RSS-feed</a></li>
+</ul>
+				<div class="clearer"></div>
+			</div>
+			<div id="credits">
+				<ul>
+					<li>Powered by <a href="http://www.dokuwiki.org">DokuWiki</a> + <a href="http://code.google.com/p/dokuwiki-ntnu">NTNU template</a> and <a href="http://jquery.com/">jQuery</a></li>
+										<li>"Fugue" icon set by <a href="http://yusukekamiyamane.com/">Yusuke Kamiyamane</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></li>
+					<li class="last"><a href="/emner/tdt4258/start?do=login&amp;sectok=8d9224aa88436ab698d24bff90bfe8ae"  class="action login" rel="nofollow" title="Logg inn">Logg inn</a></li>
+				</ul>
+				<div class="clearer"></div>
+			</div>
+
+			<!-- below footer end -->
+
+			<!-- button row start -->
+			<div class="bar" id="bar__bottom">
+				<div class="bar-left" id="bar__bottomleft">
+									</div>
+				<div class="bar-right" id="bar__bottomright">
+					
+				</div>
+				<div class="clearer"></div>
+			</div>
+			<!-- button row end -->
+		</div>
+		<!-- marginwrapper end -->
+		</div>
+		<!-- dokuwiki end -->
+
+		<!-- scripts placed at bottom of page to speed things up -->
+		<script type="text/javascript">
+			// Ready-function loads when document is fully loaded
+			jQuery(document).ready(function(){
+				// Prepare search field to auto update text and color
+				prepareSearchField();
+				// Include e-mail deobfuscation script if necessary
+				deObfuscateEmails();
+				// Trigger indexer
+				jQuery.get('/emner/tdt4258lib/exe/indexer.php?id=start&amp;1387373380');
+			});
+		</script>
+	</body>
+</html>

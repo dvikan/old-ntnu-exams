@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no"
+ lang="no" dir="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>start</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="date" content="2013-05-03T09:39:16+0200"/>
+<meta name="keywords" content="start"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/emner/tdt4258/lib/exe/opensearch.php" title="Wiki for TDT4258"/>
+<link rel="start" href="/emner/tdt4258/"/>
+<link rel="contents" href="/emner/tdt4258/start?do=index" title="Indeks"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="/emner/tdt4258/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="/emner/tdt4258/feed.php?mode=list&amp;ns="/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="/emner/tdt4258/_export/xhtml/start"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="/emner/tdt4258/_export/raw/start"/>
+<link rel="canonical" href="http://www.idi.ntnu.no/emner/tdt4258/start"/>
+<link rel="stylesheet" media="screen" type="text/css" href="/emner/tdt4258/lib/exe/css.php?t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="all" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=all&amp;t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="print" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=print&amp;t=ntnu&amp;tseed=1365686644"/>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var NS='';var JSINFO = {"id":"start","namespace":""};
+//--><!]]></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258/lib/exe/js.php?tseed=1365686644"></script>
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1"><a name="tdt4258_energy_efficient_computer_design" id="tdt4258_energy_efficient_computer_design">TDT4258 Energy Efficient Computer Design</a></h1>
+<div class="level1">
+
+<p>
+In TDT4258 Energy Efficient Computer Design you learn the basic techniques for constructing energy efficient computer systems. These techniques leverage the hardware resources available in current processors. Consequently, we first need to master the art of low-level programming. This is a basic skill for a computer scientist with broad applications in Norwegian and international industry. TDT4258 take a hands-on approach to the subject matter, and practical work accounts for 50% of the grade in the course. 
+</p>
+
+<p>
+<strong>Note: Most of the information for the course will be distributed through these pages, but we will also use it&#039;s learning</strong>
+</p>
+
+</div>
+<!-- EDIT1 SECTION "TDT4258 Energy Efficient Computer Design" [1-697] -->
+<h2 class="sectionedit2"><a name="news_2013" id="news_2013">News 2013</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> 03/05-2013: Added earlier exams under «Support material»</div>
+</li>
+<li class="level1"><div class="li"> 14/01-2013: The first lecture will be 0815-1000 in F6 Thursday 17. January. A preliminary lecture plan is also available on the <a href="/emner/tdt4258/lectures" class="wikilink1" title="lectures">lecture plan page</a>.</div>
+</li>
+<li class="level1"><div class="li"> 25/12-2012: Some web page updates</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT2 SECTION "News 2013" [698-984] -->
+<h2 class="sectionedit3"><a name="teaching_materials_and_grading" id="teaching_materials_and_grading">Teaching Materials and Grading</a></h2>
+<div class="level2">
+
+<p>
+The curriculum will be taken from «Computers as Components: Principles of Embedded Computing System Design» by Marilyn Wolf.
+</p>
+
+<p>
+The final grade is decided by:
+</p>
+<ul>
+<li class="level1"><div class="li"> Exercise 1 (10%)</div>
+</li>
+<li class="level1"><div class="li"> Exercise 2 (20%)</div>
+</li>
+<li class="level1"><div class="li"> Exercise 3 (20%)</div>
+</li>
+<li class="level1"><div class="li"> Final exam (50%)</div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT3 SECTION "Teaching Materials and Grading" [985-1269] -->
+<h2 class="sectionedit4"><a name="people" id="people">People</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.idi.ntnu.no/people/jahre" class="urlextern" title="http://www.idi.ntnu.no/people/jahre"  rel="nofollow">Coordinator Magnus Jahre</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.idi.ntnu.no/people/gunnart" class="urlextern" title="http://www.idi.ntnu.no/people/gunnart"  rel="nofollow">Lecturer Gunnar Tufte</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.idi.ntnu.no/people/djupdal" class="urlextern" title="http://www.idi.ntnu.no/people/djupdal"  rel="nofollow">Lecturer Asbjørn Djupdal</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.idi.ntnu.no/people/nichele" class="urlextern" title="http://www.idi.ntnu.no/people/nichele"  rel="nofollow">Teaching Assistant Stefano Nichele</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT4 SECTION "People" [1270-] --></div>
+</body>
+</html>

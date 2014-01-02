@@ -1,0 +1,734 @@
+%% Logic and reasoning systems
+
+%% TEST EXAM 2007
+
+%% Solution Proposal
+
+%% Norwegian/English version ( Nov 13 2007)
+
+%% Revised TA-071121
+
+%% The  translation to English is not finished
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+TASK 1
+------
+     
+
+A1.    O(RA).  
+A2     O(RZ).          % Kontorer
+     
+A3     D(A). 
+A4     D(E). 
+A5     D(M). 
+A6     D(Z). % Dører
+
+A7     C(A,Red).  
+A8     C(Z,Red).    % Kontordører er røde (utregnet)
+A9     C(E,Yellow).
+  
+
+A10     B(A,RA). 
+A11     B(A,West). 
+A12     B(Z,RZ). 
+A13     B(Z,East).
+A14     B(E,West).  
+A15     B(M,West).
+A16     B(M,East).
+
+
+R1.    forall x: C(x,Red) or C(x,Blue) or C(x,Yellow).
+
+R2.    forall x:  C(x,u) and C(x,v) => u=v. % Høyst en farge
+
+R3.    forall x:y:z:u:   % Ulik  dørfarge hvis samme rom                 
+           B(x,z) and B(y,z) and  C(x,u) => not C(y,u) %% TA-071121
+
+
+
+Vi skal vise at
+
+Q:    exists x:  C(M,x)
+
+
+Bevis:
+
+ Uformelt:
+
+     A er rød => M ikke er rød
+     E er gul => M ikke er gul
+     M er ikke rød og  M er ikke gul => M er blå
+
+
+Konverterer formlene til klausalform: (detaljer ikke vist)
+
+
+R1'   C(x,Red) , C(x,Blue) , C(x,Yellow).
+
+R2'   not C(x,u) ,not C(x,v) , u=v. 
+
+R3'   not B(x,z), not B(y,z), not C(x,u), not C(y,u) %% TA-071121
+
+Negerer og klausifiserer Q:
+
+
+NQ'   not C(M,y)  [ ,Ans(y) ]
+
+
+
+1.  (NQ',R1',y =Blue)    C(x,Red), C(x,Yellow) [,Ans(Blue)]
+
+2.  (1, R3',  x=M,u=Red) C(M,Yellow), not B(M,z), not B(y,z), not C(y,Red) 
+
+3.  (2, A15,  z=West)    C(M,Yellow), not B(y,West), not C(y,Red)
+    
+4.  (3, A11,  y=A)       C(M,Yellow), not C(A,Red)
+
+5.  (4, A6)              C(M,Yellow)
+
+6.  (5, R3', x=M,u=Yellow) not B(M,z), not B(y,z), not C(y,Yellow)
+
+7.  (6, A15, z=West)      not B(y,West), not C(y,Yellow)
+
+8.  (7, A14, y=E)         not C(E,Yellow)
+
+9.  (8, A9)               [Ans(Blue)]
+
+
+
+
+Antagelsen om at det M ikke har noen farge leder til en
+selvmotsigelse når fargen er blå.
+
+----------------------------------------
+
+NB:  Denne formuleringen av problemet
+
+
+ exists x:  C(M,x)
+
+gir opphav til ufullstudendig og uønsket løsning.   
+
+
+NQ'   not C(M,y),Ans(y)
+
+R1 :C(x,Red) , C(x,Blue) , C(x,Yellow).
+
+
+
+Hvis NQ' anvendes 3 ganger mot R1 fås et trivielt bevis.
+Hvis vi føyer til Ans-predikat blir det tydeligere hva som skjer
+
+S1: (R1,NQ, x=M,y=Blue)   C(M,Red),C(M,Yellow),Ans(Blue)    
+
+S2: (R1,S1, y=Red)        C(M,Yellow),Ans(Blue),Ans(Red)  
+
+S3: (R1,S2, y=Yellow)     Ans(Blue),Ans(Red),Ans(Yellow)
+
+
+altså det ufullstendige  svaret
+
+M har  farge   Blue,Red eller Yellow.
+
+Oppgaven ber om at vi finner denne fargen. En mer komplett formulering
+er å vise at M har farge Blue, og bare det:
+
+   C(M,Blue) and forall(x: C(M,x) => x=Blue).
+
+eller noe forenklet
+
+   C(M,Blue) and not C(M,Red) and not C(M,Yellow)
+
+Det er dette som i realiteten blir bevist i løsningsforslaget.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+TASK 2
+------
+
+%% Vi definerer et proforma rom O (Outside)
+
+
+    Operasjoner:
+
+       opendoor(d)     Open door d
+       closedoor(d)    Close door d
+       gotodoor(d)     Go to door  d
+       gothrudoor(d)   Go through door d
+       dropmail(r)     Drop mail et room d
+
+   Predikater
+
+       outside        Marvin is outside
+       mailfor(r)     Marvin has mail for room r
+       in(r)          Marvin is in room r
+       atdoor(d)      Marvin is at door d
+       isopen(d)      Door d is open
+       isclosed(d)    Door d is closed
+       havemail(r)    Room r has (got) mail
+
+       B(d,r)         Door D belongs to room r
+                      e.g.  B(E,O) E belongs to Outside
+
+  Initial conditions (example)
+
+
+      in(O).   %% e.g. outside
+      mailfor(RA).
+      mailfor(RZ).
+      isclosed(E)
+      isclosed(A)
+      isopen(M)
+      isopen(Z)
+
+  Goal conditions  (example)
+
+      in(O).
+      havemail(RA)   
+      havemail(RZ)   
+      isclosed(E)
+      isclosed(A)
+      isopen(M)
+      isopen(Z)
+      not mailfor(RA).
+      not mailfor(RZ).
+
+
+
+b)
+
+
+STRIPS-operatorer er definert ved tripler
+
+     Operator (Parametre)
+
+     PC list     Preconditions
+     D  list     Conditions that are deleted
+     A  list     Conditions that are added
+
+
+
+       Operasjoner:
+       ------------
+OP     opendoor(d)     
+
+PC     atdoor(d),isclosed(d)     
+D      isclosed(d)
+A      isopen(d)
+
+
+OP     closedoor(d)   
+		 
+PC     atdoor(d),isopen(d)
+D      isopen(d)
+A      isclosed(d)
+
+
+
+OP     gotodoor(d)     Go to door  d
+
+PC     B(d,r),in(r), not atdoor(d)
+D      
+A      atdoor(d)
+
+
+
+OP     gothrudoor(d)   Go through open door d
+
+PC      atdoor(d), B(d,r1),in(r1),B(d,r2),isopen(d)
+D       in(r1)
+A       in(r2)
+
+
+
+OP     dropmail(r)     Drop mail et room d
+
+PC     mailfor(r), in(r)
+D      mailfor(r)
+A      havemail(r)
+
+
+
+b)
+
+Det er ingen implikasjon fra å definere operatorer i STRIPS
+  til at en lineær planlagger automatisk vil løse problemet.
+
+Et planleggingsproblem er lineært dersom det kan beskrives med en rekke 
+mål der hvert mål kan løses suksessivet  med et sett av lovlige operasjoner.
+
+Denne definisjonen gjelder også rekursivt ved at en operasjon krever
+oppfylt betingelser som også løses linæert.
+
+Et problem er at planen må inneholde elementer som husker hvordan en 
+tilstand var (f. eks. dører).
+
+Et annet problem er at planens operasjoner er avhenig og av ukjente
+forbetingelser (f.eks. dører lukket/åpne), altså betinget planlegging.
+
+Det foreliggende problem er neppe lineært fordi det er vanskelig å
+lage et sett med betingelser som vil lede roboten til å utføre alt det
+som er fastlagt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+TASK 3
+------
+
+a)
+
+Et heuristisk søkeproblem er karakterisert ved
+
+   En mengde noder som beskriver tilstander. 
+
+   En startnode.
+
+   En målnode
+
+   En etterfølger relasjon, der en man kan gå fra 1 tilstand til den neste
+
+   Et mål for kostnaden fra en node til den neste
+
+   Et estimat som for hver node estimerer kostnaden til målnoden.
+
+
+I det aktuelle tilfellet er
+
+Gatehjørner    noder
+
+Startnode  er avsendersted
+
+Målnode   er  leveringssted
+
+Etterfølgerrelasjon et steg fra et gatekryss til neste via et kvartal.
+
+Mål for kostnaden er en enhet.
+
+Estimat fra node til målnode er Euklids avstand sqrt((Mx-Nx)**2 (My-Ny)**2) 
+ der M er målnoden og N er noden.
+
+Søking i dette rommet kan gjøres ved såkalt Graph-search, f.eks. A*
+algoritmen ( Ikke beskrevet her).
+
+
+
+
+b)
+
+
+Ineffektiviteten til  søkingen kan defineres som antall noder som
+ekspanderes, men som ikke er en del av løsningen, i relasjon
+til antall noder som er en del av løsningen.
+
+
+Heuristikken er unøyaktig, men er et underestimat.
+
+Det fører til at A* algoritmen er garantert å finne en optimal
+løsning.
+
+Vanligvis vil en  unøyaktig underestimerende heuristikk 
+føre til at effektiviteten synker tilsvarende, men
+
+I det aktuelle tilfellet viser det seg at det ikke spiller noen rolle
+for effektiviteten. (Ikke bevist her).
+
+
+c)
+
+
+Med en admissibel heuristikk menes en heuristikk som altid underestimerer
+den virkelige kostnaden. Fordelen med en admissibel heuristikk er at man
+kan da vise at man garanteres å finne en optimal løsning
+
+
+Med en monoton heuristikk menes
+
+    h(n1) =< c(n1,n2)+h(n2)
+
+I praksis  ( med g'(n) = g(n)) betyr det at
+
+    f'(n1) <= f'(n2)
+
+Fordel:
+
+Har man funnet en node så har man også funnet den korteste veien dit,
+
+ dvs. man slipper å revurdere historien  (g'(n) = g(n) ),
+
+Robotens heuristikk er admissibel (underestimat) sqrt(x**2+y**2) =< max(|x|,|y|) 
+
+Robotens heuristikk er også monoton, fordi (antar uten tap av
+generalitet at X koordinaten forbedres med en enhet)
+
+  sqrt(dx**2+dy**2) =< 1 + sqrt((dx-1)**2+dy**2) 
+
+d)
+
+Dersom vi antar at heuristikken h'(n) = K*h(n) der K < 1 er tilnærmet
+konstant  for hele søkerommet vil en ny heuristikk 
+
+(i det aktuelle tilfelle, f.eks. fra et hjørne i et kvadratisk kvartal
+til motsatt hjørne, vil K  ~= 1/sqrt(2)  ~= 0.71 )
+
+          h''(n) = h'(n)/K være en mer treffsikker heuristikk.
+
+Vi bruker h'' i stedet for h' i algoritmen.
+Imidlertid må K estimeres dynamisk under søkingen.
+
+Dette kan gjøres ved å betrakte  g(n)
+
+
+  K =  estimat(start,n)/kostnad(start,n)
+
+    =     (h'(start)-h'(n))/g(n)
+
+e)
+
+For å lage et søkerom med et endelig antall noder må vi
+tenke oss det er et stort antall noder, med en relevant nærneste nabo
+i retning etterfølger-relasjon.
+
+Dette kan vi forenkle for anskuelesns skyld til å la roboten kunne gå
+skrå i et rutenett.
+
+
+I dette scenario  vil estimatet bli et overestimat.
+Det kan generelt føre til ikke optimale løsninger bli valgt.
+Når det gjelder effektiviteten kan denne i noen tilfeller bli bedre.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+TASK 4
+------
+
+a)
+
+
+
+
+The problem of constraint problem solving is typically the problem of
+assigning values to a set of variables so that a set of constraints
+are satisfied.
+
+For crossword, we shall here  assume that the set of solution candidates
+are explicitly known.
+
+The crossword scenario is slightly more complicated because
+we cannot easily consider each square as a variable, and the letters
+as possible values. On the other hand, if each clue  denotes a
+variable, then the constraints to be applied involve list of values
+and not single values.
+
+There ar two main strategies :
+
+  Dynamic ordering of variables and values
+
+  Constraint graphs
+
+
+Dynamic ordering of variables and values can use the principle
+heuristics.
+
+
+1.  Select the variable with the minimum number of remaining values  (MRV)
+
+2.  Select the variable that is involved in the largest number of
+    constraints (degree heuristic)
+
+3.  Select the value that rules out the fewest choices for the
+    "neighbouring" variables .
+
+In crossword, it means e.g. filling out where we have letters already.
+
+Constraint graphs
+
+ means  having a graph between all variables, where the relation is
+ the contraints.
+
+ When we have to select a variable and choose a value, if there is a
+ another variable that has no legal value that is consistent with the choice of the
+ variable, this value can be removed.
+
+In crossword, it means that if one value implies setting a letter in a
+square, and no canidates for any crossing word has this letter at that
+squase, the candidate can be forgotten.
+
+
+
+
+
+
+ 
+
+
+b)
+
+
+This is a knowledge base to be used for crossword puzzle solving.
+It presumes access to a semantic knowledge base with access methods.
+
+
+This part is about a Knowledge base for  creating candidates
+This program  will create some candidates, neglecting the information that lies in 
+the length of the solution.
+
+
+Generic definitions ('-' is an operator and not an identifier character)
+
+Synonyms
+
+  x means  a-b-c.    Just synonym
+
+Generic means that a definition is actually derived from a general rule.
+
+Due to simplified syntax limitations, all multiple words must be 
+written with a '-' sign between, and all input must be ended with a '.'
+
+Noun phrases usually have the format
+
+    Adjs* - Nouns* - HeadNoun
+
+like in
+
+    barbed-whaling-spear.
+
+The head noun is treated as a category.
+
+If a keyword phrase has a solution, then the solution is also a 
+solution for a simplified keyword phrase. The keywords used here may 
+actually be a shorter version of the actual keyword phrases.
+
+If  a keyword phrase has a solution, then any subclass or instance of 
+the solution is also a solution. 
+
+Verbs are seen as subclasses of "Activity" and follows ordinary rules
+of inheritage.
+
+ % eat -> devour
+
+Adverbs are regarded as adjectives to the verb activities
+
+ % voraciously-eat ->  devour
+
+
+Prepositional phrases like system of/ purchase of/ cost of/ are ignored
+
+
+Som examples of generalizations
+
+i)
+
+A gatecrasher is guest that is not invited.
+
+   we can use a semantic definition
+
+      gatecrasher ako uninvited-guest.
+
+so  gatecrasher is a solution to  uninvited-guest
+
+But since a guest is also a kind of  person,
+   
+    gatecrasher is also a solution to the clue
+
+     uninvited-person.
+ii)
+
+Harpoon is a solution to
+
+        barbered-whaling-spear,
+
+but it is also a solution to th clue
+
+       whaling-spear
+
+iii)
+
+   the action gobble is a kind of a devour action
+
+   therefore, if 'eat voracioysly' has a solution devour,
+   then it also has the solution gobble.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Guardian Weekly 26.10.07
+
+
+%% ACROSS
+
+
+% Virtual environment -> Cyberspace
+    
+    cyberspace ako virtual-environment.
+
+% System of divine worship -> religion.
+
+    religion ako divine-worship.
+
+% Opinion -> View
+
+   view ako opinion.
+
+% Lay hold of -> take
+
+    take means lay-hold-of.
+
+% English cheese -> Stilton
+
+   stilton isa english-cheese.
+
+% Uninvited guest -> gatecrasher
+
+   gatecrasher ako uninvited-guest.
+
+% North american mammal -> raccoon
+
+   raccoon ako american-mammal.
+
+% Fall -> Drop
+
+    drop ako fall.
+   
+% Heredity unit -> gene
+
+     gene ako heredity-unit. 
+          
+% Mild mental disorder -> neurosis.
+
+    neurosis ako mild-mental-disorder.
+
+% Outward look -> appearence
+
+    appearance ako outward-look.
+
+
+% DOWN
+
+%    Trunk -> Chest
+
+     chest ako trunk.
+
+% Cut of beef -> brisket
+
+     brisket ako beef.
+
+% Destroy -> ruin
+
+    ruin ako destroy.
+
+% Exactly on time -> punctual
+
+     punctual means exactly-on-time.
+
+% Quibble -> Cavil
+
+    cavil ako quibble.
+
+% Eat voraciously -> devour
+
+    devour ako  voraciously-eat.
+
+% Cadge -> Scavenge
+
+   scavenge ako cadge. 
+
+% Tufted beard on chin -> goatee
+
+   goatee ako tufted-beard.
+
+% Barbered whaling spear -> harpoon
+
+    harpoon ako barbed-whaling-spear.
+
+% Inexpensive -> cheap   
+
+    cheap means inexpensive.
+
+% Cost of purchase -> price
+    
+    price ako purchase.
+
+% Dialectical characteristic -> burr.
+
+    burr isa  dialectical-characteristic.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+TASK 5
+------
+a)
+
+MiniMax er en metode for å analysere spilltrær for
+2 agent full informasjons spill ( som sjakk, bondesjakk og Cocpit, men
+ikke Bridge). Vi kan kalle spillerne MAX og MIN.
+
+Man antar at spillets posisjoner kan evalueres med et tall som
+uttrykker fordelen for en av spillerne.
+Man antar også at motspilleren har  den samme evalueringen, og at begge spillerne velger den
+mest optimale ut i fra tilgjengelig informasjon.
+
+Nodene evalueres ved framsyn et visst antall trekk, og på dette nivået
+blir hver node i treet blir evaluert. Deretter beregnes verdien
+til  ikke-terminalnoden rekursivt ved
+
+   Maximum  verdiene til de neste nodene dersom MAX er i trekket
+   Minimum  av verdiene for dersom MIN er i trekket.
+
+
+
+b)
+
+Alfa beta beskjæring går ut på at man kan unnlate å evaluere
+etterfølgerne til en node dersom denne noden aldri vil komme i
+betraktning.  Det skjer dersom f.eks. noden som undersøkes er en
+maksimaliserende node A, som har fått en foreløpig verdi Alfa,
+men motparten har allerede funnet en node B som har verdi Beta  som er
+mindre enn Alfa. Det vil si at dersom man undersøker nodene under Alfa
+så kan dette bare føre til at node Alfa får en enda dårligere verdi,
+mens den i utgangspunktet var for dårlig til å bli valgt.
+
+Alfabeta prosedyren gir nøyaktig de samme resultatene som Minimax,
+men med mindre søkearbeide.
+
+Alfabeta beskjæring virker best når den første verdien i en
+maksimaliserende node er maksimal (og v.v.), fordi denne verdien skal
+beskjæres på grunn av en Beta-verdi så kan alle nodene på samme nivå
+beskjæres.
+
+Under idelle forutsetniger kan gevinsten føre til at man kan søke
+dobbelt så dypt med samme søkearbeide. I verste fall får man ingen
+besparelse i det hele tatt.
+
+Det er ingen ulemper ved Alfabeta bortsett fra en minimalt mer
+kompleks algoritme.
+ 
+Både Alfabeta og Minimax kan implementeres med dybde først søking,
+så dette kan ikke regnes som en fordel for Alfabeta.
+
+
+c)
+
+Ved iterativ dybde først søking lager man suksessivt dypere
+spilltrær som blir komplettert før neste iterasjon. 
+Dersom resonneringen blir avbrudt på tid, slik det
+er i reelle spillsituasjoner, vil man alltid ha et valg basert
+på et komplett spilltre.
+
+d)
+
+Dersom man bruker evalueringen på ett nivå til å forhåndssortere
+nodene som skal evaluares, og  antar at evelaueringen på ett nivå heuristisk sett er
+tilnærmet gyldig på neste nivå, oppnår man tilsvarende fordeler som nevnt
+over ved forhåndssortering av nodene.
+
+Det er selvfølgelig ikke mulig å forhåndssortere nodene på nederste
+nivå uten å evaluere dem. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

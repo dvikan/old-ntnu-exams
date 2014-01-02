@@ -1,0 +1,633 @@
+%%  COURSE TDT4136 Logic and Reasoning systems  
+
+%% Solution proposals to CONTINUATION EXAM   8.aug. 2009
+
+%% by T.Amble
+
+
+TASK 1
+
+( the task is a simple version of an example in a handout
+
+http://www.idi.ntnu.no/emner/tdt4136/NOTES/clausefoils.pdf
+
+
+The formulas are written in plain text format according to some
+specificaton, but the students should preferrably use mathematical notation.
+
+
+Task 1a)
+
+There exists a highest price
+
+Exists x: Price(X) & All y (Price(y) => G(x,y))
+
+Task 1b)
+
+
+There exists no highest price
+
+ -  Exists x: Price(X) & All y (Price(y) => G(x,y))
+
+
+Task 1c)
+
+There exists a highest price and There exists no highest price
+
+
+
+Exists x: Price(X) & All y (Price(y) => G(x,y)) 
+&
+ -  Exists x: Price(X) & All y (Price(y) => G(x,y))
+
+Conversion to Clausal form:
+
+  First conjunct
+
+
+Eliminate =>
+Skolemize
+Remove quantifiers
+Conjunctive Normal form
+
+A1     Price(SK0) 
+A2    - Price(y) | G(S0,y))
+
+ Second  conjunct
+
+Eliminate =>
+Reduce scope of negation
+
+
+  All  x: ( -Price(x) |  Exists y: (Price(y)& - G(x,y)))
+
+Skolemize
+Remove quantifiers
+
+  -Price(x) | (Price(SK1(x))& - G(x,SK1(x)))
+
+Conjunctive Normal form
+
+B1  -Price(x) | Price(SK1(x)
+
+B2  -Price(x) | - G(x,SK1(x))
+
+Task 1d)
+
+
+Resolution Proof
+
+
+1:   Price(SK1(SK0))          (A1,B1)
+
+2:   - G(SK0,SK1(SK0))        (A1,B2)
+
+3:    G(SK0,SK1(SK0))         (1,A2)
+
+4     []                      (2,3)
+
+      QED
+
+
+TASK 2
+
+
+There are many ways to formalize it, but all relevant issues must be  mentioned.
+
+
+
+Task 2a)
+
+
+        Action repertoire:
+
+              Open(door)
+              Close(door)
+              GoTo(door)
+              GoThrough(door)
+              DropMail
+
+
+      Fluents (Situation independent Predicates)
+
+              Connects(door,room1,room2) %% actually situation independent
+              MailFor(room) 
+              Open(door)
+              Closed(door) 
+              InRoom(room)
+              AtDoor(Door)
+              EmptyMailbag
+
+
+Task 2b)
+
+
+Actions Preconditions   Poss(Action) <= Conditions
+
+     Poss(Open(door))  <=  AtDoor(door)& Closed(door).
+ 
+     Poss(Close(door)) <= Open(door)&  At(door) &  Connects(door,room1,room2) & InRoom(room2).
+
+     Poss(GoTo(door)) <= InRoom(room1) & Connects(door,room1,room2).
+
+     Poss(GoThrough(door)) <= InRoom(room1) & Connects(door,room1,room2) & Open(door).
+
+     Poss(DropMail) <=  MailFor(room),InRoom(room).
+
+
+
+Task 2c)
+
+Effect Axioms    Consequence(Action,Situation, Effects)
+
+     Consequence( Open(door),  Open(door) & not Closed(door)).
+
+     Consequence( Close(door), Closed(door) & - Open(door))
+    
+     Consequence( GoTo(door),  AtDoor(Door)).
+
+     Consequence( GoThrough(door), InRoom(room2)) <= Connects(door,room1,room2).
+
+     Consequence( GoThrough(door), -  AtDoor(Door). 
+
+
+Task 2d)
+
+Frame axioms  (what remains unchanged if true before action)  
+
+              Invariant(Fluent) <= Conditions 
+
+
+     Invariant(Fluent,Open(door)) <=  Fluent \= Closed(door).
+
+     Invariant(Fluent,Close(door)) <= Fluent \= Open(door).
+   
+     Invariant(Fluent,GoTo(door)). 
+     
+     Invariant(Fluent,GoThrough(door)) <= 
+          Fluent \= Open(door) & Fluent \= AtDoor &Fluent \= InRoom(room).
+                                        
+     Invariant(DropMail) <= MailFor(room).
+
+/*********************************************************************
+
+Implementation of Situation Calculus Planner for
+Post Distribution Problem in Continuation Exam 2009, TASK 2
+
+To be used together with the program  sitcalc.pl (On Repository).
+
+The formulation in the program has been slightly simplified relative to the solution proposal.
+
+*/
+
+consequence(open(Door),open(Door), atDoor(Door)&closed(Door)).
+
+consequence(closed(Door),close(Door),
+    open(door)&  at(door) &  connects(Door,_Room1,Room2) & inRoom(Room2)).
+
+consequence(atDoor(Door), goTo(Door),
+    connects(Door,Room1,_Room2)& inRoom(Room1)).
+
+consequence(inRoom(Room2),goThrough(Door),
+    connects(Door,_Room1,Room2)& atDoor(Door)&open(Door)).
+
+consequence(emptyMailbag, dropMail,
+      mailFor(Room)&inRoom(Room)).
+
+
+invariant(open(Door),Action) :- dif(Action,close(Door)).
+invariant(closed(Door),Action) :- dif(Action,open(Door)).
+invariant(atDoor(Door),Action) :- dif(Action,goThrough(Door)).
+invariant(emtpyMailbag,_Action).
+invariant(mailFor(_Room),Action) :- dif(Action,dropMail).
+
+always(connects(Door,Room1,Room2)):-
+     connects(Door,Room1,Room2).
+
+given(inRoom(outside)).
+given(mailFor(r2)).
+
+given(closed(e)).
+given(closed(d1)).
+given(closed(x)).
+given(closed(d2)).
+
+connects(e,outside,west).
+connects(d1,west,r1).
+connects(x,west,east).
+connects(d2,east,r2).
+
+goal(emptyMailbag).
+ 
+/*
+%% Run Example // NB Max number of steps increasde to 10
+
+| ?- run.
+
+GIVEN: 
+
+inRoom(outside)
+mailFor(r2)
+closed(e)
+closed(d1)
+closed(x)
+closed(d2)
+
+
+GOAL: 
+
+emptyMailbag
+
+Trying: 
+. . . . . . . . . . . 
+
+do(do(do(do(do(do(do(do(do(do(
+    start,goTo(e)),
+    open(e)),
+    goThrough(e)),
+    goTo(x)),
+    open(x)),
+    goThrough(x)),
+    goTo(d2)),
+    open(d2)),
+    goThrough(d2)),
+    dropMail)
+
+time(ms) 10
+
+**************************************************/
+
+
+
+
+
+
+TASK 3
+
+
+Task 3a)
+
+     Principles for analysis of game trees by MiniMax analysis
+     ........................................................
+
+MiniMax er en metode for å analysere spilltrær for
+2 agent full informasjons spill ( som sjakk, bondesjakk og Cocpit, men
+ikke Bridge). Vi kan kalle spillerne MAX og MIN.
+
+Man antar at spillets posisjoner kan evalueres med et tall som
+uttrykker fordelen for en av spillerne.
+Man antar også at motspilleren har  den samme evalueringen, og at begge spillerne velger den
+mest optimale ut i fra tilgjengelig informasjon.
+
+Nodene evalueres ved framsyn et visst antall trekk, og på dette nivået
+blir hver node i treet blir evaluert. Deretter beregnes verdien
+til  ikke-terminalnoden rekursivt ved
+
+   Maximum  verdiene til de neste nodene dersom MAX er i trekket
+   Minimum  av verdiene for dersom MIN er i trekket.
+
+
+Task 3b)
+
+
+     Starting with the top node, each possible move is depicted down
+     to a maximum depth,or a terminal node (win or lose position).
+
+     For the  nodes at the bottom level, each node is assigned an
+     evalution function  value.
+
+     The valuation function assigns  the values from the point of view
+     of one of the players (called Max). The valuation function must
+     give a top value to win position and a bottom value for a losing
+     position, and and a value in between for non-terminal nodes.
+
+     When that is done, all the values are backed up so that a Max
+     node (Max to move) gets the maximum of its daughter nodes 
+     ( Min-nodes), while each Min node gets the minimum value of its
+     daughter nodes (Max nodes).
+
+3b)
+
+    The static value for B om the move could be - (minus) the value
+    if A was in the move.
+
+    The motivation for this evaluation function is twofold:
+
+   i)  The game is symmetric, same rules for A and B.
+       Positive values for A are  negative values for B and vice versa.
+
+   ii) The  estimate f(S) gives the as the number of choices that
+       the mover can do. The more possibilities, the more chance that a
+       good move can be found if the games arrives at that position.
+
+
+
+     Drawing: (sketch in txt format). 
+     Backed up values in ().
+
+     Two double moves gives 5 levels of nodes.
+
+
+
+
+Drawn in Prefix indented form here, students can draw a tree
+
+(NB   The actual game tree is not completed )
+
+A  B  A  B  A
+
+12 (+1)
+   6 (+1)
+      2 
+         1 (+1)
+      3 (+1)
+         2 (-1)
+           1 (-1)
+      1 (+1)
+      5
+        4
+          3
+            2
+            1
+      1
+
+   3
+      1
+      2
+        1
+   4
+      3
+        2
+          1
+      2
+          1
+      1
+   11
+      1
+      10
+         9
+           8 (0)
+           3 (0)
+           1
+         5
+           4 (0)
+           1
+         2
+           1
+
+
+
+
+        
+       
+3c)
+     
+
+     By alpha beta  pruning is meant a method whereby a node is not
+     evaluated further if it can be proved that the node will never
+     influence the choice. This is done  by assigning provisional
+     values (alpha values at Max nodes, beta values at Min nodes
+     when the a value is backed up from below.
+
+        Alpha values can only be bigger, but if a Max node with an
+        alpha value A  is below a Min node with a beta value B,
+        and A > B, then B will never choose A anyway, and any further
+        analysis of the subnodes will not change that.
+
+    Benefits:
+
+    Reduces the number of node expansion without sacrificing optimality.
+
+ 
+3d)
+
+   Alpha Beta pruning assumes that the nodes are evaluated depth first
+    according to some ordering. If the ordering happens to be optimal
+    (e.g. best values for Max appears first), then the 
+    theoretical gain: is   N ** 1/2 where N is # nodes without  A-B.
+    This means that the depth can be doubled.
+
+    The average gain:   N ** 3/4.
+
+3e)
+
+    The actual marking of the Alpha Beta cutoffs may vary according
+    to the sequence of the evaluation of the subnodes).
+
+    In the game tree above, A12 gets a backup  alpha value of 1
+    by selecting B6 (divides by 2) which makes all node evaluations
+    below B3,B4  and B11  redundant.
+
+
+TASK 4
+
+
+Task 4a)
+
+Et heuristisk søkeproblem består av
+
+- en mengde noder eller tilstander
+
+- en startnode
+
+- en målnode (evt mål-betingelse)
+
+- en etterfølger-relasjon
+
+- en kostnadsfunksjon for et trinn c(n1,n2)
+
+- en heuristikk for estimat fra en node fram til en målnode
+
+Målet er å finne den billigste vei fra start til mål.
+
+
+I dette tilfelle en komplikasjon  at mål-noden er lik start-noden, så
+problemet må reformuleres noe for å unngå at problemet formelt er løst
+allerede ved start. 
+
+Det er mange gode løsninger på dette problemet, og det er viktig at
+problemet blir omtalt med forslag til løsning.
+
+Vi kan anta at ønsket retning for rundkjøringen
+er med sola, (som på vanlige baner).
+En metode er å definere en retning på lovlige avstandsmål slik at
+avstand aldri får lov å bli målt i retning som gå i gal retning.
+Det er da forholdsvis enkelt å markere for hvert sted i banen hva som
+er ulovlig retning.
+
+
+I dette tilfelle er nodene definert ved
+
+   en posisjon OG en hastighets vektor,
+
+   altså et 4-tuppel   (M,N,VM,VN)
+
+dvs søkerommet består av alle slike 4-tupler der M,N er innenfor rammene,
+ ikke X-skravert, og  VM,VN >= 0.
+
+Start   (5,2,0,0) (A)
+
+Mål     (5,2,0,0) (A)
+
+
+
+Etterfølger-relasjon er definert i oppgaven.
+
+En søking kan realiseres ved best first search (BFS) med seleksjonsfunksjon
+
+    f'(n) = g'(n) + h'(n)
+
+Task 4 b)
+
+Admissible heuristikk:
+
+  Heuristikken  h'(n) er et under-estimat av den virkelige kostnad 
+  til mål.
+
+I så fall vil BFS gi en optimal løsning når den terminerer.
+
+Monoton heuristikk:
+
+  Dersom vi har   h'(n1) <= h'(n2) + c(n1,n2)
+
+
+Ved en monoton heuristikk er vi garantert å ha funnet
+beste vei første gang vi ekspanderer  en node.
+Dette bidrar til en forenkling og effektivisering av algoritmen.
+
+
+Task 4c)
+
+Med triviell heuristikk menes f.eksempel 0.
+
+Her er det et viktig poeng å finne en heuristikk i søkegrafen ( av 4-tupler).
+Forslag med BARE  posisjoner og Manhattan heuristikk er misforstått.
+
+
+Vi er optimistiske og ser bort fra sperringene .
+
+Minste antall steg fra en node (X1,Y1,VX1,VY1) til (Xz,Yz,0,0)
+kan beregnes utifra avstanden, og en maksimal-hastighet vi kan 
+oppnå før hastigheten går ned til (0,0). 
+Denne kan i dette scenariet trygt settes = 3, m.a.o, uavhengig av DX,DY
+
+   h'((X,Y,DX,DY)) =  max (abs((X-Xz)/3), abs((Y-Yz)/3)) 
+
+ Hvis man imidlertid ikke tar hensyn til komplikasjonen i heuristikken
+så blir det en ekstremt lite effektiv søking.
+
+En metode er å omdefinere  avstandsmålet, altså måle avstanden
+i forhold til en linje som består av omkretsen til de indre skraverte
+feltet. For eksempel kan man beregne korteste avstand til nærmeste
+hjørne i lovlig retning + summen av avstander til påfølgende hjørner +
+minsteavstand fra "siste hjørne" til mål.
+
+
+Task 4d)
+
+
+Bidireksjonell søking vil si at vi starter paralell BFS forover fra A,
+og bakover fra Z.
+
+For eksempel kan ekspansjonene foretas annehver gang, og stoppe når 
+en node finnes i begge søkegrafer.
+
+
+Hvis vi antar at søkerommet er en trestruktur med forgreningsfaktor B,
+er antall gjennomsøkte noder 
+
+      S1 =   O(B ** D)
+
+Dersom vi deler søkerommet i 2, vil den felles noden befinne seg
+tilnærmet midt mellom, dvs vi får to søkerom med halv dybde, altså
+
+     S2 = 2*O(B ** (D/2))
+
+der S2  << S1    i det generelle tilfelle.
+
+Ulempen er at søkegrafene kan søke forbi hverandre, og dermed
+mislykkes. 
+
+Den optimale effektiviseringen nevnt over opptrer
+bare i tilfelle at søking foregår synkront der ekspansjonen foregår i
+den grafen der g(n) er minst. Når de møtes vil dybden være tilnærmet
+D//2. Møtepunktet vil da ligge på en tilnærmet optimal vei. 
+
+TASK 5
+
+
+(Students may recognise that the fields of the floor are  isomorphic to
+the state map of Australia (minus Tasmania))
+
+
+Task 5a)
+
+
+Et CSP problem er defined by  a 
+
+
+   - a set of variables
+
+   - a set of domains for these variables
+
+   - a set of constraint relations between the variables
+
+In this case, the variables are
+
+    {WA,NT,SA,Q,NSW,V}
+
+ and the common domains are  {Red,Blue,Green}.
+
+
+A  Constraint graph is a structure , where the vertices are the
+variables, the edges are relations. In this case, the relations are
+the difference-relation.
+
+
+
+
+   WA -- NT -- Q
+     \   |   /  \
+      \  |  /    \
+       \ | /      \
+         SA ------NSW     
+           \     /
+            \   /
+              V
+Task 5d)
+
+  Backtracking search for CSP
+
+
+     The most basic method is simply to assign domain varibles to
+     possible domain values at a time, test the constraints and
+     backtrack when constraints are violated.
+
+     A major and necessary improvement is to carefully select the order
+     of the variables to instantiate, and also to carefully select the
+     order of the values to try out.
+
+     The method of constraint propagation means that each variable is
+     a assigned an apriori set of values, and that each assignment
+     leads to a subsequent elimination of all other assignment that
+     becomes impossible. If it turns out that a variable can have no
+     legal value, then the original assignement must be changed.
+
+
+  Local Search for CSP
+
+
+     The basic principle is to start with a random initial assignment,
+     all the time keep an overview of the number of constraint violations,
+     and then adjust locally the assignments that makes the biggest
+     reduction in the conflict set.
+
+
+Task 5e)
+
+    Possibly. 
+
+    Constraint Logic programming could be called another method.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

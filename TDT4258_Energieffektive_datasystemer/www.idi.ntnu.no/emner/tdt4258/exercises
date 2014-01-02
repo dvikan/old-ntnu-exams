@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xml:lang="no"
+ lang="no" dir="ltr">
+	<head profile="http://example.org/xmdp/robots-profile#">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Exercises - Wiki for TDT4258</title>
+		<!-- custom meta start -->
+				<!-- custom meta end -->
+		<meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="date" content="2013-03-18T15:19:55+0100"/>
+<meta name="keywords" content="exercises"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/emner/tdt4258/lib/exe/opensearch.php" title="Wiki for TDT4258"/>
+<link rel="start" href="/emner/tdt4258/"/>
+<link rel="contents" href="/emner/tdt4258/exercises?do=index" title="Indeks"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="/emner/tdt4258/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="/emner/tdt4258/feed.php?mode=list&amp;ns="/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="/emner/tdt4258/_export/xhtml/exercises"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="/emner/tdt4258/_export/raw/exercises"/>
+<link rel="canonical" href="http://www.idi.ntnu.no/emner/tdt4258/exercises"/>
+<link rel="stylesheet" media="screen" type="text/css" href="/emner/tdt4258/lib/exe/css.php?t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="all" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=all&amp;t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="print" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=print&amp;t=ntnu&amp;tseed=1365686644"/>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var NS='';var JSINFO = {"id":"exercises","namespace":""};
+//--><!]]></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258/lib/exe/js.php?tseed=1365686644"></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258//lib/plugins/indexmenu/cms/cms.js"></script>
+		<!-- style and icons-->
+		<link rel="stylesheet" type="text/css" href="/emner/tdt4258/lib/tpl/ntnu/printmobile.css" />
+		<link rel="icon" href="/emner/tdt4258/lib/tpl/ntnu/images/favicon.ico" type="image/ico" />
+		<link rel="shortcut icon" href="/emner/tdt4258/lib/tpl/ntnu/images/favicon.ico" />
+		<link rel="apple-touch-icon" href="/emner/tdt4258/lib/tpl/ntnu/images/apple-touch-icon.png" />
+		<link rel="img_src" href="/emner/tdt4258/lib/tpl/ntnu/images/logo.square.no.png" />
+		<!-- Open Graph Protocol -->
+		<meta property="og:title" content="Exercises" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.idi.ntnu.no/emner/tdt4258/" />
+		<meta property="og:image" content="/emner/tdt4258/lib/tpl/ntnu/images/logo.square.no.png" />
+		<meta property="og:site_name" content="Wiki for TDT4258" />
+	</head>
+	<body class="dwbody no" id="pageid_exercises">
+		<!-- dokuwiki start -->
+		<div class="dokuwiki">
+			<div class="offscreen">
+				<ul id="quicknav">
+	<li id="quicknav_content"><a href="#content" accesskey="2">Hopp til innhold</a></li>
+	<li id="quicknav_localnav"><a href="#localnav" accesskey="3">Hopp til lokal navigasjon</a></li>
+	<li id="quicknav_globalnav"><a href="#ntnumenu" accesskey="5">Hopp til global navigasjon</a></li>
+</ul>			</div>
+
+			<!-- header start -->
+			<div id="header">
+				<div id="bluebar">
+	<div class="marginwrapper">
+		<div id="mainpagelink"><a href="http://ntnu.no" title="Gå til NTNUs startside" accesskey="1">Norges teknisk-naturvitenskapelige universitet</a></div>
+		<ul id="ntnulenker" title="Felleslenker">
+			<li><a href="http://ntnu.no" title="Norsk versjon av nettstedet">NTNU Norsk</a></li>			<li><a href="http://www.ntnu.edu" title="English version of the website">NTNU English</a></li>			<li><a href="http://ntnu.no/ub" title="Bibliotek">Bibliotek</a></li>
+			<li><a href="http://alumni.ntnu.no" title="Alumni NTNU">Alumni</a></li>
+			<li class="last"><a href="https://innsida.ntnu.no" title="Logg på intranettet">Intranett</a></li>
+		</ul>
+		<div class="clearer"></div>
+	</div>
+</div>
+
+<div id="searchform" class="focus">
+	<form action="http://ntnu.no/sok/search.fast" method="get" title="Søk i NTNUs nettsider">
+		<fieldset>
+			<legend class="offscreen">Søk i NTNUs nettsider</legend>
+			<label for="query" accesskey="4"><span class="offscreen">Søk etter:</span></label>
+			<input id="query" type="text" name="s.sm.query" value="Søk etter innhold/ansatte" title="Søk" class="query" />
+			<input type="submit" id="sok" value="Søk" class="submit" />
+		</fieldset>
+	</form>
+</div>
+
+
+<div class="marginwrapper">
+	<div id="ntnumenuwrap">
+		<ul id="ntnumenu" title="NTNU-navigasjon" class="selectedtab_studier">
+			<li id="tab_start" class="first"><a href="http://ntnu.no" title="Startside for NTNU">Startside</a></li>
+			<li id="tab_studier"><a href="http://ntnu.no/studier" title="Studier ved NTNU">Studier</a></li>
+			<li id="tab_student"><a href="http://ntnu.no/student" title="Student i Trondheim">Student i Trondheim</a></li>
+			<li id="tab_forskning"><a href="http://ntnu.no/forskning" title="Forskning ved NTNU">Forskning</a></li>
+			<li id="tab_evu"><a href="http://videre.ntnu.no/pages" title="Etter- og videreutdanning">Etter- og videreutdanning</a></li>
+			<li id="tab_non"><a href="http://ntnu.no/naringsliv" title="Næringsliv og nyskaping">N&aelig;ringsliv og nyskaping</a></li>
+			<li id="tab_om"><a href="http://ntnu.no/om" title="Om NTNU">Om NTNU</a></li>
+			<li id="tab_aktuelt" class="last"><a href="http://ntnu.no/aktuelt" title="Aktuelt">Aktuelt</a></li>
+		</ul>
+		<div class="clearer"></div>
+	</div>
+</div>				<div class="clearer"></div>
+			</div>
+			<!-- header end -->
+
+		<hr class="offscreen" />
+
+		<div class="marginwrapper">
+			<!-- pagewrapper start -->
+			<div id="pagewrapperwide">
+								<!-- breadcrumbs start -->
+				<div id="breadcrumbs">
+					<div>
+                  <a href="http://www.ntnu.no" class="urlextern" title="http://www.ntnu.no"  rel="nofollow">NTNU</a> &raquo; <a href="http://www.idi.ntnu.no" class="urlextern" title="http://www.idi.ntnu.no"  rel="nofollow">IDI</a>  &raquo; <a href="/emner/tdt4258/start" class="wikilink1" title="start">TDT4258 Energy Efficient Computer Design</a> &raquo; <span class="curid"><a href="/emner/tdt4258/exercises" class="wikilink1" title="exercises">Exercises</a></span> 											</div>
+				</div>
+				<!-- breadcrumbs end -->
+
+				<!-- dynamic 2/3 columns start -->
+				<div class="columns-float">
+					<!-- wikipage start -->
+					<div class="page column-one">
+						<div id="content">
+							<a name="content"></a>
+							
+<h1 class="sectionedit1"><a name="exercises" id="exercises">Exercises</a></h1>
+<div class="level1">
+
+<p>
+NEWS: 
+</p>
+
+<p>
+Lab hours with assistance:
+</p>
+
+<p>
+Week 12-13: Ekskursjon – Påskeferie
+</p>
+
+<p>
+Week 14: Thursday - Friday
+</p>
+
+<p>
+Week 15: Monday - Tuesday
+</p>
+
+<p>
+Week 16: Monday - Tuesday
+</p>
+
+<p>
+Week 17: Monday - Tuesday
+</p>
+
+<p>
+Deadline: Friday 26th April kl. 12.00
+</p>
+
+</div>
+
+<h2 class="sectionedit2"><a name="lab_groups" id="lab_groups">Lab Groups</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <strong><a href="/emner/tdt4258/_media/tdt4258-groups.pdf" class="media mediafile mf_pdf" title="tdt4258-groups.pdf">Groups and Unassigned students</a></strong> ————NEW 18-03-2013————</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit3"><a name="slides" id="slides">Slides</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/intro.pdf" class="media mediafile mf_pdf" title="intro.pdf"> Lab Introduction Lecture</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/ex1.pdf" class="media mediafile mf_pdf" title="ex1.pdf"> Exercise 1 Lecture</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/ex2.pdf" class="media mediafile mf_pdf" title="ex2.pdf"> Exercise 2 Lecture</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/c.pdf" class="media mediafile mf_pdf" title="c.pdf"> Introduction to C</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/ex3.pdf" class="media mediafile mf_pdf" title="ex3.pdf"> Exercise 3 Lecture</a></div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit4"><a name="compendium" id="compendium">Compendium</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/kompendium.pdf" class="media mediafile mf_pdf" title="kompendium.pdf">Compendium 2013</a></div>
+</li>
+</ul>
+
+<p>
+Note on Exercise 2: some libraries are now slightly different from the description in the compendium (check the slides for Exercise 2). For that reason, when you declare and use variables for Power Management and ABDAC, you have to change it as follows.
+</p>
+
+<p>
+Power Management to be used by ABDAC:
+</p>
+
+<p>
+volatile avr32_pm_t *sm = &amp;AVR32_PM (instead of Volatile avr32_sm_t *sm = &amp;AVR32_SM)
+</p>
+
+<p>
+sm→gcctrl … (instead of sm→pm_gcctrl)
+</p>
+
+<p>
+ABDAC:
+</p>
+
+<p>
+volatile avr32_abdac_t *dac = AVR32_ABDAC (instead of Volatile avr32_dac_t *dac = AVR32_DAC)
+</p>
+
+</div>
+
+<h2 class="sectionedit5"><a name="how_to_write_a_report" id="how_to_write_a_report">How to Write a Report</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="http://www.mhhe.com/mayfieldpub/tsw/home.htm" class="urlextern" title="http://www.mhhe.com/mayfieldpub/tsw/home.htm"  rel="nofollow">Mayfield Handbook of Technical and Scientific Writing</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.idi.ntnu.no/~keithd/advice/masters-students.html" class="urlextern" title="http://www.idi.ntnu.no/~keithd/advice/masters-students.html"  rel="nofollow">Keith Downings tips</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/writetechnicalreport.pdf" class="media mediafile mf_pdf" title="writetechnicalreport.pdf">How to Write a Good Technical Report</a></div>
+</li>
+</ul>
+
+<p>
+The report must be written in English and it has to contain at least the following sections: Abstract, Introduction, Description and Methodology (describe your work step by step), Results and Tests, Evaluation of assignment, Conclusion, Acknowledgements (optional), References. 
+<strong>The report has to be submitted through It’s Learning together with the code.</strong>
+</p>
+
+</div>
+
+<h2 class="sectionedit6"><a name="useful_files" id="useful_files">Useful Files</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/doc32000.pdf" class="media mediafile mf_pdf" title="doc32000.pdf">AVR32</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/doc32003.pdf" class="media mediafile mf_pdf" title="doc32003.pdf">AT32AP7000</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/ldd3_pdf.tgz" class="media mediafile mf_tgz" title="ldd3_pdf.tgz">Linux Device Drivers</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/avr32b-interrupts.zip" class="media mediafile mf_zip" title="avr32b-interrupts.zip">Interrupts library source</a>  If you wonder how it is implemented</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit7"><a name="linux_stk1000" id="linux_stk1000">Linux STK1000</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/atstk1002_bsp_sd_image_3.0.0.tar.gz" class="media mediafile mf_gz" title="atstk1002_bsp_sd_image_3.0.0.tar.gz">STK1000_BSP_SD_IMAGE</a></div>
+</li>
+<li class="level1"><div class="li"> <strong>uboot.bin</strong> (on It&#039;s Learning)</div>
+</li>
+<li class="level1"><div class="li"> <strong>linux-2.6.16.11-avr32-20060626</strong> (on It&#039;s Learning)</div>
+</li>
+<li class="level1"><div class="li"> <strong>guidelines for relocating bsp</strong> (on It&#039;s Learning)</div>
+</li>
+<li class="level1"><div class="li"> <strong>guidelines for exercise 3</strong> (on It&#039;s Learning)</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit8"><a name="exercise_files" id="exercise_files">Exercise Files</a></h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/oeving1.tgz" class="media mediafile mf_tgz" title="oeving1.tgz">Exercise 1</a> Deadline 15/02/2013 kl. 12:00 on It&#039;s Learning</div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/oeving2.tar.gz" class="media mediafile mf_gz" title="oeving2.tar.gz">Exercise 2</a> Deadline 15/03/2013 kl. 12:00 on It&#039;s Learning</div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/_media/oeving3.tgz" class="media mediafile mf_tgz" title="oeving3.tgz">Exercise 3</a> Deadline 26/04/2013 kl. 12:00 on It&#039;s Learning (you need to download also the files in the section LINUX STK1000)</div>
+</li>
+</ul>
+
+<p>
+Please read carefully the documentation regarding sleep levels before using the sleep function on avr32.
+If you use «deep sleep levels», it may happen that the board will become unusable (unless reprogrammed) and you may not be able to awake the microprocessor, even with interrupts.
+</p>
+
+</div>
+
+							<div class="clearer"></div>
+						</div>
+					</div>
+					<!-- wikipage stop -->
+					<hr class="offscreen" />
+					<!-- menu start -->
+					<div id="menu" class="column-two">
+						<a name="localnav"></a>
+						<ul>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/start" class="wikilink1" title="start">Main Page</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/lectures" class="wikilink1" title="lectures">Lecture Plan</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/slides" class="wikilink1" title="slides">Lecture Slides</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/curriculum" class="wikilink1" title="curriculum">Curriculum</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/exercises" class="wikilink1" title="exercises"><em class="current">Exercises</em></a></div>
+</li>
+<li class="level1"><div class="li"> <a href="/emner/tdt4258/support" class="wikilink1" title="support">Support material</a></div>
+</li>
+</ul>
+						<div class="clearer"></div>
+					</div>
+					<!-- menu end -->
+				</div>
+				<!-- dynamic 2/3 columns end -->
+
+				<hr class="offscreen" />
+
+				
+				<hr class="offscreen" />
+
+				<!-- meta start -->
+				<div id="meta">
+					<div class="user">
+											</div>
+					<div class="doc">
+						2013/03/18 15:19, Stefano Nichele					</div>
+					<div class="clearer"></div>
+				</div>
+				<!-- meta end -->
+
+				<!-- footer start -->
+				<div id="footer">
+					<div id="address">
+						Bes&oslash;ksadresse: IT-bygget, Sem Sælands vei 9, 7034 Trondheim<br />
+Telefon: 73593680 &sdot; Telefax: 73594466 &sdot; E-post: <a class="mail" href="mailto:jahre@idi.ntnu.no">jahre@idi.ntnu.no</a>
+					</div>
+					<div class="clearer"></div>
+				</div>
+				<!-- footer end -->
+			</div>
+			<!-- pagewrapper end -->
+
+			<hr class="offscreen" />
+
+			<!-- below footer start -->
+			<div id="ntnufooter">
+				<ul>
+	<li class="kontakt"><a href="http://ntnu.no/kontakt">Kontakt oss</a></li>
+	<li class="personsok"><a href="http://ntnu.no/ansatte">Søk etter ansatte</a></li>
+	<li class="personsok"><a href="http://ntnu.no/studentsok">Søk etter studenter</a></li>
+	<li class="sentralbord"><span>Sentralbord: 73 59 50 00</span></li>
+	<li class="orgnr"><span>Org. nr.: 974767880</span></li>
+</ul>
+
+<ul>
+	<li class="kart"><a href="http://ntnu.no/kart">Kart over NTNU</a></li>
+	<li class="fakulteter"><a href="http://ntnu.no/fakulteter">Fakulteter og institutter</a></li>
+	<li class="adm"><a href="http://ntnu.no/adm">Administrative enheter</a></li>
+	<li class="ledelsen"><a href="http://ntnu.no/rektor">Ledelsen</a></li>
+	<li class="redaktor"><a href="http://ntnu.no/web-info/om">Ansvarlig redaktør</a></li>
+</ul>
+
+<ul>
+	<li class="nettstedkart"><a href="http://ntnu.no/nettstedkart">Nettstedkart</a></li>
+	<li class="studier"><a href="http://ntnu.no/studier/alle">Studier A til Å</a></li>
+	<li class="emner"><a href="http://ntnu.no/studier/emner">Emner A til Å</a></li>
+	<li class="forskning"><a href="http://ntnu.no/forskning/a_aa">Forskning A til Å</a></li>
+	<li class="enheter"><a href="http://ntnu.no/enheter">Enheter A til Å</a></li>
+</ul>
+
+<ul>
+	<li class="blog"><a href="http://ntnu.no/aktuelt/blogger">Blogger</a></li>
+	<li class="twitter"><a href="http://twitter.com/NTNU">Twitter</a></li>
+	<li class="rss"><a href="http://ntnu.no/aktuelt/blogger">RSS-feed</a></li>
+</ul>
+				<div class="clearer"></div>
+			</div>
+			<div id="credits">
+				<ul>
+					<li>Powered by <a href="http://www.dokuwiki.org">DokuWiki</a> + <a href="http://code.google.com/p/dokuwiki-ntnu">NTNU template</a> and <a href="http://jquery.com/">jQuery</a></li>
+										<li>"Fugue" icon set by <a href="http://yusukekamiyamane.com/">Yusuke Kamiyamane</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a></li>
+					<li class="last"><a href="/emner/tdt4258/exercises?do=login&amp;sectok=8d9224aa88436ab698d24bff90bfe8ae"  class="action login" rel="nofollow" title="Logg inn">Logg inn</a></li>
+				</ul>
+				<div class="clearer"></div>
+			</div>
+
+			<!-- below footer end -->
+
+			<!-- button row start -->
+			<div class="bar" id="bar__bottom">
+				<div class="bar-left" id="bar__bottomleft">
+									</div>
+				<div class="bar-right" id="bar__bottomright">
+					
+				</div>
+				<div class="clearer"></div>
+			</div>
+			<!-- button row end -->
+		</div>
+		<!-- marginwrapper end -->
+		</div>
+		<!-- dokuwiki end -->
+
+		<!-- scripts placed at bottom of page to speed things up -->
+		<script type="text/javascript">
+			// Ready-function loads when document is fully loaded
+			jQuery(document).ready(function(){
+				// Prepare search field to auto update text and color
+				prepareSearchField();
+				// Include e-mail deobfuscation script if necessary
+				deObfuscateEmails();
+				// Trigger indexer
+				jQuery.get('/emner/tdt4258lib/exe/indexer.php?id=exercises&amp;1387373385');
+			});
+		</script>
+	</body>
+</html>

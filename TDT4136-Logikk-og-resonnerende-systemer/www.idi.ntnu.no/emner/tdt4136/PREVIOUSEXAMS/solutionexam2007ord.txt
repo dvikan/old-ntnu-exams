@@ -1,0 +1,1039 @@
+%%  COURSE TDT4136 Logic and Reasoning systems  2007
+
+%% Solution proposals to ordinary exam  4.dec. 2007
+
+%% by T.Amble  
+
+%% Revised TA-091109
+
+
+By an oversight, the percentage on TASK 1 in the Norwegian version
+(translation) was wrongly set to  15 % instead of the correct  25 % as
+in the (original) English version. This caused the sum of the
+percentages to be 90 % instead of 100 %.
+
+This has been taken into consideration when the grading was performed,
+and the weights have been adjusted
+
+TASK 1 (21 %)
+
+// Informal proof
+
+    X is a  blue door, so 
+
+    there exists a blue door, so (by 3.)
+
+    all green  doors are automatic,  so (by 1.)
+
+    all blue doors are manual
+
+    and because X is blue, so 
+
+    X is manual. 
+
+
+//
+
+Task 1 a)
+ 
+
+% Problem formulation
+
+
+The formulation and proof would be  simplified  if we assume that all objects
+are doors. Then the D predicate could  be ignored.
+We  will first use this assumption here in a simplified version
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤   Proof when simplified assumption is made ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+(Use a  plainform text notation,
+ students are free to use logical notation).
+
+
+If all green doors are automatic then all blue doors are manual
+
+1. [ All y:  C(y,green) => A(y))] =>   [ All y:  C(y,blue) => M(y)]   
+
+
+All doors are either manual or automatic but not both
+
+2.  All y: ( M(y) | A(y)) &  - (M(y) & A(y))
+
+
+If there exists a blue door then all green dooors are automatic
+
+3. [ Exists y: C(y,blue)] => [All y: C(y,green) => A(y)]
+ 
+E is green
+
+4. C(E,green).
+
+X is blue
+
+5. C(X,blue).
+
+X is a door.
+
+6. D(X). // Not used
+
+M is a door
+
+7. D(M). // Not used
+
+
+% Task
+
+Either 
+
+i) prove - A(X)
+
+or
+
+ii) prove   A(X)
+
+(NB not the same as "Prove A(X) | -A(X)" which is a tautology)
+
+We will prove  -A(X) first, and as it turns out, this is provable, and
+we need not try to prove ii).
+
+
+Task 1 b)
+
+Convert formulas to clausal form
+
+¤¤¤¤
+
+1.  [ All y:  C(y,green) => A(y)] => [ All y:  C(y,blue) =>  M(y)] 
+
+i) Eliminate =>
+
+ - [ All y: (- C(y,green)  | A(y))] | [ All y: - ( C(y,blue)) |  M(y))] 
+
+ii) Reduce scope of negation
+
+  [ Exists  y:  C(y,green) & - A(y))] | [ All y: ( - C(y,blue) |  M(y))] 
+
+iii) Skolemize
+
+ [ ( C(S0,green)) & - A(S0))] | [  - C(y,blue) |  M(y))] 
+
+iv) Convert to Conjunctive Normal Form
+
+
+
+1b)   C(S0,green) |- C(y,blue) |  M(y)) 
+
+1c)        - A(S0) | - C(y,blue) |  M(y)) 
+
+¤¤¤¤
+
+2.  All y:  ( M(y) | A(y)) &  - (M(y) & A(y))
+
+i)  Eliminate =>
+ 
+All y:  (  M(y) | A(y)) &  - (M(y) & A(y)))
+
+ii) Reduce scope of negation
+
+All y:  ( ( M(y) | A(y)) &  - M(y) | - A(y)))
+
+iii) Skolemize
+
+ ( M(y) | A(y)) &  (- M(y) | - A(y))
+
+iv) Convert to Conjunctive Normal Form
+
+2a)  M(y) | A(y)
+
+2b)   -M(y) | -A(y)
+
+¤¤¤¤
+
+3. [ Exists y:  C(y,blue)] => [All y:  C(y,green) => A(y)] 
+
+i)  Eliminate =>
+
+   - [ Exists y: C(y,blue)] | [All y: -  C(y,green) | A(y)] 
+
+ii) Reduce scope of negation
+
+  [ All  y:  - C(y,blue)] | [All y:  -C(y,green) | A(y)] 
+
+iii) Standardize variables
+
+  [ All  y:  - C(y,blue)] | [All z:  -C(z,green) |  A(y)] 
+
+iii) Remove quantifiers
+
+3a) - C(y,blue) | - C(z,green) |  A(y)
+
+¤¤¤
+
+4. C(E,green).
+
+
+5. C(X,blue).
+
+6. ( )
+
+7. ( )
+
+¤¤ Negation of Task
+
+8. A(X)
+
+
+
+Task 1 c) Resolution Proof 
+
+
+
+
+
+1b)    C(S0,green) |  - C(y,blue) |  M(y)
+
+1c)        - A(S0) |  - C(y,blue) |  M(y) 
+
+2a)   M(y) | A(y)
+
+2b)   - M(y) | -A(y)
+
+3a)  - C(y,blue) | - C(z,green) | A(z)
+
+4. C(E,green)
+
+5. C(X,blue)
+
+6. ( )
+
+7. ( )
+
+8. A(X)
+
+
+Proof:
+
+
+11.  (5,1b)    C(S0,green) |  M(X) 
+
+
+13.  (5,1c)   - A(S0) | M(X) 
+
+
+15.  (5,3a)    - C(z,green) | A(z)
+
+
+18.  (15,11)     A(S0) | M(X)
+
+19.  (18,13)     M(X)
+
+20   (19,2b)    -A(X)  
+
+
+22.  (20,8)      []    QED
+
+
+¤¤¤¤¤¤¤¤¤¤ END OF Simplified Proof ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Proof when simplification is not used 
+
+
+If all green doors are automatic then all blue doors are manual
+
+1. [ All y: (D(y) & C(y,green) => A(y))] =>   [ All y: (D(y) & C(y,blue) => M(y))]   
+
+
+All doors are either manual or automatic but not both
+
+2.  All y: D(y) => ( M(y) | A(y)) &  - (M(y) & A(y))
+
+
+If there exists a blue door then all green dooors are automatic
+
+3. [ Exists y: D(y) & C(y,blue)] => [All y: D(y) & C(y,green) => A(y)]
+ 
+E is green
+
+4. C(E,green).
+
+X is blue
+
+5. C(X,blue).
+
+X is a door.
+
+6. D(X).
+
+M is a door
+
+7. D(M).
+
+
+% Task
+
+Either 
+
+i) prove - A(X)
+
+or
+
+ii) prove   A(X)
+
+(NB not the same as "Prove A(X) | -A(X)" which is a tautology)
+
+We will prove  -A(X) first, and as it turns out, this is provable, and
+we need not try to prove ii).
+
+Task 1 b)
+
+Convert formulas to clausal form
+
+¤¤¤¤
+
+1.  [ All y: (D(y)  & C(y,green)) => A(y)] => [ All y: (D(y) & C(y,blue)) =>  M(y)] 
+
+i) Eliminate =>
+
+ - [ All y: -(D(y) &  C(y,green))  | A(y))] | [ All y: - (D(y) & C(y,blue)) |  M(y))] 
+
+ii) Reduce scope of negation
+
+  [ Exists  y: D(y) &  C(y,green) & - A(y))] | [ All y: (-D(y) | - C(y,blue) |  M(y))] 
+
+iii) Skolemize
+
+ [ (D(S0) & C(S0,green)) & - A(S0))] | [  -D(y) | - C(y,blue) |  M(y))] 
+
+iv) Convert to Conjunctive Normal Form
+
+1a)          D(S0) | -D(y) | - C(y,blue) |  M(y) 
+
+1b)   C(S0,green) | -D(y) | - C(y,blue) |  M(y)) 
+
+1c)        - A(S0) | -D(y) | - C(y,blue) |  M(y)) 
+
+¤¤¤¤
+
+2.  All y: D(y) => ( M(y) | A(y)) &  - (M(y) & A(y))
+
+i)  Eliminate =>
+ 
+All y: - D(y) | ( ( M(y) | A(y)) &  - (M(y) & A(y)))
+
+ii) Reduce scope of negation
+
+All y: - D(y) | ( ( M(y) | A(y)) &  - M(y) | - A(y)))
+
+iii) Skolemize
+
+ - D(y) | ( M(y) | A(y)) &  (- M(y) | - A(y))
+
+iv) Convert to Conjunctive Normal Form
+
+2a)  - D(y) | M(y) | A(y)
+
+2b)  - D(y) | -M(y) | -A(y)
+
+¤¤¤¤
+
+3. [ Exists y: D(y) & C(y,blue)] => [All y: D(y) & C(y,green) => A(y)] 
+
+i)  Eliminate =>
+
+   - [ Exists y: D(y) & C(y,blue)] | [All y: - (D(y) & C(y,green)) | A(y)] 
+
+ii) Reduce scope of negation
+
+  [ All  y: -D(y) | - C(y,blue)] | [All y: -D(y) | -C(y,green) | A(y)] 
+
+iii) Standardize variables
+
+  [ All  y: -D(y) | - C(y,blue)] | [All z: - D(z) | -C(z,green) |  A(y)] 
+
+iii) Remove quantifiers
+
+3a) - D(y) | - C(y,blue) | -D(z) | - C(z,green) |  A(y)
+
+¤¤¤
+
+4. C(E,green).
+
+
+5. C(X,blue).
+
+6. D(X)
+
+7. D(M).
+
+¤¤ Negation of Task
+
+8. A(X)
+
+
+
+
+Task 1 c) Resolution Proof
+
+
+
+1a)          D(S0) | -D(y) | - C(y,blue) |  M(y) 
+
+1b)    C(S0,green) | -D(y) | - C(y,blue) |  M(y)
+
+1c)        - A(S0) | -D(y) | - C(y,blue) |  M(y) 
+
+2a)  - D(y) | M(y) | A(y)
+
+2b)  - D(y) | - M(y) | -A(y)
+
+3a)  - D(y) | - C(y,blue) | -D(z) | - C(z,green) | A(z)
+
+4. C(E,green)
+
+5. C(X,blue)
+
+6. D(X).
+
+7. D(M).
+
+8. A(X)
+
+
+
+
+9.   (5,1a)    D(S0) | -D(X) |  M(X)       
+
+10.  (9,6)     D(S0) | M(X)    
+
+11.  (5,1b)    C(S0,green) | -D(X) | M(X) 
+   
+12.  (11,6)    C(S0,green)  | M(X) 
+
+13.  (5,1c)   - A(S0) | -D(X) |  M(X) 
+
+14.  (11,6)   - A(S0) | M(X) 
+
+15.  (5,3a)    - D(X) | -D(z) | - C(z,green) | A(z)
+
+16.  (15,6)     -D(z) | - C(z,green) | A(z)
+
+17.  (16,10)     -C(S0,green) | A(S0) | M(X)
+
+18.  (17,12)     A(S0) | M(X)
+
+19.  (18,14)    M(X)
+
+20   (19,2b)     - D(X) | -A(X)  
+
+21.  (20,6)      -A(X)
+
+22.  (21,8)      []    QED
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+TASK 2 (21 %)
+
+We set up the definitions of the operators and predicates that are
+necessary. Here is used the notation used in the POP planner,
+which is very similar to the ADL language.
+
+Task 2 a)
+
+
+
+Operators
+
+   open(<door>)
+
+   close(<door>)
+
+   goto(<door>)
+
+   gothrough(<door>)
+   
+   dropmail(<room>)
+
+
+Predicates
+
+    connects(<room>,<door>,<room>)
+
+    atdoor(<door>)
+
+    inroom(<place>)
+
+    mailfor(<room>)
+
+    open(<door>)
+
+    closed(<door>)
+
+    emptymailbag
+
+
+Initial conditions
+
+    inroom(outside)
+
+    atdoor(e)
+
+    mailfor(r2)
+
+Final conditions
+
+   emtptymailbag
+
+
+
+
+
+Task 2 b)
+
+We make the following simplifications:
+
+i) Door E is regarded as open (automatic),
+   doors X and D2 as closed
+
+ii) There is only one mail (to R2)
+
+iii) There is a fictitious room 'outside'.
+
+
+%% Operator definitions
+
+% Initial  mailfor(r2) & inroom(outside) & atdoor(e) &
+%   closed(x) & closed(d2) &  open(e)    (E is automatic)
+
+oper(start,                               
+     true,       
+     
+     connects(outside,e,west) &
+     connects(west,x,east) &
+     connects(east,d2,r2) &
+     open(e) & closed(x) & closed(d2) &
+     mailfor(r2) & inroom(outside) & atdoor(e) ).      
+
+
+% Goal emptymailbag
+
+oper(finish,
+     emptymailbag,
+     true).  
+
+
+oper(open(D),
+     closed(D) & atdoor(D),
+     open(D) & not closed(D)).
+
+oper(close(D),
+     open(D)& atdoor(D),
+     closed(D) & not open(D)).
+
+oper(gotodoor(D),
+     connects(R1,D,_) & inroom(R1) & not atdoor(D),
+     atdoor(D)).
+
+oper(gothrough(D),
+     connects(R1,D,R2) & atdoor(D) &  open(D) & inroom(R1),
+     inroom(R2)  & not inroom(R1) & not atdoor(D)).
+
+
+oper(dropmail(R),    % simplification, only 1 adressee
+     mailfor(R) & inroom(R),
+     emptymailbag).
+
+
+Task 2 c)
+
+Problems with partial planner for this problem:
+
+There is a problem with conditional planning if Marvin does not know
+which doors are automatic or not. This would lead to conditional
+planning which is more complex. However, the need for that is
+eliminated in the task.
+
+Furthermore, there are some implementation problems to actually  find a
+plan automatically  when there is no heuristics.
+
+
+Task 2 d)
+
+A partial order plan builds up the plan as a directly orderded graph, where
+the elements are actions, and  the relations between the graph
+elements are causal links and ordering links.
+
+Causal links contain conditions  that are caused by one action, and
+required by another action.
+
+Ordering links are relations that prescribes that one action must come
+after or before another action.
+
+The buildup of the graph starts with just the start and finish actions
+with corresponding  initial and goal conditions. 
+
+
+%% Sketch of plan
+
+%    open(E) is unnecessary, E is automatic
+
+
+    gothrough(E), 
+    gotodoor(X),
+    open(X),    
+    gothroughdoor(X),
+    goto(D2),
+    open(D2),
+    gothroughdoor(D2),
+    dropmail(R2).
+
+
+
+Initial Graph (simplified)
+
+(Actions are showed with ! )
+
+
+       finish!
+         |
+         |
+      emptymailbag
+
+
+ 
+ mailfor(r2) inroom(outside) atdoor(e)  
+       |          |               |
+       |          |               |
+        --------------------------
+                  |
+                  |
+                start!
+
+
+
+Next step can be filled in for the top condition
+
+         finish!
+           |
+           |
+        emptymailbag
+           |
+           |
+        dropmail!
+           |
+           |
+        ------------
+       |            |
+       |            |
+    mailfor(r2)  inroom(r2) 
+       |
+       |
+       |
+ mailfor(r2) inroom(outside) atdoor(e)  
+       |          |               |
+       |          |               |
+       |          |               |
+        --------------------------
+                  |
+                  |
+                start!
+             
+
+
+inroom(r2) is achieved by going through a door
+
+
+
+         finish!
+           |
+           |
+        emptymailbag
+           |
+           |
+        dropmail!
+           |
+           |
+        ------------
+       |            |
+       |            |
+     mailfor(r2) inroom(r2) 
+       |            |
+       |            |
+       |         gothrough(d2)!
+       |             |
+       |             |
+       |          --------------------
+       |         |           |        |
+       |      atdoor(d2)  open(d2)  inroom(r1)                    
+       |            
+       |
+       |
+       |
+       |
+ mailfor(r2) inroom(outside) atdoor(e)  
+       |          |               |
+       |          |               |
+       |          |               |
+        --------------------------
+                  |
+                  |
+                start!
+             
+
+
+And so on.
+
+
+TASK 3 (21 %)
+
+Task 3 a)
+
+A Minimax analysis of a game tree means that the game is played a
+number of moves, and then the leaf nodes are evaluated from the
+viewpoint of one of the players (Max).
+
+
+Task 3 b)
+
+Draw the game tree down 4 plys (half moves). (This means 5 levels of
+nodes!). Illegal moves are not drawn. B 's speed is drawn from right to left.
+
+For convenience, as a text the tree is drawn in prefix indented format.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+A0 _ _ B0 (+1)
+
+           _ A1 _ B0 (+1)
+                       _ A1 _ B0 (+1)
+
+                                    _ _ _  A2   (+1)
+                                    
+                                    _ _ A1 B0   (-1)
+                                                _ _ B1 _    (-1)
+
+                                                _ A1 B0 _   (0)
+
+                                     _ A0 _ B0 (0)
+                                                 _ A0 B1 _  (0)
+
+                                                _ A0  B0 _  (0)                                              
+
+
+                        _ A1 B1 _ (+1)
+                                    _ _ B1 A2 (0)
+                                                _ B0 _ A2 (0)
+
+                                                _ B1 _ A2 (0)
+
+                                                 _B2 _ A2 (0)
+
+                                    _ _ A1 _  (+1)
+
+
+                                    _ A0 B1 _ (-1)
+
+                                                 B2 A0 _ _  (0)
+
+                                                 _  B1 _ _  (-1)
+                                                  
+                                                 _  A0 B0 _ (0)                                                      
+                                                  
+                                                 
+
+            A0 _ _ B0  (-1)
+
+                         A0 _ _ B0 ( ?)
+                            
+
+                         A0 _ B1 _ (-1)
+
+                                    _ A1 B1 _ (-1)
+                                                _ A1 B0 _  (0)
+
+                                                _ B1 _  _  (-1)
+
+                                                B2 A1 _ _  (0)
+
+                                     A0 _ B1 _ (-1)
+
+                                                B2 _ _ _ (-1)
+
+                                                A0 B1 _ _ (0)
+
+                                                A0 _ B0 _ (0)
+
+                                   
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Task 3 c)
+
+The game values are marked in the figure, and backed up.
+
+The loop nodes (?) are ignored because if the loop node has been
+expanded, any backup value from the loop node two plys below would have been
+identical to the backup value from the neigbouring nodes.
+
+
+Task 3 d)
+
+A has a winning strategy, because the top node has game value +1,
+which is a winning position. 
+
+A winning positon for A is either a final winning position, or a node
+where there is a move, so  that for every counter move, A can reach a
+new winning position.
+
+
+Task 3 e)
+
+Alpha-Beta pruning means that search below a Max node can be stopped
+if there is a Min node above with a (preliminary) game value less than
+the game value of the node. This is because none of the succeeding
+nodes in that search will ever be selected.
+
+Benefits are reduction of search time ( ideally MM ** 1/2 ,in average  MM ** 3/4),
+where MM is the search time for MiniMax.
+
+There are no real drawbacks except a marginally more complicated algorithm.
+
+ 
+Task 3 f)
+
+The benefit can be illustrated by the case that A selects a winning
+move at the start. Then the backed up value will become +1, and all
+search below any of B's counter moves can be discarded. (Actually,
+in this special case, we could stop the search for finding better A
+moves as soon as a winning move was found)
+
+
+¤¤¤¤¤¤¤ Example run from a game simulator
+
+%%  run(Breadth,Length,StartposA.StartPosB, MaxDepth, TraceDepth)
+
+| ?- run(1,4,(1,1),(1,4),5,9).
+
+   Evalmax  state((1,1),(1,4),(0,0),(0,0),max):
+      Evalmax  state((1,2),(1,4),(0,1),(0,0),min):
+         Evalmax  state((1,2),(1,4),(0,1),(0,0),max):
+            Evalmax  state((1,4),(1,4),(0,2),(0,0),min):
+            Maxvalue state((1,4),(1,4),(0,2),(0,0),min)=10000
+         Maxvalue state((1,2),(1,4),(0,1),(0,0),max)=10000
+         Evalmax  state((1,2),(1,3),(0,1),(0,-1),max):
+            Evalmax  state((1,4),(1,3),(0,2),(0,-1),min):
+               Evalmax  state((1,4),(1,2),(0,2),(0,-1),max):
+               Maxvalue state((1,4),(1,2),(0,2),(0,-1),max)=-10000
+            Maxvalue state((1,4),(1,3),(0,2),(0,-1),min)=-10000
+            Evalmax  state((1,3),(1,3),(0,1),(0,-1),min):
+            Maxvalue state((1,3),(1,3),(0,1),(0,-1),min)=10000
+         Maxvalue state((1,2),(1,3),(0,1),(0,-1),max)=10000
+      Maxvalue state((1,2),(1,4),(0,1),(0,0),min)=10000
+   Maxvalue state((1,1),(1,4),(0,0),(0,0),max)=10000
+
+MiniMax = 10000
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+TASK 4 (21 %)
+
+Task 4 a)
+
+The problem can be formulated as a heuristic search problem where
+
+    S is a set of possible states of the board
+    N0 is a start state
+    G is a set of goal states
+    C is a cost function from one node to the next (here, number of moves)
+    G is a an estimate for the shortst path from start to the node
+    H is an estimate for each node to a goal state.
+
+   An algoritm A* uses 
+    F = G+H is used as selection criteria to expand nodes.
+
+Task 4 b)
+
+  Admissible heuristics means technically that H is less or equal to
+  the real minimal cost.
+
+  The benefit is that we are guaranteed a minimal cost plan if it exists.
+
+  Monotone heuristics means  technically that the cost of a step
+  is higher than the reductiion in heuristics, which means that the
+  total heuristic is (monotonically) non-decreasing.
+
+Benefits of monotone heuristics is that we can regard the first found
+path to  nodes as the minimal route to them, and can thus discard
+further search for any nodes that is detected earlier.
+
+
+
+Task 4 c)
+
+
+A non trivial heuristics for a node that has speed V, and 
+     distance D to the goal can be set to a number J so that
+
+          SUM i   < D
+          i=V+1,J
+
+which corresponds to the number of steps needed when the cock
+accelerates maximally. For the given state, V=0, D=9 which gives J = 3
+
+
+Task 4 d)
+
+Explanation of method:
+
+
+  Start two A* searches from start, and goal but keep a common CLOSED
+  set of visited nodes. If a node occurs in both search graphs, we have
+  fould a connection.
+
+  Benefits:
+
+  In the ideal case, the search work is redused from B**d to
+  2*(B**d/2), where d is the length  of the minimal solution.
+
+   Drawbacks:
+
+   May in certain cases end up as two different search processes that
+   never meet.
+
+TASK 5 (16 %)
+
+
+Task 5 a)
+
+   A semantic net is a structue that shows the relation between
+   concepts,  instances and values. The concepts can be categories and sets of
+   entities ("bunches"). The relations can be memberships, subclasses
+   and attributes or others.
+
+Task 5 b)
+
+
+
+
+                     Agent
+                      |
+                     ako
+                      |
+                     Robot
+                      |
+                      |-MoveBy Legs
+                      |
+           ----------------------------------
+           |               |                 | 
+          ako             ako               ako
+           |               |                 |            
+        DoorRobot        DeliveryRobot     CleaningRobots
+         |                |                 |
+         |- WorkAt Day    |-WorkAt Day      |-WorkAt Night
+         |- Workat Night  |                 |-MoveBy Wheels
+         |- MoveBy []     |                 |
+        isa                -------------    |
+         |                |             |   |
+       Jimmy             isa           isa isa
+                          |             |   |
+                         Marvin         Billy
+                                  
+                
+Task 5c)
+
+       Inheritance of properties are done following the principles:
+
+
+             If a category has an attribute, then all subcategories
+             have that attribute.
+
+             If a category has a poperty (e.g. attribute and value),
+             then all subcategories and instances have that property.
+
+             The exception is when  a semantic entity 
+             inherits a property or attribute from several
+             superclasses. Then the following apply:
+
+                  In a hierarchy (one parent for each semantic
+                  entity), it is the closest property that is valid.
+
+                  In a heterarchy ( different parents along different
+                  paths), categories blocked by interfering
+                  inheritance are excluded from inheritance.
+
+
+ 
+Task 5d)
+
+
+          A logical knowledge base is can be formulated in FOL.
+        
+                         Ako(Robot,Agent).
+                         Ako(DeliveryRobot,Robot).
+                         Ako(CleaningRobot,Robot).
+                         Ako(DoorRobot,Robot).
+    
+                         Rel(Robot,MoveBy,Legs).
+                         Rel(DoorRobot,MoveBy,[]).
+                         Rel(CleaningRobot,MoveBy,Wheels).    
+                       
+                         Rel(DoorRobot,WorkAt,Day).
+                         Rel(DoorRobot,WorkAt,Night).
+                         Rel(CleaningRobot,WorkAt,Night).
+                        
+                         Isa(Marvin,DeliveryRobot).
+                         Isa(Jimmy,DoorRobot).
+
+                         Isa(Billy,CleaningRobot).           
+                         Isa(Billy,DeliveryRobot).   
+                       
+
+Task 5 e)
+
+
+           Sketch of inheritance in a logical knowledge base 
+
+i) Delivery Robots move by Legs
+
+             Rel(DR, MB, L)  <=
+                   Ako(DR,R),
+                   Rel(R, MB, L) .
+
+ii) Billy works at night
+
+             Rel(B,WA,N) <=
+                    Isa(B,CR),
+                    Rel(CR,WA,N).
+
+iii) Billy moves by wheels
+
+             Rel(B,MB,W) <=
+                  Isa(B,CR),
+                  Rel(CR,MB,W).
+
+
+
+In the example above, Billy moves by wheels because he is
+a Cleaning robot, even if Billy also is a Delivery Robot,
+and Delivery robots have no specific value for MoveBy, so
+by default inherit MoveBy Legs from its parent Robot.
+
+To avoid that the axioms in ii) and iii)  also should give 
+
+            Billy Moves by legs
+
+we would need som modifications of ii) and iii).
+
+Details are not required.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+

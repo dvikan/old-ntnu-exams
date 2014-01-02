@@ -1,0 +1,591 @@
+
+
+   COURSE  TDT4136  Logic and Reasoning Systems.
+   EXAM  Friday 19.12 2008
+
+   SOLUTION PROPOSAL
+   by/ Tore Amble
+
+Revised  TA-101118
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+TASK 1
+
+
+1a)
+
+Informally, if B is true, then each resaturant has the same menu,
+which of course is a menu.
+
+
+1b)
+
+   FA       A:(x): ( R(x) => (E:(y): M(y) & H(x,y)))
+
+
+   FB       E:(y):  M(y) & (A:(x): R(x) => H(x,y))
+
+
+FB => FA
+
+1c)       
+
+       Prove   FB => FA by showing that
+
+
+                (FB & -FA) is inconsistent
+
+
+1d)
+
+
+Clausify FB
+
+       G1          M(sk1)
+       G2          - R(x) |  H(x,sk1).
+
+Negate  FA and clausify
+
+            -   A:(x): ( R(x) => (E:(y): M(y) & H(x,y))) 
+
+                E:(x): - ( R(x) => (E:(y): M(y) & H(x,y))) 
+
+                E:(x): ( R(x) & - (E:(y): M(y) & H(x,y)))
+
+                E:(x): ( R(x) & (A:(y): -M(y)  | H(x,y)))
+
+                R(sk2) & (A:(y): -M(y)  | -H(sk2,y)))  
+
+
+1e)
+
+
+       G3       R(sk2) 
+       G4       -M(y)  | -H(sk2,y)))
+
+Resolution Proof
+
+
+       G5       -H(sk2,sk1)    (G1,G4)
+       G6       H(sk2,sk1)     (G3,G2)
+       G7       []             (G5,G6)
+
+
+
+TASK 2
+
+
+
+2a)
+
+Et CSP problem er defined by  a 
+
+
+   - a set of variables
+
+   - a set of domains for these variables
+
+   - a set of constraint relations between the variables
+
+
+2b)
+
+
+In the present problem, the variables are the slots in the matrix
+
+
+We can call them
+
+     PmSdh    Person m, Slot dn (d day, h hour-slot)
+
+
+
+The domain for all variables is the  set of activities according to the list:
+
+      A1  Registration
+      A2  Information
+      A3  Lecture
+      A4  Exhibition
+      A5  Computer     
+            
+     Example from the figure
+
+
+            P1D108 = A1
+            P2D108 = A1    P2D110 = A2   P2D214 = A2
+
+
+2c)
+
+
+Constraints can now be formulated by examples:
+
+ -    Registration is only open the first morning
+
+(Simplify morning to 08-10 strict, and exactly 6 persons)  
+
+      This is a relation on the variables
+
+        P1D108 , P2D108,  P3D108 , P4D108,  P5D108 , P5D108, 
+
+ The exact formulation shall express that 3 of them must be A1 
+           
+     The information desk has to be manned at all times
+
+     This is a set of relations for each column (slot)
+
+Example (1. slot)
+
+       P1D108, P2D108  P3D108, P3D108   P5D108, P6D108
+
+The exact formulation shall exprsss that   one of them must be A2
+
+ -   Each lecture needs an assistant in the lecture hall
+    ......
+
+ - Computer service once in moring ...
+
+   ........
+
+ - The exhibition needs an assistant ...
+
+   ......
+
+- No assistant shall work more than 1 time slot in a row with the same task
+
+   ......
+
+- One person can only do one activity at a time
+
+    - This is automatically fullfilled, provided the each variable can
+      only have one value
+
+2d)
+
+  Backtracking search for CSP
+
+
+     The most basic method is simply to assign domain varibles to
+     possible domain values at a time, test the constraints and
+     backtrack when constraints are violated.
+
+     A major and necessary improvement is to carefully select the order
+     of the variables to instantiate, and also to carefully select the
+     order of the values to try out.
+
+     The method of constraint propagation means that each variable is
+     a assigned an apriori set of values, and that each assignment
+     leads to a subsequent elimination of all other assignment that
+     becomes impossible. If it turns out that a variable can have no
+     legal value, then the original assignement must be changed.
+
+
+  Local Search for CSP
+
+
+     The basic principle is to start with a random initial assignment,
+     all the time keep an overview of the number of constraint violations,
+     and then adjust locally the assignments that makes the biggest
+     reduction in the conflict set.
+
+     .....
+
+
+TASK 3
+
+
+3a)
+
+     Starting with the top node, each possible move is depicted down
+     to a maximum depth,or a terminal node (win or lose position).
+
+     For the  nodes at the bottom level, each node is assigned an
+     evalution function  value.
+
+     The valuation function assigns  the values from the point of view
+     of one of the players (called Max). The valuation function must
+     give a top value to win position and a bottom value for a losing
+     position, and and a value in between for non-terminal nodes.
+
+     When that is done, all the values are backed up so that a Max
+     node (Max to move) gets the maximum of its daughter nodes 
+     ( Min-nodes), while each Min node gets the minimum value of its
+     daughter nodes (Max nodes).
+
+3b)
+
+    The static value for B om the move could be - (minus) the value
+    if A was in the move.
+
+    The motivation for this evaluation function is twofold:
+
+   i)  The game is symmetric, same rules for A and B.
+       Positive values for A are  negative values for B and vice versa.
+
+   ii) The  estimate f(S) gives the as the number of choices that
+       the mover can do. The more possibilities, the more chance that a
+       good move can be found if the games arrives at that position.
+
+3c)
+
+     Drawing: (sketch in txt format). 
+     Backed up values in ().
+
+     Two double moves gives 5 levels of nodes.
+
+
+ A20 
+ (99)
+ |            \                           \
+ B4            B10                         B19
+(99)           (99)                       (-99)
+ |   \         |    \         \           |      \    
+ A2   A3       A2    A5         A9         A1     A18
+(99)  (99)    (99)  (99)       (-99)      -99    (99)
+ |    |  \     |     |  \       |      \          |        \      \
+ B1   B1  B2   B1    B1  B4     B3       B8       B6        B9     B17
+ 99   99 (-99) 99    99 (99)   (-99)    (+1)     (99)      (+1)   (-99)   
+          |              | \    | \      | \      | \  \    | \    |  \
+          A1             A2 A3  A1  A2   A4 A7    A2 A3 A5  A3 A8  A1  A16              
+         -99             99 99 -99  99   +1 99    99 99 99  99 +1 -99  +1
+        
+
+       
+3d)
+
+     
+
+     By alpha beta  pruning is meant a method whereby a node is not
+     evaluated further if it can be proved that the node will never
+     influence the choice. This is done  by assigning provisional
+     values (alpha values at Max nodes, beta values at Min nodes
+     when the a value is backed up from below.
+
+        Alpha values can only be bigger, but if a Max node with an
+        alpha value A  is below a Min node with a beta value B,
+        and A > B, then B will never choose A anyway, and any further
+        analysis of the subnodes will not change that.
+
+    Benefits:
+
+    Reduces the number of node expansion without sacrificing optimlaity.
+
+    Alpha Beta prunig assumes that the nodes are evaluated depth first
+    according to som ordering. If the ordering happens to be optimal
+    (e.g. best values for Max appears first), then the 
+    theoretical gain: is   N ** 1/2 where N is # nodes without  A-B
+    This means that the depth can be doubled.
+
+    The average gain:   N ** 3/4.
+ 
+
+
+3e)
+
+    (It is allowed to mark it on the figure above)
+
+
+     The actual marking of the Alpha Beta cutoffs may vary according
+     to the sequence of the evaluation of the subnodes).
+
+     In the game tree above, A20 gets a backup value alpha value of 99
+     early, which makes all node evaluations below B10 and B19 redundant.
+
+
+
+TASK 4
+
+     (The formalism to be used is specifically the Situation Calculus.
+      Attempts to use other planning formalisms will not be honoured
+      to full credit.)
+
+    In the situation calculus, we can use the Reified Situation
+    Calculus formulation.
+
+
+            Holds(Condition,Situation)
+
+
+    where Condition is one of the predications (Fluents) for the passenger
+
+
+           AtLocation(Location,Time)
+
+           InBus(BusID)
+
+
+Situation is eithet a start situation Start, or 
+
+   the result situation of applying an action A on a situation S, i.e.
+
+
+          Result(S,Action)
+
+
+The actions are
+
+
+          Walk(Loc1,Loc2,StartTime,EndTime)
+
+          Enter(BusID,Loc,Time)
+ 
+          Leave(BusID,Loc,Time)
+
+ 
+The axioms Passes and WalkingTime are here situation independent axioms
+
+     A  set of consequence (effect) axioms may be 
+
+
+     Holds(AtLoc(Loc2,Time),Result(Walk(Loc1,Loc2,StartTime,WalkTime),S)) <=
+            Holds(AtLoc(Loc1,Time0),S),
+            StartTime+WalkTime < Time.
+
+     
+
+     Holds(AtLoc(Loc2,Time),Result(Leave(BusId,Loc2,Time),S))  <=
+            Holds(InBus(BusId),S),
+            Passes(BusId,Loc2,Time).
+
+
+  
+     Holds(InBus(BusId),Result(Enter(BusID,Location,Time),S)) <=
+             Holds(AtLoc(Location,Time),S),
+             Passes(BusId,Location,Time).      
+
+
+In general, a set of Frame axioms must be stated to say that some
+properties stay invariant under various actions. As i happens, none
+is actually needed here.
+
+     
+...
+  
+ Initial situation S0
+
+      
+     Holds(AtLocation(NTH,1600),S0)
+
+
+ Goal
+
+    <=  Holds(Holds(AtLocation(Solsiden,1630),Actions),
+
+        Answer(Actions).
+
+
+
+**** I have made a testrun of this ********
+
+%% FILE eks2008task4.pl
+%% ............
+
+
+
+always(X =< Y) :- X =< Y.
+ 
+fact(passes(X,Y,Z)) :-passes(X,Y,Z).
+fact(walkingTime(X,Y,Z)) :-walkingTime(X,Y,Z).
+
+
+     passes(bus5,gløshaugen_syd,1609).
+     passes(bus5,dronningens_gate_d2,1618).
+     passes(bus9,munkegata_m5,1623).
+     passes(bus9,dokkparken,1627).
+
+     walkingTime(nth,gløshaugen_syd,1).
+     walkingTime(dronningens_gate_d2,munkegata_m5,2).
+     walkingTime(dokkparken,solsiden,3).
+
+
+     consequence(atLocation(Loc2,Time2), 
+                 walk(Loc1,Loc2,Time1,Time2),
+                  ( walkingTime(Loc1,Loc2,WT) &
+                    atLocation(Loc1,Time1) & (Time1 +WT =< Time2))).
+
+ 
+     consequence(atLocation(Loc2,Time), 
+                 leave(BusId,Loc2,Time),
+                ( inBus(BusId) &
+                  passes(BusId,Loc2,Time))).
+
+  
+     consequence(inBus(BusId),
+                 enter(BusId,Location,Time),
+                  (atLocation(Location,Time)&
+                   passes(BusId,Location,Time))).      
+
+
+
+
+given(atLocation(nth,1600)).
+
+goal(atLocation(solsiden,1630)).
+
+
+%% Final solution filled in for test
+
+try(_, do(do(do(do(do(do(do( 
+        start,
+       
+        walk(nth,gløshaugen_syd,1600,1609) ),
+        enter(bus5,gløshaugen_syd,1609) ),
+        leave(bus5,dronningens_gate_d2,1618) ),
+        walk(dronningens_gate_d2,munkegata_m5,1618,1623) ),
+        enter(bus9,munkegata_m5,1623) ),
+        leave(bus9,dokkparken,1627) ),
+        walk(dokkparken,solsiden,1627,1630) )  ).
+
+
+/** Run protocol with test of proposed solution.
+    Automatic search for solution ran into trouble.
+
+% sicstus
+?-[sitcalc].
+?-[eks2008task4].
+
+?- run.
+
+GIVEN: 
+
+atLocation(nth,1600)
+
+
+GOAL: 
+
+atLocation(solsiden,1630)
+
+
+Trying: 
+
+
+do(do(do(do(do(do(do(
+start,
+
+walk(nth,gløshaugen_syd,1600,1609)),
+enter(bus5,gløshaugen_syd,1609)),
+leave(bus5,dronningens_gate_d2,1618)),
+walk(dronningens_gate_d2,munkegata_m5,1618,1623)),
+enter(bus9,munkegata_m5,1623)),
+leave(bus9,dokkparken,1627)),
+walk(dokkparken,solsiden,1627,1630))
+
+time(ms) 0
+
+*/
+
+/*
+This corresponds roughly to the natural language explanation in the
+task 4 formulation:
+
+
+    Gå fra NTH  før  1608  til Gløshaugen Syd   før 1609
+    Ta buss 5 fra Gløshaugen Syd kl 1609  til Dronningens gate D2 kl 1618.  
+    Gå fra  Dronningens gate D2 etter 1618 til  Munkegata  M5 før 1623
+    Ta  buss 9 goes fra Munkegata  M5 kl 1623  til Dokkparken kl 1627  .
+    Gå fra  Dokkparken etter 1627 til Solsiden før  1630
+
+*/
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+4b)
+
+
+   This can be formulated as a problem for heuristic search.
+
+
+      The states  are tuples  of (Location,InBus,Time)
+
+      The successor functions are Walk, Enter and Leave according to
+      the bus passing times
+
+      The cost g is the the used time
+
+      The heuristic h may or may not be available as route information
+      (Shortest Airline Distances converted to times by maximum
+      walking speed/ maximum bus speed). Otherwise, a trivial
+      heuristic h=0 can be applied.
+
+      An extra problem is that the optimisation to  be done is not
+      just the shortest path (in time), but slightly more complex.
+
+      A way of solving this is to start searching form the end goal,
+      and search backwards in time. Then the first solution that
+      reaches a start condition will be the wanted solution.
+
+
+TASK 5
+
+5a)
+
+(Comment: A slight error in the task text is that
+
+    the definitions of 'Article' and 'Verb'  are  missing. 
+
+    It shoul be 
+         VP --> V Vmod
+         NP  ---> Det Noun 
+or
+         Article --> the 
+         Verb --> walked
+
+ )
+
+
+Parse tree is shown here using  prefix indented notation
+
+   S
+      NP
+         Pronoun
+            someone
+      VP
+         Verb
+            walked      
+         Vmod
+            Adv 
+               slowly
+            Vmod
+                PP
+                   Prep
+                      to
+                   NP
+                      Det    
+                         the
+                      Noun
+                         supermarket
+
+5b)
+
+    Lexicon is extended  by
+
+         Det --> a
+         Verb --> has
+         Noun --> restaurant
+         Noun --> menu
+
+   Grammar is extended by
+
+         VP --> Verb NP
+
+( The extension Vmod --> NP is also acceptable. However, the extension
+
+        PP --> NP 
+
+is inadequate, because PP means "Prepositional Phrase"
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+        
+

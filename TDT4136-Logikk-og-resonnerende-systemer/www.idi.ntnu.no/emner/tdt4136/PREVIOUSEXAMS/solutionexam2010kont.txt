@@ -1,0 +1,494 @@
+%%  COURSE TDT4136 Logic and Reasoning systems  
+
+%% Solution proposals to CONTINUATION EXAM   12.aug. 2010
+
+%% by T.Amble
+
+
+TASK 1  (25%)
+
+Task 1a)
+
+
+If a person can "buy anything that he wants", this is equivalent to
+saying that "it is not the case that he wants something that he cannot afford",
+in other words "he does not want anything that he cannot afford"
+
+Task 1b)
+
+  Using a  plaintext format
+
+KP:    forall(x):( [forall(y): Want(x,y) => Afford(x,y)]  => Rich(x) )
+
+
+Task 1c)
+
+Eliminate  =>
+
+      forall(x):( not (forall(y): not Want(x,y) or Afford(x,y)) or Rich(x))
+
+Reduce scope of negation
+
+      forall(x):( (exists(y):  Want(x,y) and not Afford(x,y)) or Rich(x))
+
+Eliminate exists (Skolemize)
+ 
+      forall(x):(  Want(x,sk(x)) and not Afford(x,sk(x))) or Rich(x))
+
+Eliminate forall
+
+     Want(x,sk(x)) and not Afford(x,sk(x)))
+
+Convert to conjunctive normal form
+
+
+KPCF:
+
+      Want(x,sk(x))  or Rich(x))
+      not Afford(x,sk(x)) or Rich(x))
+ 
+Task 1d)
+
+SP:     (forall(y): not Afford(Solon,y) => not Want(Solon,y)).
+ 
+Task 1e)
+    
+Eliminate  =>
+
+     (forall(y): not not Afford(Solon,y) or  not Want(Solon,y))
+
+Eliminate forall
+
+      not not Afford(Solon,y) or  not Want(Solon,y)
+
+Convert to conjunctive normal form
+
+SPCF:
+ 
+    Afford(Solon,y) or  not Want(Solon,y).  
+
+
+Task 1f)
+
+    Negate postulation
+
+NS:   not rich(Solon).
+  
+1:     (KPCF.1,NS)  Want(Solon,sk(Solon))        (x=Solon)
+
+2:     (KPCF.2,NS)  not Afford(Solon,sk(Solon))  (x=Solon)
+
+3:     (1,SPCF)     Afford(Solon,sk(Solon)       (y=sk(Solon))
+
+4:     (2,3)        []               QED
+
+
+
+    
+TASK 2
+
+Task 2a)
+
+The problem is not suited for a linear planner (STRIPS).
+That is because STRIPS assumes that the subgoals are solved in
+sequence, and that a solution of one subgoal is not violated by
+subsequent solutions of the remaining goals.
+This is not possible in the TOH problem because subgoals are necessarily
+violated temporarily during the disk movements.
+
+
+ 
+
+
+Task 2b)
+
+
+There are many ways to formalize it, but all relevant issues must be  mentioned.
+
+
+Action repertoire:
+
+             Move(P1,P2,P3)   Move disk P1 from P2 to P3
+
+Fluent predicates:
+
+             Disk(P)     P is a disk (not a platform)
+             Free(P)     P is free
+             On(P,Q)     P is on Q
+             Less(P,Q)   Disk P < Disk Q (or platform Q)
+
+
+Actions Preconditions :
+
+     Poss(Action) <= Conditions
+     --------------------------
+
+     Poss( Move(P1,P2,P3)) <= Disk(P1)&Free(P1)&On(P1,P2)&Free(P3)&Less(P1,P3).
+
+
+Effect Axioms:
+
+     Consequence(Action, Effects)
+     ----------------------------
+
+     Consequence( Move(P1,P2,P3),On(P1,P3)&Free(P2))
+
+Frame axioms: (what remains unchanged by possible actions if true before action)  
+
+     Invariant(Fluent) <= Conditions 
+      --------------------------------
+
+     Invariant(On(X,Y),move(P1,P2,P3))<= P1 \=X,P3\=X
+
+Initial state:
+
+    On(P1,P2)&On(P2,P3)&On(P3,P4) & On(P4,A)&
+   
+    Free(P1)& Free(B)&Free(C)
+
+Goal states:
+
+  On(P1,P2)&On(P2,P3)&On(P3,P4) & On(P4,C)
+   
+
+TASK 3
+
+
+Task 3a)
+
+Et heuristisk søkeproblem består av
+
+- en mengde noder eller tilstander
+
+- en startnode
+
+- en målnode (evt mål-betingelse)
+
+- en etterfølger-relasjon
+
+- en kostnadsfunksjon for et trinn c(n1,n2)
+
+- en heuristikk for estimat fra en node fram til en målnode
+
+Målet er å finne den billigste vei fra start til mål.
+
+I dette tilfellet er tilstanden  representert ved en (ikonisk) datastruktur som 
+er et bilde av stablene i modellen.
+
+Etterfølger-relasjonen representerer lovlige flytt.
+
+
+Task 3b)
+
+En algoritme for søking i et tilstandsrom går under navnet
+GRAPH-SEARCH. (AIMA,Chapter 3).
+
+Starter med startnode, og ekspanderer noder ved å lagre alle
+etterfølgernoder via flyttrelasjonen.
+
+
+Task 3c)
+
+
+En søking kan realiseres ved best first search (BFS) med seleksjonsfunksjon
+
+Her blir valg av noder bestemt av noder med lavest verdi av
+ f'(n) ,  et estimat for korteste vei gjennom n.
+
+    f'(n) = g'(n) + h'(n)
+
+der g'(n) er estimat av kostnad fra start til n, oh
+    h'(n) er estimat av kostnad fra n til mål.
+
+Hvis f' er nøyaktig kan søketiden reduseres dramatisk.
+Dette skyldes at noder kan elimineres når det finnes noder som er mer lovende.
+
+Task 3d)
+
+En heuristikk er admissibel hvis h'(n) =< h(n), dvs 
+slik at  f'(n) er et underestimat af f(n). 
+
+I så fall vil BFS gi en optimal løsning når den terminerer.
+
+Med triviell heuristikk menes f.eksempel 0.
+
+En bedre (men grovere) heuristikk er å telle antall
+skiver som ikke ligger riktig på plattform C.
+
+Dette er et underestimat siden hver slik skive vil kreve ett flytt.
+
+
+TASK 4
+
+
+Task 4a)
+
+
+A Production system is a forward chaining inference system.
+
+Typically, it uses facts and rules in a knowledge base to derive new
+facts that are stored in the knowledge data base called the working memory.
+
+The rules are sometimes formulated as
+
+  IF  conditions THEN actions.
+
+where the conditions are conditions on the facts  and
+the actions perform some modification on the facts in the
+knowledge database.
+
+The strategy is to select one of the rules that have its conditions    
+satisfied. One strategy particular to the production system is used
+to decide when several rules may apply.
+
+Task 3b)
+
+PROXY is a Prolog-based implementation of a Production system.
+
+It is characterised by
+
+  1) The actions are formulated as positive conclusions that are
+     updated, and negative conclusions that are removed from the
+     working memory.
+ 
+  2) The selection strategy is simply to take the first rule that may
+     fire, i.e  all conditions and not all conclusions are satisfied.
+
+In its pure form, PROXY is equivalent to forward chaining resolution
+proof (called Hyper-resolution).
+
+
+3c)
+
+Since platfom B always is free, the strategy is simplified to move all disks
+except the bottom onto B, then move the bottom disk to C, and finally the disks
+on B onto platform C.
+
+
+
+
+
+facts
+
+        stack(a,[d1,d2,d3,d4]) and
+
+        goal(on(d1,d2)) and
+        goal(on(d2,d3)) and
+        goal(on(d3,d4)) and 
+        goal(on(d4,c)).
+
+rule  movedown(Top)
+if   stack(a,[Top|Rest]) and
+     not Rest=[]
+then
+     not stack(a,[Top|Rest]) and stack(a,Rest) and
+     on(Top,b).
+
+rule  startbuild
+if  
+     stack(a,[D])
+then
+     not stack(a,[D]) and stack(c,[D]) and
+     topstack(D).
+
+rule add_disk(X,D)
+if  
+    stack(c,SC) and
+    topstack(D) and
+    goal(on(X,D)) 
+then
+    not on(X,b) and  on(X,D) and
+    not goal(on(X,D)) and
+    (not stack(c,SC)) and stack(c,[X|SC]) and
+    not topstack(D) and topstack(X).
+
+
+%  Sample run
+%
+$proxy.sav
+?- trace := 2.
+?-run.
+
+$$$$$$  PROXY Production System $$$$$$
+
+ 
+*** FACTS ***
+ 
+ stack(a,[d1,d2,d3,d4])
+ goal(on(d1,d2))
+ goal(on(d2,d3))
+ goal(on(d3,d4))
+ goal(on(d4,c))
+ 
+ 
+*** movedown(d1) ==> not stack(a,[d1,d2,d3,d4])and
+    stack(a,[d2,d3,d4])and on(d1,b) 
+*** movedown(d2) ==> not stack(a,[d2,d3,d4])and stack(a,[d3,d4])and
+    on(d2,b) 
+*** movedown(d3) ==> not stack(a,[d3,d4])and stack(a,[d4])and on(d3,b)
+*** startbuild ==> not stack(a,[d4])and stack(c,[d4])and topstack(d4)
+*** add_disk(d3,d4) ==> not on(d3,b)and on(d3,d4)and not
+*** goal(on(d3,d4))and not stack(c,[d4])and stack(c,[d3,d4])and not
+    topstack(d4)and topstack(d3) 
+*** add_disk(d2,d3) ==> not on(d2,b)and on(d2,d3)and not
+    goal(on(d2,d3))and not stack(c,[d3,d4])and stack(c,[d2,d3,d4])and
+    not topstack(d3)and topstack(d2)
+*** add_disk(d1,d2) ==> not on(d1,b)and on(d1,d2)and not
+    goal(on(d1,d2))and not stack(c,[d2,d3,d4])and
+    stack(c,[d1,d2,d3,d4])and not topstack(d2)and topstack(d1) 
+ 
+*** Time  0 ms
+ 
+$$$$$$  END  $$$$$$
+
+
+
+
+
+
+TASK 5
+
+
+Task 5a)
+
+
+Et CSP problem er defined by  a 
+
+
+   - a set of variables
+
+   - a set of domains for these variables
+
+   - a set of constraint relations between the variables
+
+Task 5b)
+
+In this case, the variables are
+
+    {WA,NT,SA,Q,NSW,V}
+
+ and the common domains are  {Red,Blue,Green}.
+
+
+A  Constraint graph is a structure , where the vertices are the
+variables, the edges are relations. In this case, the relations are
+the difference-relation.
+
+
+
+
+   WA -- NT -- Q
+     \   |   /  \
+      \  |  /    \
+       \ | /      \
+         SA ------NSW     
+           \     /
+            \   /
+              V
+Task 5c)
+
+
+  Local Search for CSP
+
+
+     The basic principle is to start with a random initial assignment,
+     all the time keep an overview of the number of constraint violations,
+     and then adjust locally the assignments that makes the biggest
+     reduction in the conflict set.
+
+Task 5d)
+
+
+
+The method using Local search is based on the principle of starting
+  at some set of initial values, and reassign the variables that
+  causes the most conflicts, to values that minimizes the number of
+  conflicts NOC)
+
+In general , we may not always achieve the absolute minimum (NOC=0) by
+hill climbing (depth first, maximum, descent, no backtracking), but
+there are methods to come around this. (Adding backtracking, Simulated
+Annealing)
+ 
+
+
+
+
+
+
+Initial configuration
+
+
+  ____________________________________________
+  |      |                |                   |
+  |      |    NT          |   Q               |
+  |      |    G           |   B               |
+  |      |---------|--------------            |
+  | WA   |                       |            |
+  |      |                       |------------|
+  | R    |                       -    NSW  G  |
+  |      |                       |            | 
+  |      |                       |------------|
+  |      |   SA  G               |    V  R    |
+  |______|_______________________|____________|
+             
+
+Number of conflicts (NOC)= 2 ( marked by - | )
+
+The maximum reduction we can achieve is NOC=1 by 
+
+  SA=B
+
+
+  ____________________________________________
+  |      |                |                   |
+  |      |    NT          |   Q               |
+  |      |    G           |   A               |
+  |      |-------------------|----            |
+  | WA   |                       |            |
+  |      |                       |------------|
+  | R    |                       |    NSW  G  |
+  |      |                       |            | 
+  |      |                       |------------|
+  |      |   SA  B               |    V  R    |
+  |______|_______________________|____________|
+             
+
+Number of conflicts (NOC)= 1 ( marked by - | )
+
+The maximum reduction we can achieve is NOC=0 by 
+
+   Q=R
+
+
+  ____________________________________________
+  |      |                |                   |
+  |      |    NT          |   Q               |
+  |      |    G           |   R               |
+  |      |------------------------            |
+  | WA   |                       |            |
+  |      |                       |------------|
+  | R    |                       |    NSW  G  |
+  |      |                       |            | 
+  |      |                       |------------|
+  |      |   SA  B               |    V  R    |
+  |______|_______________________|____________|
+
+
+We have thus found a solution as an assignment without conflicts.
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+

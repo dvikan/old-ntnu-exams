@@ -1,0 +1,76 @@
+====== Exercises ======
+
+NEWS: 
+
+Lab hours with assistance:
+
+Week 12-13: Ekskursjon – Påskeferie
+
+Week 14: Thursday - Friday
+
+Week 15: Monday - Tuesday
+
+Week 16: Monday - Tuesday
+
+Week 17: Monday - Tuesday
+
+Deadline: Friday 26th April kl. 12.00
+
+===== Lab Groups =====
+
+  * **{{:tdt4258-groups.pdf|Groups and Unassigned students}}** ------------NEW 18-03-2013------------
+===== Slides =====
+
+  * {{:intro.pdf| Lab Introduction Lecture}}
+  * {{:ex1.pdf| Exercise 1 Lecture}}
+  * {{:ex2.pdf| Exercise 2 Lecture}}
+  * {{:C.pdf| Introduction to C}}
+  * {{:ex3.pdf| Exercise 3 Lecture}}
+===== Compendium =====
+
+  * {{:kompendium.pdf|Compendium 2013}}
+
+Note on Exercise 2: some libraries are now slightly different from the description in the compendium (check the slides for Exercise 2). For that reason, when you declare and use variables for Power Management and ABDAC, you have to change it as follows.
+
+Power Management to be used by ABDAC:
+
+volatile avr32_pm_t *sm = &AVR32_PM (instead of Volatile avr32_sm_t *sm = &AVR32_SM)
+
+sm->gcctrl … (instead of sm->pm_gcctrl)
+
+
+ABDAC:
+
+volatile avr32_abdac_t *dac = AVR32_ABDAC (instead of Volatile avr32_dac_t *dac = AVR32_DAC)
+
+===== How to Write a Report =====
+  * [[http://www.mhhe.com/mayfieldpub/tsw/home.htm|Mayfield Handbook of Technical and Scientific Writing]]
+  * [[http://www.idi.ntnu.no/~keithd/advice/masters-students.html|Keith Downings tips]]
+  * {{:writetechnicalreport.pdf|How to Write a Good Technical Report}}
+The report must be written in English and it has to contain at least the following sections: Abstract, Introduction, Description and Methodology (describe your work step by step), Results and Tests, Evaluation of assignment, Conclusion, Acknowledgements (optional), References. 
+**The report has to be submitted through It’s Learning together with the code.**
+
+
+
+
+===== Useful Files =====
+  * {{:doc32000.pdf|AVR32}}
+  * {{:doc32003.pdf|AT32AP7000}}
+  * {{:ldd3_pdf.tgz|Linux Device Drivers}}
+  * {{avr32b-interrupts.zip|Interrupts library source}}  If you wonder how it is implemented
+===== Linux STK1000 =====
+
+  * {{:atstk1002_bsp_sd_image_3.0.0.tar.gz|STK1000_BSP_SD_IMAGE}}
+  * **uboot.bin** (on It's Learning)
+  * **linux-2.6.16.11-avr32-20060626** (on It's Learning)
+  * **guidelines for relocating bsp** (on It's Learning)
+  * **guidelines for exercise 3** (on It's Learning)
+
+===== Exercise Files =====
+
+  * {{::oeving1.tgz|Exercise 1}} Deadline 15/02/2013 kl. 12:00 on It's Learning
+  * {{::oeving2.tar.gz|Exercise 2}} Deadline 15/03/2013 kl. 12:00 on It's Learning
+  * {{::oeving3.tgz|Exercise 3}} Deadline 26/04/2013 kl. 12:00 on It's Learning (you need to download also the files in the section LINUX STK1000)
+
+Please read carefully the documentation regarding sleep levels before using the sleep function on avr32.
+If you use "deep sleep levels", it may happen that the board will become unusable (unless reprogrammed) and you may not be able to awake the microprocessor, even with interrupts.

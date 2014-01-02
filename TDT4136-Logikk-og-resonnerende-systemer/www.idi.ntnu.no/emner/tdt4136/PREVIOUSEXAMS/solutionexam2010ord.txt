@@ -1,0 +1,592 @@
+
+COURSE  TDT4136  Logic and Reasoning Systems.
+   EXAM  Monday   December 13 2010
+
+   SOLUTION PROPOSAL 
+   by/ Tore Amble
+
+Revised  TA-110807
+
+いいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
+
+
+TASK 1  (20 %)
+
+We are using a plain text format. Students are free to use logical
+notation, but the concrete syntax is irrelevant.
+
+
+
+Task 1a)
+
+1. A:x  Phil(x) =>  A:y ((-L(y,y) =>  L(x,y)) & (L(x,y) => -L(y,y))
+
+2. E:x  Phil(x) 
+
+
+   (Alternative ::
+        E:x  A:y ((-L(y,y) =>  L(x,y)) & (L(x,y) => -L(y,y)))
+ 
+
+Task 1b)
+
+
+Step  Eliminate =>
+
+1. A:x  -Phil(x) | (A:y (( - -L(y,y) |  L(x,y)) & (- L(x,y) | -L(y,y))
+
+2  E:x  Phil(x)
+
+(Step Reduce scope of negation)
+(Step Skolemize)
+
+1  A:x  -Phil(x) | (A:y ((L(y,y) |  L(x,y)) & (- L(x,y) | -L(y,y))
+
+2  Phil(P1)
+
+
+Step  Eliminate A: quantifier
+
+1    -Phil(x) | ( ((L(y,y) |  L(x,y)) & (- L(x,y) | -L(y,y))
+
+2  Phil(P1)
+
+
+Step  Convert to conjunctive normal form
+
+1      (-Phil(x) | L(y,y) |  L(x,y))
+        &
+       (-Phil(x) |- L(x,y) | -L(y,y))
+
+2     Phil(P1)
+
+Step  Convert to clausal form form
+
+
+1a  -Phil(x) | L(y,y) |  L(x,y)
+
+1b  -Phil(x) |- L(x,y) | -L(y,y)
+
+2    Phil(P1)
+
+
+Task 1c)
+
+The Resolution proof requires an application of factoring,
+(which is part of the Resolution proof method).
+
+That is unification of  literals with the same sign in the same clause 
+the same clause.
+
+
+  3 (1a,2)   L(P1,y) | L(P1,y)   which is unified into
+     
+  3f         L(P1,y)   
+
+ 
+  4 (1b,2)  -L(P1,y)  | -L(y,y) which is unified
+     
+  4f        -L(P1,P)   
+
+
+  5 (3f,4f)  [] 
+
+QED
+
+
+
+
+
+--------------------
+
+TASK 2 (20 %)
+
+
+This task is similar to an exercise that has been given in the course.
+
+
+Task 2a)
+
+
+A linear planner is a program that can make plans on the basis of the
+linearity assumption:
+
+   A plan is a sequence of operations that tries to satisfy  a sequence of
+   goal conditions, under the assumptions that they can be solved
+   independently in the order given.
+   This also applies recursiveley to intermediste subgoals.
+
+Task 2b)
+
+
+
+%%  Operators specifying the actions
+
+%  go(From,To)
+%  push(Object,From,To)
+%  climb_on(Object,AtLoc)     % AtLoc outputed for better tracing (of weird plans :-)
+%  jump_down(Object)
+%  switch_on(Switch,AtLoc)    %   "
+%  switch_off(Switch,AtLoc)   %   "
+
+
+pre( go(From,To),  on(shakey,floor) & 
+                   in(To,Room) & in(From,Room) & %dif(From,To) & 
+                   at(shakey,From) ).
+del( go(From,_To), at(shakey,From) ).
+add( go(_From,To), at(shakey,To) ).
+
+
+pre( push(Object,From,To),   pushable(Object) & on(shakey,floor) & empty(To) &
+                             in(To,Room) & in(From,Room) & %dif(From,To) & 
+                             at(Object,From) & at(shakey,From) ).
+
+del( push(_Object,From,_To), at(shakey,From) ).
+del( push(Object,From,_To),  at(Object,From) ).
+del( push(_Object,_From,To), empty(To) ).
+
+add( push(_Object,From,_To), empty(From) ).  
+add( push(_Object,_From,To), at(shakey,To) ).
+add( push(Object,_From,To),  at(Object,To) ).
+
+
+pre( climb_on(Object,Loc),   climbable(Object) & on(shakey,floor) & 
+                             at(Object,Loc) & at(shakey,Loc) ).
+del( climb_on(_Object,_Loc), on(shakey,floor) ).
+add( climb_on(Object,_Loc),  on(shakey,Object) ).
+
+
+pre( jump_down(Object),  climbable(Object) & on(shakey,Object) ).
+del( jump_down(Object),  on(shakey,Object) ).
+add( jump_down(_Object), on(shakey,floor) ).
+
+
+pre( switch_on(Switch,Loc),  switch(Switch) & at(Switch,Loc) & 
+                             box(Box) & at(Box,Loc) & on(shakey,Box) ).
+del( switch_on(Switch,_Loc), is_off(Switch) ).
+add( switch_on(Switch,_Loc), is_on(Switch) ).
+
+
+pre( switch_off(Switch,Loc),  switch(Switch) & at(Switch,Loc) & 
+                              box(Box) & at(Box,Loc) & on(shakey,Box) ).
+del( switch_off(Switch,_Loc), is_on(Switch) ).
+add( switch_off(Switch,_Loc), is_off(Switch) ).
+
+
+
+Task 2c)
+
+% % % % % % % % % % % % % % % % % % % % % % %
+
+%%  Initial facts ...
+
+fact( in(door1, room1) ).     % 
+fact( in(door2, room2) ).
+fact( in(door3, room3) ).
+fact( in(door4, room4) ).
+
+fact( in(door1, corridor) ).
+fact( in(door2, corridor) ).
+fact( in(door3, corridor) ).
+fact( in(door4, corridor) ).
+
+fact( in(inside1, room1) ). 
+fact( in(corner1, room1) ). 
+fact( in(inside2, room2) ).  
+fact( in(corner2, room2) ).  
+fact( in(inside3, room3) ).  
+fact( in(corner3, room3) ).  
+fact( in(inside4, room4) ).  
+fact( in(corner4, room4) ).  
+
+fact( switch(ls1) ).      %
+fact( at(ls1,corner1) ).  % light-switches in the corners
+fact( switch(ls2) ).      %
+fact( at(ls2,corner2) ).  %
+fact( switch(ls3) ).      %
+fact( at(ls3,corner3) ).  %
+fact( switch(ls4) ).      %
+fact( at(ls4,corner4) ).  %
+
+fact( box(box1) ).
+fact( box(box2) ).
+fact( box(box3) ).
+fact( box(box4) ).
+
+fact( pushable(box1) ).  
+fact( climbable(box1) ). 
+fact( pushable(box2) ).  
+fact( climbable(box2) ). 
+fact( pushable(box3) ).  
+fact( climbable(box3) ). 
+fact( pushable(box4) ).  
+fact( climbable(box4) ). 
+
+
+Task 1c)
+
+
+
+given( at(box1,inside1) ). 
+given( at(box2,inside1) ). 
+given( at(box3,inside1) ). 
+given( at(box4,inside1) ). 
+
+given( empty(door1) ).
+given( empty(door2) ).
+given( empty(door3) ).
+given( empty(door4) ).
+
+given( empty(corner1) ).
+given( empty(inside2) ).
+given( empty(corner2) ).
+given( empty(inside3) ).
+given( empty(corner3) ).
+given( empty(inside4) ).
+given( empty(corner4) ).
+
+given( at(shakey,inside3) ).  % shakey starts in room3,
+given( on(shakey,floor) ).    %     on the floor;
+
+given( is_off(ls4) ).
+given( is_on(ls3) ).
+given( is_on(ls2) ).
+given( is_off(ls1) ).
+
+
+goal( is_on(ls1) .
+
+--------------------------------
+SAMPLE RUN by strips.pl planner
+
+% NOTE that the plan is not optimal.                                      
+
+GIVEN:
+
+at(box1,inside1)
+at(box2,inside1)
+at(box3,inside1)
+at(box4,inside1)
+empty(door1)
+empty(door2)
+empty(door3)
+empty(door4)
+empty(corner1)
+empty(inside2)
+empty(corner2)
+empty(inside3)
+empty(corner3)
+empty(inside4)
+empty(corner4)
+at(shakey,inside3)
+on(shakey,floor)
+is_off(ls4)
+is_on(ls3)
+is_on(ls2)
+is_off(ls1)
+
+GOAL: is_on(ls1)&at(shakey,inside1)
+
+TRACE:
+
+
+
+PLAN: 
+
+start
+go(inside3,door3)
+go(door3,door2)
+go(door2,door1)
+go(door1,inside1)
+push(box1,inside1,door1)
+push(box1,door1,corner1)
+climb_on(box1,corner1)
+switch_on(ls1,corner1)
+jump_down(box1)
+go(corner1,door1)
+go(door1,inside1)
+
+TIME(ms): 1050
+
+
+-------------------------------------
+
+
+TASK 3 (20 %)
+
+
+Modal logic of knowledge  is a predicate logic where the arguments can be
+mental objects, i.e. thoughts, beliefs, knowledge, statements etc.
+
+
+Task 1a)
+
+The most common axioms of the modal logic of knowledge are
+
+
+K1   Knows(X, P=>Q) & Knows(X,P) => Knows(X,Q).  // A can perform Modus Ponens
+
+K2   Knows(X,P) => P.    // The proposition that A know P presumes that P os true
+
+K3   Knows(X,P&Q) <=> Knows(X,P) & Knows(X,Q) // axiom of conjunctions
+ 
+K4   |=P => Knows(X,P)   // If P is a tautology, then P knows this
+
+K5   Knows(X,P) => Knows(X,Knows(X,P)).  // positive introspection
+
+Task 1 b)
+
+Axioms adapted to the problem
+
+                                               
+ 1.   Knows(Bob, Spot(Ann,Black)).  // Bob can see the spot
+
+ 2.   Knows(Bob, Spot(Ann,Black)=>Spot(Bob,White) ). // rule:at least one spot,
+
+
+
+Proof:
+
+                                               
+ 3. (2,K1)  Knows(Bob, Spot(Ann,Black)) => Knows(Bob,Spot(Bob,White)).
+                                               
+ 4. (3,1)   Knows(Spot(Bob,White))
+
+QED
+
+
+
+Task 3c)
+
+
+This represents Anns knowledge and reasoning:
+Ann knows the following facts, rules and conclusions.
+
+2b.        not Spot(Ann,Black) => // rule
+               Spot(Ann,White)
+
+5.         Spot(Ann,Black) =>    %% Bob can see Ann
+             Knows(Bob,Spot(Ann,Black))
+
+5b        not Knows(Bob,Spot(Ann,Black)) => // contrapositive of 5
+            not Spot(Ann,Black)
+
+6.        Knows(Bob, Spot(Ann,Black)) => // general rule derived above
+              Knows(Bob,Spot(Bob,White))
+
+6a.       not  Knows(Bob,Spot(Bob,White)) =>   // contrapositive of 6
+             not Knows(Bob, Spot(Ann,Black)) 
+
+7.        Knows(Bob,Spot(Bob,White)) =>  // rule
+               Tell(Bob,Spot(Bob,White))
+
+7b.       not  Tell(Bob,Spot(Bob,White)) =>.  // contrapositive of 7
+             not  Knows(Bob,Spot(Bob,White)) 
+
+8         not  Tell(Bob,Spot(Bob,White)) // fact
+
+
+9  (8,7b)  not  Knows(Bob,Spot(Bob,White)) 
+ 
+10 (9,6a)  not Knows(Bob, Spot(Ann,Black)) 
+       
+11 (10,5b) not Spot(Ann,Black)   
+
+12 (11,2b) Spot(Ann,White)
+
+
+Since this is Anns own reasoning,
+  
+          Knows(Ann,Spot(Ann,White))
+
+QED
+
+
+------------------------
+
+
+TASK 4 (20 %)
+
+Task 4a)
+
+A heuristic search problem consists of
+
+  - a set of nodes containing states
+
+  - a start node
+
+  - a goal node (or goal condition)
+
+  - a successor function
+
+  - a cost function for one step
+
+  - a heuristic function as an estimate for cost from a node to a
+    goal node
+
+
+In the present problem, the states are configurations of the boxes
+the start node and goal nodes are  configurations as described,
+the successor function is the legal moves, the cost fuction is 1 per
+move and the heuristic function is to be found. 
+
+The quest  is to find the cheapest way from start to goal .
+
+
+Task 4b)
+
+
+  Admissible heuristics means technically that H is less or equal to
+  the real minimal cost.
+
+  The benefit is that we are guaranteed a minimal cost plan if it exists.
+
+Task 4 c)
+
+  Monotone heuristics means  technically that the cost of a step
+  is higher than the reductiion in heuristics, which means that the
+  total heuristic is (monotonically) non-decreasing.
+
+Benefits of monotone heuristics is that we can regard the first found
+path to  nodes as the minimal route to them, and can thus discard
+further search for any nodes that is detected earlier.
+
+  Admissible heuristic, technically underestimate, functionally
+
+   guarantees optimal path to goal.
+
+Task 4d)
+
+
+   A good heuristic may be to count the number of boxes that are not
+   in place, i.e. number of boxes on P1 and P2, and the number of red
+   boxes on P3 except the number of blue boxes on P3 that are
+   correctly stacked from the bottom.
+
+
+   This heuristic is admissible because each box counted above need
+    at least  1 move to get in place.
+
+   This heuristic is monotone because the heuristic  
+
+   as the increased cost of of a step is no
+     less than the decrease in the heuristic estimate.
+
+     heuristic estimate decreasing less
+     than the  cost of of a step.
+
+-----------------
+
+TASK 5 (20 %)
+
+
+
+Task 5a)
+
+     Starting with the top node, each possible move is depicted down
+     to a maximum depth,or a terminal node (win or lose position).
+
+     For the  nodes at the bottom level, each node is assigned an
+     evalution function  value.
+
+     The valuation function assigns  the values from the point of view
+     of one of the players (called Max). The valuation function must
+     give a top value to win position and a bottom value for a losing
+     position, and and a value in between for non-terminal nodes.
+
+     When that is done, all the values are backed up so that a Max
+     node (Max to move) gets the maximum of its daughter nodes 
+     ( Min-nodes), while each Min node gets the minimum value of its
+     daughter nodes (Max nodes).
+
+Task 5b)
+
+    The static value for B om the move could be - (minus) the value
+    if A was in the move.
+
+    The motivation for this evaluation function is twofold:
+
+   i)  The game is symmetric, same rules for A and B.
+       Positive values for A are  negative values for B and vice versa.
+
+   ii) The  estimate f(S) gives the as the number of choices that
+       the mover can do. The more possibilities, the more chance that a
+       good move can be found if the games arrives at that position.
+
+Task 5c)
+
+     Drawing: (sketch in txt format). 
+     Backed up values in ().
+
+     Two double moves gives 5 levels of nodes.
+
+
+ A20 
+ (99)
+ |            \                           \
+ B4            B10                         B19
+(99)           ( +1)                       (-99)
+ |   \         |    \         \           |      \    
+ A2   A3       A2    A5         A9        A1     A18
+(99)  (99)    (99)  (99)       (+1)      -99    (99)
+ |    |  \     |     |  \       |     \           |        \      \
+ B1   B1  B2   B1    B1  B4     B3      B8       B6        B9     B17
+ 99   99 (-99) 99    99 (99)   (-99)   (+1)     (99)      (+1)   (-99)   
+          |              | \    | \     | \      | \  \    | \    |  \
+          A1             A2 A3  A1  A2  A4 A7    A2 A3 A5  A3 A8  A1  A16              
+         -99             99 99 -99  99  +1 99    99 99 99  99 +1 -99  +1
+        
+
+       
+Task 5d)
+
+     
+
+     By alpha beta  pruning is meant a method whereby a node is not
+     evaluated further if it can be proved that the node will never
+     influence the choice. This is done  by assigning provisional
+     values (alpha values at Max nodes, beta values at Min nodes
+     when the a value is backed up from below.
+
+        Alpha values can only be bigger, but if a Max node with an
+        alpha value A  is below a Min node with a beta value B,
+        and A > B, then B will never choose A anyway, and any further
+        analysis of the subnodes will not change that.
+
+    Benefits:
+
+    Reduces the number of node expansion without sacrificing optimlaity.
+
+    Alpha Beta prunig assumes that the nodes are evaluated depth first
+    according to som ordering. If the ordering happens to be optimal
+    (e.g. best values for Max appears first), then the 
+    theoretical gain: is   N ** 1/2 where N is # nodes without  A-B
+    This means that the depth can be doubled.
+
+    The average gain:   N ** 3/4.
+ 
+
+
+Task 5e)
+
+    (It is allowed to mark it on the figure above)
+
+
+     The actual marking of the Alpha Beta cutoffs may vary according
+     to the sequence of the evaluation of the subnodes).
+
+     In the game tree above, A20 gets a backup value alpha value of 99
+     early, which makes all node evaluations below B10 and B19 redundant.
+
+------------------------
+
+ 
+
+
+
+
+
+
+     
+
+

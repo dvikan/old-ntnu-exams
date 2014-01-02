@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no"
+ lang="no" dir="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>slides</title>
+<meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="date" content="2013-05-03T14:54:36+0200"/>
+<meta name="keywords" content="slides"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/emner/tdt4258/lib/exe/opensearch.php" title="Wiki for TDT4258"/>
+<link rel="start" href="/emner/tdt4258/"/>
+<link rel="contents" href="/emner/tdt4258/slides?do=index" title="Indeks"/>
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="/emner/tdt4258/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="/emner/tdt4258/feed.php?mode=list&amp;ns="/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="/emner/tdt4258/_export/xhtml/slides"/>
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="/emner/tdt4258/_export/raw/slides"/>
+<link rel="canonical" href="http://www.idi.ntnu.no/emner/tdt4258/slides"/>
+<link rel="stylesheet" media="screen" type="text/css" href="/emner/tdt4258/lib/exe/css.php?t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="all" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=all&amp;t=ntnu&amp;tseed=1365686644"/>
+<link rel="stylesheet" media="print" type="text/css" href="/emner/tdt4258/lib/exe/css.php?s=print&amp;t=ntnu&amp;tseed=1365686644"/>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var NS='';var JSINFO = {"id":"slides","namespace":""};
+//--><!]]></script>
+<script type="text/javascript" charset="utf-8" src="/emner/tdt4258/lib/exe/js.php?tseed=1365686644"></script>
+</head>
+<body>
+<div class="dokuwiki export">
+
+<h1 class="sectionedit1"><a name="lecture_slides_2013" id="lecture_slides_2013">Lecture Slides 2013</a></h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> 17/01-13: <a href="/emner/tdt4258/_media/course-intro.pdf" class="media mediafile mf_pdf" title="course-intro.pdf">Introduction</a></div>
+</li>
+<li class="level1"><div class="li"> 17/01-13: <a href="/emner/tdt4258/_media/lecture1.pdf" class="media mediafile mf_pdf" title="lecture1.pdf">Lecture 1</a></div>
+</li>
+<li class="level1"><div class="li"> 24/01-13: <a href="/emner/tdt4258/_media/lecture2.pdf" class="media mediafile mf_pdf" title="lecture2.pdf">Lecture 2</a></div>
+</li>
+<li class="level1"><div class="li"> 31/01-13: <a href="/emner/tdt4258/_media/lecture3_em.pdf" class="media mediafile mf_pdf" title="lecture3_em.pdf">Lecture 3</a> (Guest lecture from Energy Micro)</div>
+</li>
+<li class="level1"><div class="li"> 07/02-13: <a href="/emner/tdt4258/_media/lecture4.pdf" class="media mediafile mf_pdf" title="lecture4.pdf">Lecture 4</a></div>
+</li>
+<li class="level1"><div class="li"> 21/02-13: <a href="/emner/tdt4258/_media/lecture5.pdf" class="media mediafile mf_pdf" title="lecture5.pdf">Lecture 5</a></div>
+</li>
+<li class="level1"><div class="li"> 28/02-13: <a href="/emner/tdt4258/_media/lecture6_qa.pdf" class="media mediafile mf_pdf" title="lecture6_qa.pdf">Lecture 6</a> (ad) <a href="/emner/tdt4258/_media/lecture6_sa.pdf" class="media mediafile mf_pdf" title="lecture6_sa.pdf">Lecture 6</a> (Guest lecture by Snorre Aunet)</div>
+</li>
+<li class="level1"><div class="li"> 07/03-13: <a href="/emner/tdt4258/_media/lecture7.pdf" class="media mediafile mf_pdf" title="lecture7.pdf">Lecture 7</a></div>
+</li>
+<li class="level1"><div class="li"> 04/04-13: <a href="/emner/tdt4258/_media/lecture8.pdf" class="media mediafile mf_pdf" title="lecture8.pdf">Lecture 8</a></div>
+</li>
+<li class="level1"><div class="li"> 18/04-13: <a href="/emner/tdt4258/_media/lecture9_oe_mvs.pdf" class="media mediafile mf_pdf" title="lecture9_oe_mvs.pdf">Lecture 9</a> (Guest lecture Ørjan Eide and Mikael Valen-Sendstad, ARM)</div>
+</li>
+<li class="level1"><div class="li"> 03/05-13: <a href="/emner/tdt4258/_media/lecture10.pdf" class="media mediafile mf_pdf" title="lecture10.pdf">Lecture 10</a> (Review lecture)</div>
+</li>
+</ul>
+
+</div>
+</div>
+</body>
+</html>
