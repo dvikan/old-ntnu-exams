@@ -1,7 +1,6 @@
 
-# Gamle ntnu eksamener
-
-[https://dvikan.no/gamle-ntnu-eksamener/](https://dvikan.no/gamle-ntnu-eksamener/)
+Webversjon her:
+https://dvikan.no/gamle-ntnu-eksamener
 
 Jeg samler på gamle NTNU eksamener.
 
