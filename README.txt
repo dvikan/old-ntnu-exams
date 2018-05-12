@@ -9,3 +9,5 @@ Send inn gamle eksamener til me@dvikan.no.
 Det aller beste er om du lager en pull request på github:
 
 https://github.com/dvikan/old-ntnu-exams
+
+Mvh Dag
