@@ -7,7 +7,7 @@
 
 ## Navnekonvensjon
 ```
-<fagkode>-<år>-<summer/fall>-<nb/eng><[LF]>.pdf  
+<fagkode>-<år>-<semester>-{kont}-<nb/eng>{[LF]}.pdf  
 ```
 
 nb = norsk bokmål  
